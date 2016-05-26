@@ -6,6 +6,7 @@ import java.util.List;
 import dao.ClienteDao;
 import dao.Exception.ConnectException;
 import entities.Cliente;
+import entities.Contato;
 import model.ClienteModel;
 import model.ContatoModel;
 
@@ -26,16 +27,21 @@ public class ClienteController {
 	
 	public void  ClienteSave() throws ConnectException {		
 		ClienteDao clienteDao = new ClienteDao();
-		ClienteModel clienteModel = new ClienteModel();
+		ClienteModel clienteModel = ClienteModel.getInstance();
+		
 		List<ContatoModel> contatos = new ArrayList<ContatoModel>();
 		
 		
+		
 		contatos.add(new ContatoModel("96447503", "Celular", clienteModel));
+		clienteModel.setContatos(contatos);
+		
+		
 		clienteDao.save(ConvertModelToEntitie(clienteModel));
 	}
 	
 	public ClienteModel PrepareTosave(){
-		return new ClienteModel();
+		return ClienteModel.getInstance();
 	}
 	
 	public ClienteModel Selected(){				
@@ -89,6 +95,10 @@ public class ClienteController {
 	}
 	
 	public Cliente ConvertModelToEntitie(ClienteModel clienteModel){
+		ContatoController contatoController = new ContatoController();
+		//contatoController.ConvertModelToEntitieList(clienteModel.getContatos());
+		
+		
 			return	new Cliente(clienteModel.getIdCliente(),
 						clienteModel.getCpf(),
 						clienteModel.getEmail(),
@@ -98,9 +108,7 @@ public class ClienteController {
 						clienteModel.getRendaLiquida(),
 						clienteModel.getValorAutomoveis(),
 						clienteModel.getValorImoveis(),
-						clienteModel.getContatos(),
-						clienteModel.getEnderecos(),
-						clienteModel.getFinanciamentos());	
+						contatoController.ConvertModelToEntitieList(clienteModel.getContatos()));	
 			
 			
 	}

@@ -3,6 +3,9 @@ package entities;
 import java.io.Serializable;
 
 import javax.persistence.*;
+
+import model.FinanciamentoModel;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -103,6 +106,23 @@ public class Cliente implements Serializable {
 		this.contatos = contatos;
 		this.enderecos = enderecos;
 		this.financiamentos = financiamentos;
+	}
+
+
+
+	public Cliente(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
+		super();
+		this.idCliente = idCliente;
+		this.cpf = cpf;
+		this.email = email;
+		this.identidade = identidade;
+		this.nome = nome;
+		this.rendaConjuge = rendaConjuge;
+		this.rendaLiquida = rendaLiquida;
+		this.valorAutomoveis = valorAutomoveis;
+		this.valorImoveis = valorImoveis;
+		this.contatos = contatos;
 	}
 
 
@@ -231,26 +251,18 @@ public class Cliente implements Serializable {
 		return endereco;
 	}
 
+
+
 	public List<Financiamento> getFinanciamentos() {
-		return this.financiamentos;
+		return financiamentos;
 	}
+
+
 
 	public void setFinanciamentos(List<Financiamento> financiamentos) {
 		this.financiamentos = financiamentos;
 	}
 
-	public Financiamento addFinanciamento(Financiamento financiamento) {
-		getFinanciamentos().add(financiamento);
-		financiamento.setCliente(this);
 
-		return financiamento;
-	}
-
-	public Financiamento removeFinanciamento(Financiamento financiamento) {
-		getFinanciamentos().remove(financiamento);
-		financiamento.setCliente(null);
-
-		return financiamento;
-	}
 
 }

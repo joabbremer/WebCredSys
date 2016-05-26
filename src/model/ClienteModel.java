@@ -17,9 +17,9 @@ public class ClienteModel {
 	private Double rendaLiquida ;
 	private Double valorAutomoveis;
 	private Double valorImoveis;
-	private List<Contato> contatos;
-	private List<Endereco> enderecos;
-	private List<Financiamento> financiamentos;
+	private List<ContatoModel> contatos;
+	private List<EnderecoModel> enderecos;
+	private List<FinanciamentoModel> financiamentos;
 
 	
 	public static ClienteModel getInstance(){
@@ -29,14 +29,21 @@ public class ClienteModel {
 		return instance;
 	}
 	
-	public ClienteModel() {
-	}
+
 
 	
 	
+	public ClienteModel() {
+		super();
+	}
+
+
+
+
+
 	public ClienteModel(int cpf, String email, String identidade, String nome, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos,
-			List<Endereco> enderecos, List<Financiamento> financiamentos) {
+			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
+			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
 		super();
 		this.cpf = cpf;
 		this.email = email;
@@ -55,8 +62,8 @@ public class ClienteModel {
 
 
 	public ClienteModel(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos,
-			List<Endereco> enderecos, List<Financiamento> financiamentos) {
+			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
+			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
@@ -144,27 +151,29 @@ public class ClienteModel {
 		this.valorImoveis = valorImoveis;
 	}
 
-	public List<Contato> getContatos() {
+
+
+	public List<ContatoModel> getContatos() {
 		return contatos;
 	}
 
-	public void setContatos(List<Contato> contatos) {
+	public void setContatos(List<ContatoModel> contatos) {
 		this.contatos = contatos;
 	}
 
-	public List<Endereco> getEnderecos() {
+	public List<EnderecoModel> getEnderecos() {
 		return enderecos;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
+	public void setEnderecos(List<EnderecoModel> enderecos) {
 		this.enderecos = enderecos;
 	}
 
-	public List<Financiamento> getFinanciamentos() {
+	public List<FinanciamentoModel> getFinanciamentos() {
 		return financiamentos;
 	}
 
-	public void setFinanciamentos(List<Financiamento> financiamentos) {
+	public void setFinanciamentos(List<FinanciamentoModel> financiamentos) {
 		this.financiamentos = financiamentos;
 	}
 

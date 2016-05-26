@@ -15,15 +15,12 @@
             </h:panelGroup>
             <h:form>
             	<h:panelGrid columns="2">
-            		<h:outputLabel value="Id Contato:" for="idContato" />
-                    <h:inputText id="idContato" value="#{contatoBean.PrepareTosave().idContato}" title="Id Contato" />
                     <h:outputLabel value="Contato:" for="contato" />
                     <h:inputText id="contato" value="#{contatoBean.PrepareTosave().contato}" title="Contato" />  
                     <h:outputLabel value="Tipo:" for="tipo" />
                     <h:inputText id="tipo" value="#{contatoBean.PrepareTosave().tipo}" title="Tipo" />  
                     <h:outputLabel value="Cliente:" for="cliente" />
-                    <h:inputText id="cliente" value="#{contatoBean.PrepareTosave().cliente}" title="cliente" 
-                    converter="generic" />  	
+                    <h:inputText id="cliente" value="#{contatoBean.PrepareTosave().cliente}" title="cliente"  />  	
             	</h:panelGrid>
             	<br />
             	<h:commandButton action="#{contatoBean.ContatoSave()}" value="Salvar"/>

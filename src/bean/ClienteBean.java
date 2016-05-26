@@ -14,6 +14,7 @@ import model.ClienteModel;
 @SessionScoped
 public class ClienteBean {
 	
+	
 	private ClienteController clienteController = null;
 	
 	public ClienteController getControllerInstance(){
@@ -32,7 +33,7 @@ public class ClienteBean {
 	}
 	
 	public void ClienteSave() throws ConnectException{
-		ClienteController clienteController = new ClienteController();
+		ClienteController clienteController = getControllerInstance();
 		clienteController.ClienteSave();
 	}
 	

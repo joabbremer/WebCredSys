@@ -3,7 +3,6 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import bean.SampleEntity;
 
 
 @Entity(name="Contato")
@@ -14,7 +13,7 @@ import bean.SampleEntity;
 	
 	
 })
-public class Contato implements Serializable,SampleEntity {
+public class Contato implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private static EntityManager em = null;
@@ -45,6 +44,26 @@ public class Contato implements Serializable,SampleEntity {
 		this.cliente = cliente;
 	}
 	
+	
+	
+	public Contato(int idContato, String contato, String tipo) {
+		super();
+		this.idContato = idContato;
+		this.contato = contato;
+		this.tipo = tipo;
+	}
+
+
+
+	public Contato(String contato, String tipo, Cliente cliente) {
+		super();
+		this.contato = contato;
+		this.tipo = tipo;
+		this.cliente = cliente;
+	}
+
+
+
 	public static EntityManager getEntityManager(){
 		
 		if(em == null){

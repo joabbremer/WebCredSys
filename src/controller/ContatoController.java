@@ -51,16 +51,32 @@ public class ContatoController {
 	
 	public List<ContatoModel> ConvertEntitieToModelList(List<Contato> contatodao){
 		List<ContatoModel> contatoModel = new ArrayList<ContatoModel>();	
-		ClienteController contatoController = new ClienteController();
+		ClienteController clienteController = new ClienteController();
 		
 		for (Contato contato : contatodao) {
 			contatoModel.add(new ContatoModel(contato.getContato(),
 					contato.getTipo(),
-					contatoController.ConvertEntitieToModel(contato.getCliente())));
+					clienteController.ConvertEntitieToModel(contato.getCliente())));
 			
 			
 		}
 		return contatoModel;
+		
+	}
+	public List<Contato> ConvertModelToEntitieList(List<ContatoModel> contato){
+		
+		
+		List<Contato> contatoEntities = new ArrayList<Contato>();
+		for (ContatoModel contatoModels : contato) {
+			contatoEntities.add(new Contato(contatoModels.getIdContato(),
+					contatoModels.getContato(),
+					contatoModels.getTipo()));
+			
+			
+		}
+		
+		
+		return contatoEntities;
 		
 	}
 	
@@ -70,9 +86,7 @@ public class ContatoController {
 			ClienteController contatoController = new ClienteController();
 			contato = contatoController.ConvertModelToEntitie(contatoModel.getCliente());
 			
-		}
-		
-				
+		}				
 		return new Contato(contatoModel.getIdContato(),
 				contatoModel.getContato(),
 				contatoModel.getTipo(),

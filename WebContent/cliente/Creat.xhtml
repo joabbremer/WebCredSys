@@ -30,10 +30,17 @@
                     <h:outputLabel value="Valor Automoveis:" for="valorAutomoveis" />
                     <h:inputText id="valorAutomoveis" value="#{clienteBean.PrepareTosave().valorAutomoveis}" title="Valor Automoveis:"/>
                     <h:outputLabel value="Valor Imoveis" for="valorImoveis" />
-                    <h:inputText id="valorImoveis" value="#{clienteBean.PrepareTosave().rendaConjuge}" title="Renda Conjuge:>" />         	
+                    <h:inputText id="valorImoveis" value="#{clienteBean.PrepareTosave().rendaConjuge}" title="Renda Conjuge:>" />    
+                    <br/>
+                    Contato
+                    <br/>
+                    <h:inputText id="contato" value="#{contatoBean.PrepareTosave().contato}" title="Contato" />  
+                    <h:outputLabel value="Tipo:" for="tipo" />
+                    <h:inputText id="tipo" value="#{contatoBean.PrepareTosave().tipo}" title="Tipo" />  
+                         	
             	</h:panelGrid>
             	<br />
-            	<h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" />
+            	<h:commandButton action="#{clienteBean.ClienteSave()}" value="Salvar" />
             
             
             </h:form>
