@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name="CONTATO")
 @NamedQueries({
 	@NamedQuery(name="listAllContato", query="SELECT co FROM Contato co"),
-	
+	@NamedQuery(name="updateContato", query="UPDATE Contato co SET co.contato = :contato ,co.tipo = :tipo WHERE co.idContato = :id_contato"),
 	
 	
 })
@@ -19,7 +19,7 @@ public class Contato implements Serializable {
 	private static EntityManager em = null;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_contato", unique=true, nullable=false)
 	private int idContato;
 
@@ -31,7 +31,7 @@ public class Contato implements Serializable {
 
 	
 	@ManyToOne
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name="id_cliente" )
 	private Cliente cliente;
 
 	
@@ -71,6 +71,7 @@ public class Contato implements Serializable {
 		}
 		return em;
 	}
+	
 
 	public Contato() {
 	}

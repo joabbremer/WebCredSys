@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import dao.Exception.ConnectException;
 import entities.Cliente;
@@ -24,9 +25,16 @@ public class ContatoDao implements CrudInterfaceDao<Contato> {
 	}
 
 	@Override
-	public Contato update(Contato contato) throws ConnectException {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Contato contato) throws ConnectException {
+		EntityManager em = Cliente.getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("updateContato");
+		query.setParameter("contato", contato.getContato());
+		query.setParameter("tipo", contato.getTipo());	
+		query.setParameter("id_contato", contato.getIdContato());
+		query.executeUpdate();
+		em.getTransaction().commit();
+		
 	}
 
 	@Override

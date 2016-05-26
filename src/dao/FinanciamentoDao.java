@@ -20,9 +20,9 @@ public class FinanciamentoDao implements CrudInterfaceDao<FinanciamentoModel> {
 	}
 
 	@Override
-	public FinanciamentoModel update(FinanciamentoModel obj) throws ConnectException {
+	public void update(FinanciamentoModel obj) throws ConnectException {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override

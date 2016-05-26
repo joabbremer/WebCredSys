@@ -28,10 +28,10 @@ public class ClienteDao implements CrudInterfaceDao<Cliente> {
 	}
 
 	@Override
-	public Cliente update(Cliente cliente) throws ConnectException {
+	public void update(Cliente cliente) throws ConnectException {
 		EntityManager em = Cliente.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createNamedQuery("update");
+		Query query = em.createNamedQuery("updateCliente");
 		query.setParameter("cpf", cliente.getCpf());
 		query.setParameter("email", cliente.getEmail());
 		query.setParameter("identidade", cliente.getIdentidade());
@@ -43,7 +43,7 @@ public class ClienteDao implements CrudInterfaceDao<Cliente> {
 		query.setParameter("id_cliente", cliente.getIdCliente());
 		query.executeUpdate();
 		em.getTransaction().commit();
-		return null;
+		
 	}
 
 	@Override
