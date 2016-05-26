@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+      <ui:composition template="/template.xhtml">
+      		<ui:define name="title">
+            <h:outputText value="CredSys"></h:outputText>
+        </ui:define>
+      	<ui:define name="body">
+      		<h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+            	<h:panelGrid columns="2">
+            		<h:outputLabel value="Nome:" for="nome" />
+                    <h:inputText id="nome" value="#{clienteBean.PrepareTosave().nome}" title="Nome:" />
+                    <h:outputLabel value="CPF:" for="cpf" />
+                    <h:inputText id="cpf" value="#{clienteBean.PrepareTosave().cpf}" title="CPF:" />
+                    <h:outputLabel value="RG:" for="identidade" />
+                    <h:inputText id="identidade" value="#{clienteBean.PrepareTosave().identidade}" title="RG:" />
+                    <h:outputLabel value="E-mail:" for="email" />
+                    <h:inputText id="email" value="#{clienteBean.PrepareTosave().email}" title="E-mail:" />
+                    <h:outputLabel value="Renda Liquida:" for="rendaLiquida" />
+                    <h:inputText id="rendaLiquida" value="#{clienteBean.PrepareTosave().rendaLiquida}" title="Renda Liquida:>" />
+                    <h:outputLabel value="Renda Conjuge:" for="rendaConjuge" />
+                    <h:inputText id="rendaConjuge" value="#{clienteBean.PrepareTosave().rendaConjuge}" title="Renda Conjuge:>" />
+                    <h:outputLabel value="Valor Automoveis:" for="valorAutomoveis" />
+                    <h:inputText id="valorAutomoveis" value="#{clienteBean.PrepareTosave().valorAutomoveis}" title="Valor Automoveis:"/>
+                    <h:outputLabel value="Valor Imoveis" for="valorImoveis" />
+                    <h:inputText id="valorImoveis" value="#{clienteBean.PrepareTosave().rendaConjuge}" title="Renda Conjuge:>" />         	
+            	</h:panelGrid>
+            	<br />
+            	<h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" />
+            
+            
+            </h:form>
+      	
+      	</ui:define>
+      
+      </ui:composition>
+      
+</html>
