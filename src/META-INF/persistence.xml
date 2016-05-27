@@ -11,8 +11,17 @@
 			<property name="javax.persistence.jdbc.user" value="sa"/>
 			<property name="javax.persistence.jdbc.password" value="123456"/>
 			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+			
+			
+			<!-- Criar Base com as seguintes especificações
+				Nome: CredSys
+				User: sa
+				Key: 123456	
+			-->
+			
+			<!-- Descomentar as linhas abaixo para gerar as entidades  -->
+			<!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/> -->
 			
 		</properties>
 	</persistence-unit>
