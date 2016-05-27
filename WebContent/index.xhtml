@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>CredSys</title>
@@ -1034,7 +1034,7 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form class="form-horizontal" action="#" id="submit_form" method="POST">
+                                    <h:form class="form-horizontal" action="#" id="submit_form" method="POST">
                                         <div class="form-wizard">
                                             <div class="form-body">
                                                 <ul class="nav nav-pills nav-justified steps">
@@ -1077,48 +1077,33 @@
                                                         <button class="close" data-dismiss="alert"></button> Tudo certo! Vamos continuar! </div>
                                                     <div class="tab-pane active" id="tab1">
                                                         <h3 class="block">Forneça os dados</h3>
-                                                        
-                                                        <!-- h:panelGroup > gera um span
-															 h:panelGroup layout="block" > gera uma div -->
-                                                        
-                                                                                                               
-                                                        <h:panelGroup layout="block" class="form-group"> 
-                                                        	<h:outputLabel value="Nome:" for="nome" class="control-label col-md-3"/>
-                                                        	<h:panelGroup class="required">*</h:panelGroup>
-                                                        	<h:panelGroup layout="block" class="col-md-4" >
-                                                        		<h:inputText class="form-control" id="nome" value="#{clienteBean.PrepareTosave().nome}" title="Nome Completo" />
-                                                        		<h:panelGroup class="help-block">Nome Completo</h:panelGroup>
-                                                        	</h:panelGroup>
-                                                        </h:panelGroup>
-                                                        
-                                                        
-                                                        <h:panelGroup layout="block" class="form-group">
-                                                        	<h:outputLabel value="Gênero" class="control-label col-md-3"></h:outputLabel>
-                                                        		<h:panelGroup class="required">*</h:panelGroup>
-                                                        	<h:panelGroup layout="block" class="col-md-4">
-                                                        		<h:panelGroup layout="block" class="radio-list">
-                                                        			<h:selectOneRadio>
-                                                                    		<f:selectItem itemLabel="Masculino" itemValue="M" ></f:selectItem>
-                                                                    		<br/>
-                                                                    		<f:selectItem itemLabel="Feminino" itemValue="F" ></f:selectItem>
-                                                                    </h:selectOneRadio>
-                                                        		</h:panelGroup>
-                                                        			<h:panelGroup id="form_gender_error"></h:panelGroup>
-                                                        	</h:panelGroup>
-                                                        </h:panelGroup>
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">Nome
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <h:inputText id="nome"  value="#{clienteBean.PrepareTosave().nome}" class="form-control" title="Nome" />
+                                                                <span class="help-block"> Nome Completo </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">Gênero
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                            	<h:selectOneRadio class="radio-list">
+                                                            		<f:selectItem itemLabel="Masculino" itemValue="M" title="Maculino"/>
+                                                            		<f:selectItem  itemLabel="Feminino" itemValue="F"/>
+                                                            	</h:selectOneRadio>
+                                                                <div id="form_gender_error"> </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">CPF
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="cpf" id="cpf" />
+                                                                <h:inputText id="cpf" value="#{clienteBean.PrepareTosave().cpf}" class="form-control" title="CPF" />
                                                                 <span class="help-block"> Apenas números </span>
                                                             </div>
                                                         </div>
@@ -1127,7 +1112,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="rg" />
+                                                                <h:inputText id="identidade" value="#{clienteBean.PrepareTosave().identidade}" class="form-control" title="RG" />
                                                                 <span class="help-block"> Apenas números </span>
                                                             </div>
                                                         </div>
@@ -1136,7 +1121,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="email" />
+                                                                <h:inputText id="email" value="#{clienteBean.PrepareTosave().email}" class="form-control" title="E-mail:" />
                                                                 <span class="help-block"> Forneça um e-mail válido </span>
                                                             </div>
                                                         </div>
@@ -1148,7 +1133,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="endereco" />
+                                                            	<h:inputText id="endereco" value="#{enderecoBean.PrepareTosave().endereco}" class="form-control" title="Endereco" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -1156,7 +1141,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="bairro" />
+                                                            	<h:inputText id="bairro" value="#{enderecoBean.PrepareTosave().bairro}" class="form-control" title="Bairro" />
                                                             </div>
                                                         </div>
                                                         
@@ -1165,7 +1150,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="cep" />
+                                                           	 <h:inputText id="cep" value="#{enderecoBean.PrepareTosave().cep}" class="form-control" title="CEP" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -1173,7 +1158,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="cidade" />
+                                                          		<h:inputText id="cidade" value="#{enderecoBean.PrepareTosave().cidade}" class="form-control" title="Cidade" />
                                                             </div>
                                                         </div>
                                                        
@@ -1185,7 +1170,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="tipo_contato" />
+                                                            	<h:inputText id="tipo_contato" value="#{contatoBean.PrepareTosave().tipo}" class="form-control" title="Tipo Contato" />
                                                                 <span class="help-block"> </span>
                                                             </div>
                                                         </div>
@@ -1194,7 +1179,7 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="numero" />
+                                                                <h:inputText id="numero" value="#{contatoBean.PrepareTosave().contato}" class="form-control" title="Numero" />
                                                                 <span class="help-block"> </span>
                                                             </div>
                                                         </div>                                                    
@@ -1279,6 +1264,7 @@
                                                         <a href="javascript:;" class="btn btn-outline green button-next"> Próximo
                                                             <i class="fa fa-angle-right"></i>
                                                         </a>
+                                                        <h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" class="btn green button-submit"/>
                                                         <a href="javascript:;" class="btn green button-submit"> Enviar
                                                             <i class="fa fa-check"></i>
                                                         </a>
@@ -1286,7 +1272,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </h:form>
+
                                 </div>
                             </div>
                             

@@ -25,19 +25,31 @@ public class ClienteController {
 	}
 	
 	
-	public void  ClienteSave() throws ConnectException {		
+	public void  ClienteSave(Cliente cliente) throws ConnectException {		
 		ClienteDao clienteDao = new ClienteDao();
-		ClienteModel clienteModel = ClienteModel.getInstance();
+		/*ClienteModel clienteModel = ClienteModel.getInstance();
+		ContatoModel contatoModel = ContatoModel.getInstance();
 		
-		List<ContatoModel> contatos = new ArrayList<ContatoModel>();
+		Cliente clin = ConvertModelToEntitie(clienteModel);
 		
-		
-		
-		contatos.add(new ContatoModel("96447503", "Celular", clienteModel));
-		clienteModel.setContatos(contatos);
+		ContatoController contatoController = ContatoController.getInstance();	
 		
 		
-		clienteDao.save(ConvertModelToEntitie(clienteModel));
+		
+		List<ContatoModel> contatosListModel = new ArrayList<ContatoModel>();
+		contatosListModel.add(contatoModel);		
+		
+		List<Contato> cont = contatoController.ConvertModelToEntitieList(contatosListModel);
+		
+		for (Contato contato : cont) {
+			contato.setCliente(clin);
+			
+		}
+		clin.setContatos(cont);*/
+		
+		clienteDao.save(cliente);
+		
+		;
 	}
 	
 	public ClienteModel PrepareTosave(){
@@ -96,7 +108,7 @@ public class ClienteController {
 	}
 	
 	public Cliente ConvertModelToEntitie(ClienteModel clienteModel){
-		ContatoController contatoController = new ContatoController();	
+		
 		Cliente cliente = new Cliente();
 		if(clienteModel != null){
 			cliente =	new Cliente(clienteModel.getIdCliente(),
@@ -107,8 +119,7 @@ public class ClienteController {
 					clienteModel.getRendaConjuge(),
 					clienteModel.getRendaLiquida(),
 					clienteModel.getValorAutomoveis(),
-					clienteModel.getValorImoveis(),
-					contatoController.ConvertModelToEntitieList(clienteModel.getContatos()));
+					clienteModel.getValorImoveis());
 		}
 		return cliente;
 	}

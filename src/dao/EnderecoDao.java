@@ -3,36 +3,37 @@ package dao;
 import java.util.List;
 
 import dao.Exception.ConnectException;
+import entities.Endereco;
 import model.EnderecoModel;
 
-public class EnderecoDao implements CrudInterfaceDao<EnderecoModel> {
+public class EnderecoDao implements CrudInterfaceDao<Endereco> {
 
 	@Override
-	public List<EnderecoModel> listAll() throws ConnectException {
+	public List<Endereco> listAll() throws ConnectException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<EnderecoModel> select(int id) throws ConnectException {
+	public List<Endereco> select(int id) throws ConnectException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(EnderecoModel obj) throws ConnectException {
+	public void update(Endereco obj) throws ConnectException {
 		// TODO Auto-generated method stub
 	
 	}
 
 	@Override
-	public EnderecoModel save(EnderecoModel obj) throws ConnectException {
+	public Endereco save(Endereco obj) throws ConnectException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(EnderecoModel obj) throws ConnectException {
+	public void delete(Endereco obj) throws ConnectException {
 		// TODO Auto-generated method stub
 		
 	}

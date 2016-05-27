@@ -14,9 +14,17 @@ import model.ContatoModel;
 public class ContatoController {
 	
 	private ContatoModel contatoModelSelected = null;
+	private static ContatoController instance = null;
 
 	public ContatoController() {
 		
+	}
+	
+	public static ContatoController getInstance(){
+		if(instance == null){
+			instance = new ContatoController();
+		}
+		return instance;
 	}
 	
 	public List<ContatoModel> ContatoListAll() throws ConnectException{

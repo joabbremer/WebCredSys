@@ -24,6 +24,8 @@ import java.util.List;
 	
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private static Cliente instance = null;
 
 	private static EntityManager em = null;
 	
@@ -69,6 +71,20 @@ public class Cliente implements Serializable {
 	}
 	
 	
+	public Cliente(int cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
+			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
+		super();
+		this.cpf = cpf;
+		this.email = email;
+		this.identidade = identidade;
+		this.nome = nome;
+		this.rendaConjuge = rendaConjuge;
+		this.rendaLiquida = rendaLiquida;
+		this.valorAutomoveis = valorAutomoveis;
+		this.valorImoveis = valorImoveis;
+		this.contatos = contatos;
+		
+	}
 	
 	public Cliente(int cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
 			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos, List<Endereco> enderecos,
@@ -111,7 +127,7 @@ public class Cliente implements Serializable {
 
 
 	public Cliente(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
+			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
@@ -122,7 +138,6 @@ public class Cliente implements Serializable {
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
 		this.valorImoveis = valorImoveis;
-		this.contatos = contatos;
 	}
 
 
@@ -133,6 +148,14 @@ public class Cliente implements Serializable {
 			em = Persistence.createEntityManagerFactory("CredSys").createEntityManager();
 		}
 		return em;
+	}
+	
+public static Cliente getInstance(){
+		
+		if(instance == null){
+			instance = new Cliente();
+		}
+		return instance;
 	}
 
 	public int getIdCliente() {

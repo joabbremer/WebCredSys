@@ -4,7 +4,7 @@ package model;
 
 public class EnderecoModel {
 	
-
+	private static EnderecoModel instance = null;
 	private int idEndereco;
 	private String bairro;
 	private int cep;
@@ -24,6 +24,23 @@ public class EnderecoModel {
 		this.endereco = endereco;
 		this.estado = estado;
 		this.cliente = cliente;
+	}
+	
+	public EnderecoModel(String bairro, int cep, String cidade, String endereco, String estado) {
+		super();
+		this.bairro = bairro;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.endereco = endereco;
+		this.estado = estado;
+		
+	}
+	
+	public static EnderecoModel getInstance(){
+		if(instance == null){
+			instance = new EnderecoModel();
+		}
+		return instance;
 	}
 
 	public int getIdEndereco() {
