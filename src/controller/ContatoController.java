@@ -28,12 +28,13 @@ public class ContatoController {
 	
 	public void  ContatoSave() throws ConnectException {		
 		ContatoDao contatoDao = new ContatoDao();
-		ContatoModel contatoModel = new ContatoModel();
+		ContatoModel contatoModel = ContatoModel.getInstance();
 		contatoDao.save(ConvertModelToEntitie(contatoModel));
 	}
 	
 	public ContatoModel PrepareTosave(){
-		return new ContatoModel();
+		
+		return ContatoModel.getInstance();
 	}
 	
 	public ContatoModel Selected(){				
@@ -50,13 +51,12 @@ public class ContatoController {
 	}
 	
 	public List<ContatoModel> ConvertEntitieToModelList(List<Contato> contatodao){
-		List<ContatoModel> contatoModel = new ArrayList<ContatoModel>();	
-		ClienteController clienteController = new ClienteController();
+		List<ContatoModel> contatoModel = new ArrayList<ContatoModel>();
 		
 		for (Contato contato : contatodao) {
-			contatoModel.add(new ContatoModel(contato.getContato(),
-					contato.getTipo(),
-					clienteController.ConvertEntitieToModel(contato.getCliente())));
+			contatoModel.add(new ContatoModel(contato.getIdContato(),
+					contato.getContato(),
+					contato.getTipo()));
 			
 			
 		}
@@ -81,16 +81,13 @@ public class ContatoController {
 	}
 	
 	public Contato ConvertModelToEntitie(ContatoModel contatoModel){
-		Cliente contato = null;
-		if(contatoModel.getCliente() != null){
-			ClienteController contatoController = new ClienteController();
-			contato = contatoController.ConvertModelToEntitie(contatoModel.getCliente());
-			
-		}				
+		ClienteController clienteController = new ClienteController();
+		
+		
 		return new Contato(contatoModel.getIdContato(),
 				contatoModel.getContato(),
 				contatoModel.getTipo(),
-				contato);
+				clienteController.ConvertModelToEntitie(contatoModel.getCliente()));
 			
 	}
 	

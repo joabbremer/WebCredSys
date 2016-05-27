@@ -58,6 +58,8 @@ public class ClienteController {
 	}
 	
 	public List<ClienteModel> ConvertEntitieToModelList(List<Cliente> clientedao){
+		ContatoController contatoController = new ContatoController();
+		
 		List<ClienteModel> clienteModel = new ArrayList<ClienteModel>();		
 		for (Cliente cliente : clientedao) {
 			
@@ -70,15 +72,16 @@ public class ClienteController {
 					cliente.getRendaLiquida(),
 					cliente.getValorAutomoveis(),
 					cliente.getValorImoveis(),
-					cliente.getContatos(),
-					cliente.getEnderecos(),
-					cliente.getFinanciamentos())); 
+					contatoController.ConvertEntitieToModelList(cliente.getContatos()))); 
 			}
 		return clienteModel;
 		
 	}
 	
 	public ClienteModel ConvertEntitieToModel(Cliente clientedao){
+		ContatoController contatoController = new ContatoController();
+		
+		
 		return new ClienteModel(clientedao.getIdCliente(),
 					clientedao.getCpf(),
 					clientedao.getEmail(),
@@ -88,29 +91,26 @@ public class ClienteController {
 					clientedao.getRendaLiquida(),
 					clientedao.getValorAutomoveis(),
 					clientedao.getValorImoveis(),
-					clientedao.getContatos(),
-					clientedao.getEnderecos(),
-					clientedao.getFinanciamentos()); 
+					contatoController.ConvertEntitieToModelList(clientedao.getContatos())); 
 		
 	}
 	
 	public Cliente ConvertModelToEntitie(ClienteModel clienteModel){
-		ContatoController contatoController = new ContatoController();
-		//contatoController.ConvertModelToEntitieList(clienteModel.getContatos());
-		
-		
-			return	new Cliente(clienteModel.getIdCliente(),
-						clienteModel.getCpf(),
-						clienteModel.getEmail(),
-						clienteModel.getIdentidade(),
-						clienteModel.getNome(),
-						clienteModel.getRendaConjuge(),
-						clienteModel.getRendaLiquida(),
-						clienteModel.getValorAutomoveis(),
-						clienteModel.getValorImoveis(),
-						contatoController.ConvertModelToEntitieList(clienteModel.getContatos()));	
-			
-			
+		ContatoController contatoController = new ContatoController();	
+		Cliente cliente = new Cliente();
+		if(clienteModel != null){
+			cliente =	new Cliente(clienteModel.getIdCliente(),
+					clienteModel.getCpf(),
+					clienteModel.getEmail(),
+					clienteModel.getIdentidade(),
+					clienteModel.getNome(),
+					clienteModel.getRendaConjuge(),
+					clienteModel.getRendaLiquida(),
+					clienteModel.getValorAutomoveis(),
+					clienteModel.getValorImoveis(),
+					contatoController.ConvertModelToEntitieList(clienteModel.getContatos()));
+		}
+		return cliente;
 	}
 	
 }
