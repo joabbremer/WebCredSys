@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name="CLIENTE")
 @NamedQueries({
 	@NamedQuery(name="listAllCliente", query="SELECT c FROM Cliente c"),
-	@NamedQuery(name="selectId", query="SELECT c FROM Cliente c WHERE c.idCliente =:id_cliente"),
+	@NamedQuery(name="selectIdCliente", query="SELECT c FROM Cliente c WHERE c.idCliente =:id_cliente"),
 	@NamedQuery(name="updateCliente", query="UPDATE Cliente c SET c.cpf = :cpf, c.email = :email, c.identidade = :identidade"
 			+ ", c.nome = :nome, c.rendaConjuge = :renda_conjuge, c.rendaLiquida = :renda_liquida "
 			+ ", c.valorAutomoveis = :valor_automoveis, c.valorImoveis = :valor_imoveis WHERE c.idCliente =:id_cliente"),

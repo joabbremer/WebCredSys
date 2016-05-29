@@ -6,9 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import dao.Exception.ConnectException;
-import entities.Cliente;
 import entities.Contato;
-import model.ContatoModel;
+
 
 public class ContatoDao implements CrudInterfaceDao<Contato> {
 
@@ -20,13 +19,15 @@ public class ContatoDao implements CrudInterfaceDao<Contato> {
 
 	@Override
 	public List<Contato> select(int id) throws ConnectException {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Contato.getEntityManager();	
+		Query query = em.createNamedQuery("selectIdContato");		
+		query.setParameter("id_contato",id);
+		return query.getResultList();
 	}
 
 	@Override
 	public void update(Contato contato) throws ConnectException {
-		EntityManager em = Cliente.getEntityManager();
+		EntityManager em = Contato.getEntityManager();
 		em.getTransaction().begin();
 		Query query = em.createNamedQuery("updateContato");
 		query.setParameter("contato", contato.getContato());
@@ -43,7 +44,7 @@ public class ContatoDao implements CrudInterfaceDao<Contato> {
 		em.getTransaction().begin();
 		em.persist(contato);
 		em.getTransaction().commit();
-		return null;
+		return contato;
 	}
 
 	@Override

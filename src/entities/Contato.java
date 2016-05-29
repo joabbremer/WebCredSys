@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name="CONTATO")
 @NamedQueries({
 	@NamedQuery(name="listAllContato", query="SELECT co FROM Contato co"),
+	@NamedQuery(name="selectIdContato", query="SELECT co FROM Contato co WHERE co.idContato = :id_contato"),
 	@NamedQuery(name="updateContato", query="UPDATE Contato co SET co.contato = :contato ,co.tipo = :tipo WHERE co.idContato = :id_contato"),
 	
 	

@@ -4,10 +4,19 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-@Entity
+@Entity(name="Endereco")
 @Table(name="ENDERECO")
+@NamedQueries({
+	@NamedQuery(name="listAllEndereco", query="SELECT e FROM Endereco e"),
+	@NamedQuery(name="selectIdEndereco", query="SELECT e FROM Endereco e WHERE e.idEndereco = :id_endereco"),
+	@NamedQuery(name="updateEndereco", query="UPDATE Endereco e SET e.numero= :numero, e.bairro = :bairro, e.cep = :cep, e.cidade = :cidade, e.endereco = :endereco, e.estado = :estado WHERE e.idEndereco = :id_endereco "),
+	
+	
+})
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private static EntityManager em = null;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -43,6 +52,14 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 		this.endereco = endereco;
 		this.estado = estado;
+	}
+	
+	public static EntityManager getEntityManager(){
+		
+		if(em == null){
+			em = Persistence.createEntityManagerFactory("CredSys").createEntityManager();
+		}
+		return em;
 	}
 	
 	public int getIdEndereco() {

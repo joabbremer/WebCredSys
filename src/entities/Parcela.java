@@ -4,10 +4,20 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name="Parcela")
 @Table(name="PARCELA")
+@NamedQueries({
+	@NamedQuery(name="listAllParcela", query="SELECT p FROM Parcela p"),
+	@NamedQuery(name="selectIdParcela", query="SELECT p FROM Parcela p WHERE p.idParcela = :id_parcela"),
+	@NamedQuery(name="updateParcela", query="UPDATE Parcela p SET p.dataPagamento = :data_pagamento, p.dataVencimento = :data_vencimento,"
+			+ " p.valor = :valor, p.valorDesconto = :valor_desconto, p.valorJuro = :valor_juro, p.valorTotal = :valor_total WHERE p.idParcela = :id_parcela "),
+	
+	
+})
 public class Parcela implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private static EntityManager em = null;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -35,7 +45,14 @@ public class Parcela implements Serializable {
 
 	public Parcela() {
 	}
-
+	
+	public static EntityManager getEntityManager(){
+		
+		if(em == null){
+			em = Persistence.createEntityManagerFactory("CredSys").createEntityManager();
+		}
+		return em;
+	}
 	public int getIdParcela() {
 		return this.idParcela;
 	}
