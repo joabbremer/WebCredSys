@@ -6,6 +6,7 @@ public class EnderecoModel {
 	
 	private static EnderecoModel instance = null;
 	private int idEndereco;
+	private int numero;
 	private String bairro;
 	private int cep;
 	private String cidade;
@@ -16,8 +17,9 @@ public class EnderecoModel {
 	public EnderecoModel() {
 	}
 
-	public EnderecoModel(String bairro, int cep, String cidade, String endereco, String estado, ClienteModel cliente) {
+	public EnderecoModel(int numero, String bairro, int cep, String cidade, String endereco, String estado, ClienteModel cliente) {
 		super();
+		this.numero = numero;
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cidade = cidade;
@@ -26,8 +28,9 @@ public class EnderecoModel {
 		this.cliente = cliente;
 	}
 	
-	public EnderecoModel(String bairro, int cep, String cidade, String endereco, String estado) {
+	public EnderecoModel(int numero, String bairro, int cep, String cidade, String endereco, String estado) {
 		super();
+		this.numero = numero;
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cidade = cidade;
@@ -49,6 +52,14 @@ public class EnderecoModel {
 
 	public void setIdEndereco(int idEndereco) {
 		this.idEndereco = idEndereco;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 	public String getBairro() {

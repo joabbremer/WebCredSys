@@ -1091,8 +1091,8 @@
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                            	<h:selectOneRadio class="radio-list">
-                                                            		<f:selectItem itemLabel="Masculino" itemValue="M" title="Maculino"/>
+                                                            	<h:selectOneRadio value="#{clienteBean.PrepareTosave().genero}" class="radio-list">
+                                                            		<f:selectItem itemLabel="Masculino" itemValue="M" />
                                                             		<f:selectItem  itemLabel="Feminino" itemValue="F"/>
                                                             	</h:selectOneRadio>
                                                                 <div id="form_gender_error"> </div>

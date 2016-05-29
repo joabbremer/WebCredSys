@@ -13,6 +13,7 @@ public class ClienteModel {
 	private String email;
 	private String identidade;
 	private String nome;
+	private char genero;
 	private Double rendaConjuge;
 	private Double rendaLiquida ;
 	private Double valorAutomoveis;
@@ -41,7 +42,7 @@ public class ClienteModel {
 
 
 
-	public ClienteModel(String cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public ClienteModel(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
 			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
 		super();
@@ -49,6 +50,7 @@ public class ClienteModel {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -61,7 +63,7 @@ public class ClienteModel {
 	
 
 
-	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
 			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
 		super();
@@ -70,6 +72,7 @@ public class ClienteModel {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -81,7 +84,7 @@ public class ClienteModel {
 	
 	
 
-	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos) {
 		super();
 		this.idCliente = idCliente;
@@ -89,6 +92,7 @@ public class ClienteModel {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -138,6 +142,15 @@ public class ClienteModel {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+
+	public char getGenero() {
+		return genero;
+	}
+
+	public void setGenero(char genero) {
+		this.genero = genero;
 	}
 
 	public Double getRendaConjuge() {
@@ -198,7 +211,22 @@ public class ClienteModel {
 		this.financiamentos = financiamentos;
 	}
 
-	
+
+
+
+
+	@Override
+	public String toString() {
+		return "ClienteModel [idCliente=" + idCliente + ", cpf=" + cpf + ", email=" + email + ", identidade="
+				+ identidade + ", nome=" + nome + ", genero=" + genero + ", rendaConjuge=" + rendaConjuge
+				+ ", rendaLiquida=" + rendaLiquida + ", valorAutomoveis=" + valorAutomoveis + ", valorImoveis="
+				+ valorImoveis + ", contatos=" + contatos + ", enderecos=" + enderecos + ", financiamentos="
+				+ financiamentos + "]";
+	}
+
+
+
+
 
 	@Override
 	public int hashCode() {
@@ -209,6 +237,7 @@ public class ClienteModel {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
 		result = prime * result + ((financiamentos == null) ? 0 : financiamentos.hashCode());
+		result = prime * result + genero;
 		result = prime * result + idCliente;
 		result = prime * result + ((identidade == null) ? 0 : identidade.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -257,6 +286,8 @@ public class ClienteModel {
 				return false;
 		} else if (!financiamentos.equals(other.financiamentos))
 			return false;
+		if (genero != other.genero)
+			return false;
 		if (idCliente != other.idCliente)
 			return false;
 		if (identidade == null) {
@@ -292,17 +323,7 @@ public class ClienteModel {
 		return true;
 	}
 
-
-
-
-
-	@Override
-	public String toString() {
-		return "ClienteModel [idCliente=" + idCliente + ", cpf=" + cpf + ", email=" + email + ", identidade="
-				+ identidade + ", nome=" + nome + ", rendaConjuge=" + rendaConjuge + ", rendaLiquida=" + rendaLiquida
-				+ ", valorAutomoveis=" + valorAutomoveis + ", valorImoveis=" + valorImoveis + ", contatos=" + contatos
-				+ ", enderecos=" + enderecos + ", financiamentos=" + financiamentos + "]";
-	}
+	
 
 	
 	

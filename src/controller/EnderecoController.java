@@ -57,7 +57,8 @@ public class EnderecoController {
 		List<EnderecoModel> enderecoModel = new ArrayList<EnderecoModel>();
 		
 		for (Endereco endereco : enderecodao) {
-			enderecoModel.add(new EnderecoModel(endereco.getBairro(),
+			enderecoModel.add(new EnderecoModel(endereco.getNumero(),
+					endereco.getBairro(),
 					endereco.getCep(),
 					endereco.getCidade(),
 					endereco.getEndereco(),
@@ -73,7 +74,8 @@ public class EnderecoController {
 		
 		List<Endereco> enderecoEntities = new ArrayList<Endereco>();
 		for (EnderecoModel enderecoModels : endereco) {
-			enderecoEntities.add(new Endereco( enderecoModels.getBairro(),
+			enderecoEntities.add(new Endereco(enderecoModels.getNumero(),
+					enderecoModels.getBairro(),
 					enderecoModels.getCep(),
 					enderecoModels.getCidade(),
 					enderecoModels.getEndereco(),
@@ -88,7 +90,8 @@ public class EnderecoController {
 	}
 	
 	public Endereco ConvertModelToEntitie(EnderecoModel enderecoModel){
-		return new Endereco( enderecoModel.getBairro(),
+		return new Endereco(enderecoModel.getNumero(),
+				enderecoModel.getBairro(),
 				enderecoModel.getCep(),
 				enderecoModel.getCidade(),
 				enderecoModel.getEndereco(),

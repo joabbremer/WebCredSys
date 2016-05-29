@@ -45,6 +45,9 @@ public class Cliente implements Serializable {
 
 	@Column(name="NOME", length=50)
 	private String nome;
+	
+	@Column(name="GENERO")
+	private char genero;
 
 	@Column(name="renda_conjuge", precision=19)
 	private Double rendaConjuge;
@@ -71,13 +74,14 @@ public class Cliente implements Serializable {
 	}
 	
 	
-	public Cliente(String cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
+	public Cliente(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge, Double rendaLiquida,
 			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
 		super();
 		this.cpf = cpf;
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -86,7 +90,7 @@ public class Cliente implements Serializable {
 		
 	}
 	
-	public Cliente(String cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
+	public Cliente(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge, Double rendaLiquida,
 			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos, List<Endereco> enderecos,
 			List<Financiamento> financiamentos) {
 		super();
@@ -94,6 +98,7 @@ public class Cliente implements Serializable {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -106,7 +111,7 @@ public class Cliente implements Serializable {
 
 	
 
-	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos,
 			List<Endereco> enderecos, List<Financiamento> financiamentos) {
 		super();
@@ -115,6 +120,7 @@ public class Cliente implements Serializable {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -126,7 +132,7 @@ public class Cliente implements Serializable {
 
 
 
-	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis) {
 		super();
 		this.idCliente = idCliente;
@@ -134,6 +140,7 @@ public class Cliente implements Serializable {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -197,6 +204,15 @@ public static Cliente getInstance(){
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public char getGenero() {
+		return genero;
+	}
+
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
+
 
 	public Double getRendaConjuge() {
 		return this.rendaConjuge;
