@@ -9,7 +9,7 @@ public class ClienteModel {
 
 	private static ClienteModel instance = null;
 	private int idCliente;
-	private int cpf;
+	private String cpf;
 	private String email;
 	private String identidade;
 	private String nome;
@@ -41,7 +41,7 @@ public class ClienteModel {
 
 
 
-	public ClienteModel(int cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public ClienteModel(String cpf, String email, String identidade, String nome, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
 			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
 		super();
@@ -61,7 +61,7 @@ public class ClienteModel {
 	
 
 
-	public ClienteModel(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
 			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
 		super();
@@ -81,7 +81,7 @@ public class ClienteModel {
 	
 	
 
-	public ClienteModel(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos) {
 		super();
 		this.idCliente = idCliente;
@@ -108,11 +108,11 @@ public class ClienteModel {
 		this.idCliente = idCliente;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -198,12 +198,14 @@ public class ClienteModel {
 		this.financiamentos = financiamentos;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((contatos == null) ? 0 : contatos.hashCode());
-		result = prime * result + cpf;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
 		result = prime * result + ((financiamentos == null) ? 0 : financiamentos.hashCode());
@@ -216,6 +218,10 @@ public class ClienteModel {
 		result = prime * result + ((valorImoveis == null) ? 0 : valorImoveis.hashCode());
 		return result;
 	}
+
+
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -231,7 +237,10 @@ public class ClienteModel {
 				return false;
 		} else if (!contatos.equals(other.contatos))
 			return false;
-		if (cpf != other.cpf)
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -282,6 +291,10 @@ public class ClienteModel {
 			return false;
 		return true;
 	}
+
+
+
+
 
 	@Override
 	public String toString() {

@@ -89,13 +89,9 @@ public class ContatoController {
 	}
 	
 	public Contato ConvertModelToEntitie(ContatoModel contatoModel){
-		ClienteController clienteController = new ClienteController();
-		
-		
-		return new Contato(contatoModel.getIdContato(),
+			return new Contato(contatoModel.getIdContato(),
 				contatoModel.getContato(),
-				contatoModel.getTipo(),
-				clienteController.ConvertModelToEntitie(contatoModel.getCliente()));
+				contatoModel.getTipo());
 			
 	}
 	

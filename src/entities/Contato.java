@@ -30,36 +30,19 @@ public class Contato implements Serializable {
 	private String tipo;
 
 	
-	@ManyToOne
-	@JoinColumn(name="id_cliente" )
-	private Cliente cliente;
-
-	
-	
-	public Contato(int idContato, String contato, String tipo, Cliente cliente) {
-		super();
-		this.idContato = idContato;
-		this.contato = contato;
-		this.tipo = tipo;
-		this.cliente = cliente;
-	}
-	
-	
-	
 	public Contato(int idContato, String contato, String tipo) {
 		super();
 		this.idContato = idContato;
 		this.contato = contato;
 		this.tipo = tipo;
 	}
-
-
-
-	public Contato(String contato, String tipo, Cliente cliente) {
+	
+	
+	public Contato(String contato, String tipo) {
 		super();
 		this.contato = contato;
 		this.tipo = tipo;
-		this.cliente = cliente;
+
 	}
 
 
@@ -100,12 +83,5 @@ public class Contato implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public Cliente getCliente() {
-		return this.cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
 }

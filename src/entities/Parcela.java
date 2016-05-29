@@ -32,9 +32,6 @@ public class Parcela implements Serializable {
 	@Column(name="valor_total", precision=19)
 	private BigDecimal valorTotal;
 
-	@ManyToOne
-	@JoinColumn(name="id_fianciamento")
-	private Financiamento financiamento;
 
 	public Parcela() {
 	}
@@ -95,12 +92,5 @@ public class Parcela implements Serializable {
 		this.valorTotal = valorTotal;
 	}
 
-	public Financiamento getFinanciamento() {
-		return this.financiamento;
-	}
-
-	public void setFinanciamento(Financiamento financiamento) {
-		this.financiamento = financiamento;
-	}
 
 }

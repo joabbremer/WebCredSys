@@ -29,10 +29,7 @@ public class Endereco implements Serializable {
 	@Column(name="ESTADO", length=2)
 	private String estado;
 
-	@ManyToOne
-	@JoinColumn(name="id_cliente")
-	private Cliente cliente;
-
+	
 	public Endereco() {
 	}
 
@@ -92,12 +89,5 @@ public class Endereco implements Serializable {
 		this.estado = estado;
 	}
 
-	public Cliente getCliente() {
-		return this.cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
 }

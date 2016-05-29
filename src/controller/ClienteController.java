@@ -9,6 +9,7 @@ import entities.Cliente;
 import entities.Contato;
 import model.ClienteModel;
 import model.ContatoModel;
+import model.EnderecoModel;
 
 public class ClienteController {
 	
@@ -25,31 +26,25 @@ public class ClienteController {
 	}
 	
 	
-	public void  ClienteSave(Cliente cliente) throws ConnectException {		
+	public void  ClienteSave() throws ConnectException {		
 		ClienteDao clienteDao = new ClienteDao();
-		/*ClienteModel clienteModel = ClienteModel.getInstance();
+		ClienteModel clienteModel = ClienteModel.getInstance();		
 		ContatoModel contatoModel = ContatoModel.getInstance();
+		EnderecoModel enderecoModel = EnderecoModel.getInstance();
+		Cliente cliente = ConvertModelToEntitie(clienteModel);
 		
-		Cliente clin = ConvertModelToEntitie(clienteModel);
+		ContatoController contControl = ContatoController.getInstance();	
+		List<ContatoModel> contListModel = new ArrayList<ContatoModel>();
+		contListModel.add(contatoModel);
 		
-		ContatoController contatoController = ContatoController.getInstance();	
+		EnderecoController endContrl = EnderecoController.getInstance();
+		List<EnderecoModel> endListModel = new ArrayList<EnderecoModel>();
+		endListModel.add(enderecoModel);
 		
-		
-		
-		List<ContatoModel> contatosListModel = new ArrayList<ContatoModel>();
-		contatosListModel.add(contatoModel);		
-		
-		List<Contato> cont = contatoController.ConvertModelToEntitieList(contatosListModel);
-		
-		for (Contato contato : cont) {
-			contato.setCliente(clin);
-			
-		}
-		clin.setContatos(cont);*/
-		
+		cliente.setContatos(contControl.ConvertModelToEntitieList(contListModel));
+		cliente.setEnderecos(endContrl.ConvertModelToEntitieList(endListModel));
 		clienteDao.save(cliente);
 		
-		;
 	}
 	
 	public ClienteModel PrepareTosave(){

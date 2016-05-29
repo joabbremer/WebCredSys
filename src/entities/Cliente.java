@@ -35,7 +35,7 @@ public class Cliente implements Serializable {
 	private int idCliente;
 
 	@Column(name="CPF")
-	private int cpf;
+	private String cpf;
 
 	@Column(name="EMAIL", length=50)
 	private String email;
@@ -71,7 +71,7 @@ public class Cliente implements Serializable {
 	}
 	
 	
-	public Cliente(int cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
+	public Cliente(String cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
 			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
 		super();
 		this.cpf = cpf;
@@ -86,7 +86,7 @@ public class Cliente implements Serializable {
 		
 	}
 	
-	public Cliente(int cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
+	public Cliente(String cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
 			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos, List<Endereco> enderecos,
 			List<Financiamento> financiamentos) {
 		super();
@@ -106,7 +106,7 @@ public class Cliente implements Serializable {
 
 	
 
-	public Cliente(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos,
 			List<Endereco> enderecos, List<Financiamento> financiamentos) {
 		super();
@@ -126,7 +126,7 @@ public class Cliente implements Serializable {
 
 
 
-	public Cliente(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis) {
 		super();
 		this.idCliente = idCliente;
@@ -166,11 +166,11 @@ public static Cliente getInstance(){
 		this.idCliente = idCliente;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return this.cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -238,19 +238,6 @@ public static Cliente getInstance(){
 		this.contatos = contatos;
 	}
 
-	public Contato addContato(Contato contato) {
-		getContatos().add(contato);
-		contato.setCliente(this);
-
-		return contato;
-	}
-
-	public Contato removeContato(Contato contato) {
-		getContatos().remove(contato);
-		contato.setCliente(null);
-
-		return contato;
-	}
 
 	public List<Endereco> getEnderecos() {
 		return this.enderecos;
@@ -258,20 +245,6 @@ public static Cliente getInstance(){
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
-	}
-
-	public Endereco addEndereco(Endereco endereco) {
-		getEnderecos().add(endereco);
-		endereco.setCliente(this);
-
-		return endereco;
-	}
-
-	public Endereco removeEndereco(Endereco endereco) {
-		getEnderecos().remove(endereco);
-		endereco.setCliente(null);
-
-		return endereco;
 	}
 
 

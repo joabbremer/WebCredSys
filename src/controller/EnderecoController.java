@@ -11,9 +11,16 @@ import model.EnderecoModel;
 public class EnderecoController {
 	
 
+	private static EnderecoController instance = null;
 	private EnderecoModel enderecoModelSelected = null;
 
-	
+	public static EnderecoController getInstance(){
+		
+		if(instance == null){
+			instance = new EnderecoController();
+		}
+		return instance;
+	}
 	
 	public List<EnderecoModel> EnderecoListAll() throws ConnectException{
 		EnderecoDao enderecoDao = new EnderecoDao();
