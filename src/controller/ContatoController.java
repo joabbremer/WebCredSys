@@ -14,9 +14,17 @@ import model.ContatoModel;
 public class ContatoController {
 	
 	private ContatoModel contatoModelSelected = null;
+	private static ContatoController instance = null;
 
 	public ContatoController() {
 		
+	}
+	
+	public static ContatoController getInstance(){
+		if(instance == null){
+			instance = new ContatoController();
+		}
+		return instance;
 	}
 	
 	public List<ContatoModel> ContatoListAll() throws ConnectException{
@@ -81,13 +89,9 @@ public class ContatoController {
 	}
 	
 	public Contato ConvertModelToEntitie(ContatoModel contatoModel){
-		ClienteController clienteController = new ClienteController();
-		
-		
-		return new Contato(contatoModel.getIdContato(),
+			return new Contato(contatoModel.getIdContato(),
 				contatoModel.getContato(),
-				contatoModel.getTipo(),
-				clienteController.ConvertModelToEntitie(contatoModel.getCliente()));
+				contatoModel.getTipo());
 			
 	}
 	

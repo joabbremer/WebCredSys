@@ -9,6 +9,7 @@ import entities.Cliente;
 import entities.Contato;
 import model.ClienteModel;
 import model.ContatoModel;
+import model.EnderecoModel;
 
 public class ClienteController {
 	
@@ -27,17 +28,23 @@ public class ClienteController {
 	
 	public void  ClienteSave() throws ConnectException {		
 		ClienteDao clienteDao = new ClienteDao();
-		ClienteModel clienteModel = ClienteModel.getInstance();
+		ClienteModel clienteModel = ClienteModel.getInstance();		
+		ContatoModel contatoModel = ContatoModel.getInstance();
+		EnderecoModel enderecoModel = EnderecoModel.getInstance();
+		Cliente cliente = ConvertModelToEntitie(clienteModel);
 		
-		List<ContatoModel> contatos = new ArrayList<ContatoModel>();
+		ContatoController contControl = ContatoController.getInstance();	
+		List<ContatoModel> contListModel = new ArrayList<ContatoModel>();
+		contListModel.add(contatoModel);
 		
+		EnderecoController endContrl = EnderecoController.getInstance();
+		List<EnderecoModel> endListModel = new ArrayList<EnderecoModel>();
+		endListModel.add(enderecoModel);
 		
+		cliente.setContatos(contControl.ConvertModelToEntitieList(contListModel));
+		cliente.setEnderecos(endContrl.ConvertModelToEntitieList(endListModel));
+		clienteDao.save(cliente);
 		
-		contatos.add(new ContatoModel("96447503", "Celular", clienteModel));
-		clienteModel.setContatos(contatos);
-		
-		
-		clienteDao.save(ConvertModelToEntitie(clienteModel));
 	}
 	
 	public ClienteModel PrepareTosave(){
@@ -68,6 +75,7 @@ public class ClienteController {
 					cliente.getEmail(),
 					cliente.getIdentidade(),
 					cliente.getNome(),
+					cliente.getGenero(),
 					cliente.getRendaConjuge(),
 					cliente.getRendaLiquida(),
 					cliente.getValorAutomoveis(),
@@ -87,6 +95,7 @@ public class ClienteController {
 					clientedao.getEmail(),
 					clientedao.getIdentidade(),
 					clientedao.getNome(),
+					clientedao.getGenero(),
 					clientedao.getRendaConjuge(),
 					clientedao.getRendaLiquida(),
 					clientedao.getValorAutomoveis(),
@@ -96,7 +105,7 @@ public class ClienteController {
 	}
 	
 	public Cliente ConvertModelToEntitie(ClienteModel clienteModel){
-		ContatoController contatoController = new ContatoController();	
+		
 		Cliente cliente = new Cliente();
 		if(clienteModel != null){
 			cliente =	new Cliente(clienteModel.getIdCliente(),
@@ -104,11 +113,11 @@ public class ClienteController {
 					clienteModel.getEmail(),
 					clienteModel.getIdentidade(),
 					clienteModel.getNome(),
+					clienteModel.getGenero(),
 					clienteModel.getRendaConjuge(),
 					clienteModel.getRendaLiquida(),
 					clienteModel.getValorAutomoveis(),
-					clienteModel.getValorImoveis(),
-					contatoController.ConvertModelToEntitieList(clienteModel.getContatos()));
+					clienteModel.getValorImoveis());
 		}
 		return cliente;
 	}

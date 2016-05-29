@@ -5,27 +5,39 @@ import javax.persistence.*;
 import java.util.List;
 
 
-@Entity
+@Entity(name="Financiamento")
 @Table(name="FINANCIAMENTO")
+@NamedQueries({
+	@NamedQuery(name="listAllFinan", query="SELECT f FROM Financiamento f"),
+	@NamedQuery(name="selectIdFinan", query="SELECT f FROM Financiamento f WHERE f.idFinanciamento = :id_financiamento"),
+	@NamedQuery(name="updateFinan", query="UPDATE Financiamento f  SET f.idFinanciamento = :id_financiamento WHERE f.idFinanciamento = :id_financiamento"),
+	
+	
+})
 public class Financiamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private static EntityManager em = null;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_financiamento", unique=true, nullable=false)
 	private int idFinanciamento;
-
-	@ManyToOne
-	@JoinColumn(name="id_cliente")
-	private Cliente cliente;
-
-
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<Parcela> parcelas;
 
 	public Financiamento() {
 	}
 
+	public static EntityManager getEntityManager(){
+		
+		if(em == null){
+			em = Persistence.createEntityManagerFactory("CredSys").createEntityManager();
+		}
+		return em;
+	}
+	
 	public int getIdFinanciamento() {
 		return this.idFinanciamento;
 	}
@@ -34,13 +46,6 @@ public class Financiamento implements Serializable {
 		this.idFinanciamento = idFinanciamento;
 	}
 
-	public Cliente getCliente() {
-		return this.cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
 	public List<Parcela> getParcelas() {
 		return this.parcelas;
@@ -50,18 +55,7 @@ public class Financiamento implements Serializable {
 		this.parcelas = parcelas;
 	}
 
-	public Parcela addParcela(Parcela parcela) {
-		getParcelas().add(parcela);
-		parcela.setFinanciamento(this);
 
-		return parcela;
-	}
 
-	public Parcela removeParcela(Parcela parcela) {
-		getParcelas().remove(parcela);
-		parcela.setFinanciamento(null);
-
-		return parcela;
-	}
 
 }

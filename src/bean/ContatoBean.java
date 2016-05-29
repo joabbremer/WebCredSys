@@ -7,7 +7,6 @@ import javax.faces.bean.SessionScoped;
 
 import controller.ContatoController;
 import dao.Exception.ConnectException;
-import model.ClienteModel;
 import model.ContatoModel;
 
 @ManagedBean
