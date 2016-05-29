@@ -20,9 +20,9 @@ public class EnderecoDao implements CrudInterfaceDao<EnderecoModel> {
 	}
 
 	@Override
-	public EnderecoModel update(EnderecoModel obj) throws ConnectException {
+	public void update(EnderecoModel obj) throws ConnectException {
 		// TODO Auto-generated method stub
-		return null;
+	
 	}
 
 	@Override

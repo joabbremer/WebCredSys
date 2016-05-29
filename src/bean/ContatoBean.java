@@ -48,14 +48,14 @@ public class ContatoBean {
 	}
 	
 	public ContatoModel Selected(){
-		ContatoController clientControl = getControllerInstance();
-		return clientControl.Selected();
+		ContatoController contatoControl = getControllerInstance();
+		return contatoControl.Selected();
 				
 	}
 	
-	public String PrepareToEdit(ContatoModel clienteModel){
-		ContatoController clientControl = getControllerInstance();
-		clientControl.PrepareToEdit(clienteModel);		
+	public String PrepareToEdit(ContatoModel contatoModel){
+		ContatoController contatoControl = getControllerInstance();
+		contatoControl.PrepareToEdit(contatoModel);		
 		return "Edit";
 		
 	}

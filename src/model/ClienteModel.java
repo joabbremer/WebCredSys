@@ -78,6 +78,27 @@ public class ClienteModel {
 		this.enderecos = enderecos;
 		this.financiamentos = financiamentos;
 	}
+	
+	
+
+	public ClienteModel(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos) {
+		super();
+		this.idCliente = idCliente;
+		this.cpf = cpf;
+		this.email = email;
+		this.identidade = identidade;
+		this.nome = nome;
+		this.rendaConjuge = rendaConjuge;
+		this.rendaLiquida = rendaLiquida;
+		this.valorAutomoveis = valorAutomoveis;
+		this.valorImoveis = valorImoveis;
+		this.contatos = contatos;
+	}
+
+
+
+
 
 	public int getIdCliente() {
 		return idCliente;

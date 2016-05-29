@@ -31,6 +31,37 @@
                     <h:inputText id="valorAutomoveis" value="#{clienteBean.Selected().valorAutomoveis}" title="Valor Automoveis:" />
                     <h:outputLabel value="Renda Conjuge" for="rendaConjuge" />
                     <h:inputText id="rendaConjuge" value="#{clienteBean.Selected().rendaConjuge}" title="Renda Conjuge:" />
+                    <h:outputLabel value="-----CONTATO-----"></h:outputLabel>    
+                      <br/>  
+                      <h:dataTable value="#{clienteBean.Selected().contatos}" var="contato" border="0" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                      		<h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Contato ID"/>
+                        </f:facet>
+                       	 <h:outputText value="#{contato.idContato}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Contato"/>
+                        </f:facet>
+                       	 <h:outputText value="#{contato.contato}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Tipo"/>
+                        </f:facet>
+                       	 <h:outputText value="#{contato.tipo}"/>
+                    </h:column>
+                     
+                    <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{contatoBean.PrepareToEdit(contato)}" value="Editar"/>
+                        </h:column>
+                      
+                      </h:dataTable>
                 </h:panelGrid>
                 <br />
             	<h:commandButton action="#{clienteBean.ClienteUpdate()}" value="Salvar" />

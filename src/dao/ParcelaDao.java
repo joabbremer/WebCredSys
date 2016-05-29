@@ -20,9 +20,9 @@ public class ParcelaDao implements CrudInterfaceDao<ParcelaModel> {
 	}
 
 	@Override
-	public ParcelaModel update(ParcelaModel obj) throws ConnectException {
+	public void update(ParcelaModel obj) throws ConnectException {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override

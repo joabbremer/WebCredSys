@@ -3,6 +3,7 @@ package model;
 
 public class ContatoModel {
 	
+	private static ContatoModel instance = null;
 	private int idContato;
 	private String contato;
 	private String tipo;
@@ -20,6 +21,21 @@ public class ContatoModel {
 		this.cliente = cliente;
 	}
 
+
+
+	public ContatoModel(int idContato, String contato, String tipo) {
+		super();
+		this.idContato = idContato;
+		this.contato = contato;
+		this.tipo = tipo;
+	}
+
+	public static ContatoModel getInstance(){
+		if(instance == null){
+			instance = new ContatoModel();
+		}
+		return instance;
+	}
 
 
 	public int getIdContato() {
