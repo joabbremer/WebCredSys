@@ -70,12 +70,10 @@
                         
 
                         <li class="heading">
-                            <h3 class="uppercase">Features</h3>
+                            <h3 class="uppercase">Cadastros</h3>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <span class="title">Clientes</span>
-                            </a>
+                            <h:link outcome="index" value="Clientes" styleClass="nav-link nav-toggle active"></h:link>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:;" class="nav-link nav-toggle">
@@ -102,31 +100,14 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class=" icon-layers font-red"></i>
-                                        <span class="caption-subject font-red bold uppercase"> Simulação de Financiamento -
-                                            <span class="step-title"> Passo 1 de 2 </span>
+                                        <span class="caption-subject font-red bold uppercase"> Simulação de Financiamento
                                         </span>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
                                     <h:form class="form-horizontal" action="#" id="submit_form" method="POST">
-                                        <div class="form-wizard">
+                                        
                                             <div class="form-body">
-                                                <ul class="nav nav-pills nav-justified steps">
-                                                    <li>
-                                                        <a href="#tab1" data-toggle="tab" class="step">
-                                                            <span class="number"> 1 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Valores </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab2" data-toggle="tab" class="step">
-                                                            <span class="number"> 2 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Confirmação </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
                                                 <div id="bar" class="progress progress-striped" role="progressbar">
                                                     <div class="progress-bar progress-bar-success"> </div>
                                                 </div>
@@ -162,112 +143,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane" id="tab2">
-                                                        <h3 class="block">Confirmação</h3>
-                                                        <h4 class="form-section">Dados Pessoais</h4>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Nome Completo:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="nome"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Gender:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="gender"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">CPF:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="cpf"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">RG:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="rg"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">E-mail:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="email"> </p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <h4 class="form-section">Endereço</h4>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Endereço:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="endereco"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Bairro:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="bairro"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Cep:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="cep"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Cidade:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="cidade"> </p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <h4 class="form-section">Contato</h4>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Numero:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="numero"> </p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
+                                                   </div>
                                             </div>
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <a href="javascript:;" class="btn default button-previous">
-                                                            <i class="fa fa-angle-left"></i> Voltar </a>
-                                                        <a href="javascript:;" class="btn btn-outline green button-next"> Próximo
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                        <h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" class="btn green button-submit"/>
-                                                        <a href="javascript:;" class="btn green button-submit"> Enviar
-                                                            <i class="fa fa-check"></i>
-                                                        </a>
+                                                        <h:commandLink action="#{clienteBean.ClienteSave()}" value="Enviar" class="btn green button-submit"/>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                      
                                     </h:form>
 
                                 </div>
-                            </div>
-                            
-                            <div class="portlet light bordered">
-                            	<div class="portlet-body form">
-                            		<h:link outcome="/cliente/List" value="Mosta Todos os Cliente"/>
-								        <br />
-								        <h:link outcome="/contato/List" value="Mostra todos os contatos"/>
-								        <br />
-								        <h:link outcome="/endereco/List" value="Mostra Todos os enreços"/>
-								        <br />
-								        <h:link outcome="/financiamento/List" value="Mostra Todos os Financiamentos"/>
-								        <br />
-								        <h:link outcome="/parcela/List" value="Mostra Todas as Parcelas"/>
-								        <br />
-								        <h:link outcome="/sysdiagrams/List" value="Show All Sysdiagrams Items"/>
-                            	</div>
                             </div>
                         </div>
                     </div>
