@@ -65,7 +65,7 @@
                             <h3 class="uppercase">Simulação</h3>
                         </li>
                         <li class="nav-item">
-                            <h:link outcome="simulacao" value="Simulação" styleClass="nav-link nav-toggle"></h:link>
+                            <h:link outcome="simulacao" value="Simulação" styleClass="nav-link nav-toggle active"></h:link>
                         </li>                     
                         
 
@@ -88,12 +88,9 @@
                             </a>
                         </li>
             		</ul>
-                    <!-- END SIDEBAR MENU -->
+
                 </div>
-                <!-- END SIDEBAR -->
             </div>
-            <!-- END SIDEBAR -->
-            <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
@@ -101,12 +98,12 @@
                     <!-- BEGIN PAGE BASE CONTENT -->
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="portlet light bordered" id="form_wizard_1">
+                            <div class="portlet light bordered" id="simula">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class=" icon-layers font-red"></i>
-                                        <span class="caption-subject font-red bold uppercase"> Cadastro de Clientes -
-                                            <span class="step-title"> Passo 1 de 4 </span>
+                                        <span class="caption-subject font-red bold uppercase"> Simulação de Financiamento -
+                                            <span class="step-title"> Passo 1 de 2 </span>
                                         </span>
                                     </div>
                                 </div>
@@ -119,26 +116,12 @@
                                                         <a href="#tab1" data-toggle="tab" class="step">
                                                             <span class="number"> 1 </span>
                                                             <span class="desc">
-                                                                <i class="fa fa-check"></i> Dados Pessoais </span>
+                                                                <i class="fa fa-check"></i> Valores </span>
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a href="#tab2" data-toggle="tab" class="step">
                                                             <span class="number"> 2 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Endereço </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab3" data-toggle="tab" class="step active">
-                                                            <span class="number"> 3 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Contato </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab4" data-toggle="tab" class="step">
-                                                            <span class="number"> 4 </span>
                                                             <span class="desc">
                                                                 <i class="fa fa-check"></i> Confirmação </span>
                                                         </a>
@@ -155,114 +138,31 @@
                                                     <div class="tab-pane active" id="tab1">
                                                         <h3 class="block">Forneça os dados</h3>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">Nome
+                                                            <label class="control-label col-md-3">Valor do Financiamento
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <h:inputText name="name" id="nome"  value="#{clienteBean.PrepareTosave().nome}" class="form-control" title="Nome" />
-                                                                <span class="help-block"> Nome Completo </span>
+                                                                <h:inputText id="nome"  value="#{clienteBean.PrepareTosave().nome}" class="form-control" title="Valor" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">Gênero
+                                                            <label class="control-label col-md-3">Parcelas
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                            	<h:selectOneRadio name="gender" value="#{clienteBean.PrepareTosave().genero}" class="radio-list">
-                                                            		<f:selectItem itemLabel="Masculino" itemValue="M" />
-                                                            		<f:selectItem  itemLabel="Feminino" itemValue="F"/>
-                                                            	</h:selectOneRadio>
-                                                                <div id="form_gender_error"> </div>
+                                                                <h:inputText id="cpf" value="#{clienteBean.PrepareTosave().cpf}" class="form-control" title="Parcelas" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">CPF
+                                                            <label class="control-label col-md-3">Data Primeira Parcela
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <h:inputText name="cpf" id="cpf" value="#{clienteBean.PrepareTosave().cpf}" class="form-control" title="CPF" />
-                                                                <span class="help-block"> Apenas números </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">RG
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="rg" id="identidade" value="#{clienteBean.PrepareTosave().identidade}" class="form-control" title="RG" />
-                                                                <span class="help-block"> Apenas números </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Email
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="email" id="email" value="#{clienteBean.PrepareTosave().email}" class="form-control" title="E-mail:" />
-                                                                <span class="help-block"> Forneça um e-mail válido </span>
+                                                                <h:inputText id="identidade" value="#{clienteBean.PrepareTosave().identidade}" class="form-control" title="Data" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane" id="tab2">
-                                                        <h3 class="block">Endereço</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Endereço
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:inputText name="endereco" id="endereco" value="#{enderecoBean.PrepareTosave().endereco}" class="form-control" title="Endereco" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Bairro
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:inputText name="bairro" id="bairro" value="#{enderecoBean.PrepareTosave().bairro}" class="form-control" title="Bairro" />
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">CEP
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                           	 <h:inputText name="cep" id="cep" value="#{enderecoBean.PrepareTosave().cep}" class="form-control" title="CEP" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Cidade
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                          		<h:inputText name="cidade" id="cidade" value="#{enderecoBean.PrepareTosave().cidade}" class="form-control" title="Cidade" />
-                                                            </div>
-                                                        </div>
-                                                       
-                                                    </div>
-                                                    <div class="tab-pane" id="tab3">
-                                                        <h3 class="block">Contato</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Tipo
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:inputText name="tipo_contato" id="tipo_contato" value="#{contatoBean.PrepareTosave().tipo}" class="form-control" title="Tipo Contato" />
-                                                                <span class="help-block"> </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Numero
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="numero" id="numero" value="#{contatoBean.PrepareTosave().contato}" class="form-control" title="Numero" />
-                                                                <span class="help-block"> </span>
-                                                            </div>
-                                                        </div>                                                    
-                                                        
-                                                    </div>
-                                                    <div class="tab-pane" id="tab4">
                                                         <h3 class="block">Confirmação</h3>
                                                         <h4 class="form-section">Dados Pessoais</h4>
                                                         <div class="form-group">
