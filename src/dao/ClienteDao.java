@@ -21,7 +21,7 @@ public class ClienteDao implements CrudInterfaceDao<Cliente> {
 	@Override
 	public List<Cliente> select(int id) throws ConnectException {
 		EntityManager em = Cliente.getEntityManager();	
-		Query query = em.createNamedQuery("selectId");		
+		Query query = em.createNamedQuery("selectIdCliente");		
 		query.setParameter("id_cliente",id);
 		return query.getResultList();
 		 

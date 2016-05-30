@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name="CLIENTE")
 @NamedQueries({
 	@NamedQuery(name="listAllCliente", query="SELECT c FROM Cliente c"),
-	@NamedQuery(name="selectId", query="SELECT c FROM Cliente c WHERE c.idCliente =:id_cliente"),
+	@NamedQuery(name="selectIdCliente", query="SELECT c FROM Cliente c WHERE c.idCliente =:id_cliente"),
 	@NamedQuery(name="updateCliente", query="UPDATE Cliente c SET c.cpf = :cpf, c.email = :email, c.identidade = :identidade"
 			+ ", c.nome = :nome, c.rendaConjuge = :renda_conjuge, c.rendaLiquida = :renda_liquida "
 			+ ", c.valorAutomoveis = :valor_automoveis, c.valorImoveis = :valor_imoveis WHERE c.idCliente =:id_cliente"),
@@ -24,6 +24,8 @@ import java.util.List;
 	
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private static Cliente instance = null;
 
 	private static EntityManager em = null;
 	
@@ -33,7 +35,7 @@ public class Cliente implements Serializable {
 	private int idCliente;
 
 	@Column(name="CPF")
-	private int cpf;
+	private String cpf;
 
 	@Column(name="EMAIL", length=50)
 	private String email;
@@ -43,6 +45,9 @@ public class Cliente implements Serializable {
 
 	@Column(name="NOME", length=50)
 	private String nome;
+	
+	@Column(name="GENERO")
+	private char genero;
 
 	@Column(name="renda_conjuge", precision=19)
 	private Double rendaConjuge;
@@ -69,8 +74,23 @@ public class Cliente implements Serializable {
 	}
 	
 	
+	public Cliente(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge, Double rendaLiquida,
+			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
+		super();
+		this.cpf = cpf;
+		this.email = email;
+		this.identidade = identidade;
+		this.nome = nome;
+		this.genero = genero;
+		this.rendaConjuge = rendaConjuge;
+		this.rendaLiquida = rendaLiquida;
+		this.valorAutomoveis = valorAutomoveis;
+		this.valorImoveis = valorImoveis;
+		this.contatos = contatos;
+		
+	}
 	
-	public Cliente(int cpf, String email, String identidade, String nome, Double rendaConjuge, Double rendaLiquida,
+	public Cliente(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge, Double rendaLiquida,
 			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos, List<Endereco> enderecos,
 			List<Financiamento> financiamentos) {
 		super();
@@ -78,6 +98,7 @@ public class Cliente implements Serializable {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -90,7 +111,7 @@ public class Cliente implements Serializable {
 
 	
 
-	public Cliente(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos,
 			List<Endereco> enderecos, List<Financiamento> financiamentos) {
 		super();
@@ -99,6 +120,7 @@ public class Cliente implements Serializable {
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
@@ -110,19 +132,19 @@ public class Cliente implements Serializable {
 
 
 
-	public Cliente(int idCliente, int cpf, String email, String identidade, String nome, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
+			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
+		this.genero = genero;
 		this.rendaConjuge = rendaConjuge;
 		this.rendaLiquida = rendaLiquida;
 		this.valorAutomoveis = valorAutomoveis;
 		this.valorImoveis = valorImoveis;
-		this.contatos = contatos;
 	}
 
 
@@ -134,6 +156,14 @@ public class Cliente implements Serializable {
 		}
 		return em;
 	}
+	
+public static Cliente getInstance(){
+		
+		if(instance == null){
+			instance = new Cliente();
+		}
+		return instance;
+	}
 
 	public int getIdCliente() {
 		return this.idCliente;
@@ -143,11 +173,11 @@ public class Cliente implements Serializable {
 		this.idCliente = idCliente;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return this.cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -174,6 +204,15 @@ public class Cliente implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public char getGenero() {
+		return genero;
+	}
+
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
+
 
 	public Double getRendaConjuge() {
 		return this.rendaConjuge;
@@ -215,19 +254,6 @@ public class Cliente implements Serializable {
 		this.contatos = contatos;
 	}
 
-	public Contato addContato(Contato contato) {
-		getContatos().add(contato);
-		contato.setCliente(this);
-
-		return contato;
-	}
-
-	public Contato removeContato(Contato contato) {
-		getContatos().remove(contato);
-		contato.setCliente(null);
-
-		return contato;
-	}
 
 	public List<Endereco> getEnderecos() {
 		return this.enderecos;
@@ -235,20 +261,6 @@ public class Cliente implements Serializable {
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
-	}
-
-	public Endereco addEndereco(Endereco endereco) {
-		getEnderecos().add(endereco);
-		endereco.setCliente(this);
-
-		return endereco;
-	}
-
-	public Endereco removeEndereco(Endereco endereco) {
-		getEnderecos().remove(endereco);
-		endereco.setCliente(null);
-
-		return endereco;
 	}
 
 

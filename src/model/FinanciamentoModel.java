@@ -7,7 +7,6 @@ import java.util.List;
 public class FinanciamentoModel {
 	
 	private int idFinanciamento;
-	private ClienteModel cliente;
 	private List<ParcelaModel> parcelas;
 	
 	
@@ -15,9 +14,8 @@ public class FinanciamentoModel {
 		
 	}
 
-	public FinanciamentoModel(ClienteModel cliente, List<ParcelaModel> parcelas) {
+	public FinanciamentoModel( List<ParcelaModel> parcelas) {
 		super();
-		this.cliente = cliente;
 		this.parcelas = parcelas;
 	}
 
@@ -29,13 +27,7 @@ public class FinanciamentoModel {
 		this.idFinanciamento = idFinanciamento;
 	}
 
-	public ClienteModel getCliente() {
-		return cliente;
-	}
 
-	public void setCliente(ClienteModel cliente) {
-		this.cliente = cliente;
-	}
 
 	public List<ParcelaModel> getParcelas() {
 		return parcelas;
@@ -49,7 +41,6 @@ public class FinanciamentoModel {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + idFinanciamento;
 		result = prime * result + ((parcelas == null) ? 0 : parcelas.hashCode());
 		return result;
@@ -64,11 +55,6 @@ public class FinanciamentoModel {
 		if (getClass() != obj.getClass())
 			return false;
 		FinanciamentoModel other = (FinanciamentoModel) obj;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
 		if (idFinanciamento != other.idFinanciamento)
 			return false;
 		if (parcelas == null) {
@@ -81,7 +67,7 @@ public class FinanciamentoModel {
 
 	@Override
 	public String toString() {
-		return "FinanciamentoModel [idFinanciamento=" + idFinanciamento + ", cliente=" + cliente + ", parcelas="
+		return "FinanciamentoModel [idFinanciamento=" + idFinanciamento +  ", parcelas="
 				+ parcelas + "]";
 	}
 	
