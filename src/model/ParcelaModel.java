@@ -5,10 +5,11 @@ import java.math.BigDecimal;
 
 public class ParcelaModel {
 	
+	private static ParcelaModel instance = null;
 	private int idParcela;
 	private BigDecimal dataPagamento;
 	private BigDecimal dataVencimento;
-	private BigDecimal valor;
+	private Double valor;
 	private BigDecimal valorDesconto;
 	private BigDecimal valorJuro;
 	private BigDecimal valorTotal;
@@ -18,7 +19,7 @@ public class ParcelaModel {
 	
 	}
 
-	public ParcelaModel(BigDecimal dataPagamento, BigDecimal dataVencimento, BigDecimal valor, BigDecimal valorDesconto,
+	public ParcelaModel(BigDecimal dataPagamento, BigDecimal dataVencimento, Double valor, BigDecimal valorDesconto,
 			BigDecimal valorJuro, BigDecimal valorTotal, FinanciamentoModel financiamento) {
 		super();
 		this.dataPagamento = dataPagamento;
@@ -30,6 +31,13 @@ public class ParcelaModel {
 		this.financiamento = financiamento;
 	}
 
+	public static ParcelaModel getInstance(){
+		if(instance == null){
+			instance = new ParcelaModel();
+		}
+		return instance;
+	}
+	
 	public int getIdParcela() {
 		return idParcela;
 	}
@@ -54,12 +62,12 @@ public class ParcelaModel {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public BigDecimal getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setValor(Double d) {
+		this.valor = d;
 	}
 
 	public BigDecimal getValorDesconto() {

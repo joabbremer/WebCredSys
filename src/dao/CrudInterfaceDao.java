@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import dao.Exception.ConnectException;
+import entities.Cliente;
 
 public interface CrudInterfaceDao<T> {
 	public List<T> listAll() throws ConnectException;
@@ -10,5 +11,6 @@ public interface CrudInterfaceDao<T> {
 	public void update(T obj) throws ConnectException;
 	public T save(T obj) throws ConnectException;
 	public void delete(T obj) throws ConnectException;
+	public List<T> selectBynome(String nome) throws ConnectException;
 
 }

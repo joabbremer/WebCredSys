@@ -6,6 +6,8 @@ public class SimulacaoModel {
 	
 	private static SimulacaoModel instance = null;
 	private double valor;
+	private double juros;
+	private double valorCjuros;
 	private int qtParcelas;
 	private Date primeiraParcela;
 	
@@ -27,6 +29,24 @@ public class SimulacaoModel {
 		return instance;
 	}
 	
+	
+	
+	public double getJuros() {
+		return juros;
+	}
+
+	public void setJuros(double juros) {
+		this.juros = juros;
+	}
+
+	public double getValorCjuros() {
+		return valorCjuros;
+	}
+
+	public void setValorCjuros(double valorCjuros) {
+		this.valorCjuros = valorCjuros;
+	}
+
 	public double getValor() {
 		return valor;
 	}

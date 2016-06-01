@@ -10,6 +10,7 @@ import entities.Contato;
 import model.ClienteModel;
 import model.ContatoModel;
 import model.EnderecoModel;
+import model.ParcelaModel;
 
 public class ClienteController {
 	
@@ -23,6 +24,12 @@ public class ClienteController {
 		ClienteDao clienteDao = new ClienteDao();
 		List<Cliente>	clientedao =  clienteDao.listAll();
 		return ConvertEntitieToModelList(clientedao);		
+	}
+	
+	public List<Cliente> SelectByName(String nome) throws ConnectException{
+		ClienteDao clienteDao = new ClienteDao();
+		return clienteDao.selectBynome(nome);
+		
 	}
 	
 	
