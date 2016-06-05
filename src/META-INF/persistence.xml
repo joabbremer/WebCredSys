@@ -21,7 +21,8 @@
 			
 			<!-- Descomentar as linhas abaixo para gerar as entidades  -->
 			<!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-      <property name="eclipselink.ddl-generation.output-mode" value="database"/> -->
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/>  -->
+			 
 			
 			
 		</properties>

@@ -87,9 +87,12 @@
                                             </div>
 											 <div class="form-actions">
                                                 <div class="input-group col-md-6">
-                                                    <input type="text" class="form-control"/>
+                                                	<h:inputText value="#{clienteBean.nome}" class="form-control" />
                                                     <span class="input-group-btn">
-                                                        <button class="btn blue" type="button">Pesquisa Cliente</button>
+                                                    <!-- <h:commandLink update="@all" action="#{clienteBean.SelectClienteByName()}" value="Share" class="btn blue"  /> -->
+                                                    	
+                                                        <h:commandLink value="Buscar" action="#{clienteBean.SelectClienteByName()}" ajax="true" icon="ui-icon-refresh" process="@all" update=":formtotable:tableparcelas" class="btn blue"/>
+                                                        
                                                     </span>
                                                 </div>
                                             </div>
@@ -97,6 +100,7 @@
                                 </div>
                             </div>
                             
+                           
                             <div class = "portlet">
                             	<div class="portlet box grey-mint">
                                 <div class="portlet-title">
@@ -105,6 +109,63 @@
                                      </div>
                                 </div>
                                 <div class="portlet-body flip-scroll">
+                                 <h:form name="formtotable">
+                                  <h:panelGroup>
+                                  <h:dataTable name="tableparcelas" value="#{parcelaBean.ListParcela()}" var="parcela" renderedIfEmpty="false" class="table table-bordered table-striped table-condensed flip-content">
+                                		
+                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Parcela"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcelaBean.ListParcela().rowIndex + 1}"/>
+              						   </h:column>
+                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Vencimento"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcela.dataVencimento}"/>
+              						   </h:column>
+              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Valor"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcela.valor}"/>
+              						   </h:column>
+              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Desconto"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcela.valorDesconto}"/>
+              						   </h:column>
+                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Juro"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcela.valorJuro}"/>
+              						   </h:column>
+              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Status"/>
+                      					  </f:facet>                      				 	 
+                      				 	 <h:commandLink action="#{parcelaBean.PrepareToPay(parcela)}" value="Pagar" class="btn red-flamingo button-submit"/>
+              						   </h:column>
+                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Valor Total"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcela.valorTotal}"/>
+              						   </h:column>
+              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
+                       					 <f:facet name="header">
+                       					   <h:outputText value="Valor Total"/>
+                      					  </f:facet>
+                      				 	 <h:outputText value="#{parcela.dataPagamento}"/>
+              						   </h:column>
+              						   
+                                	</h:dataTable>
+                                  </h:panelGroup>
+                                	
+                                
                                     <table class="table table-bordered table-striped table-condensed flip-content">
                                         <thead class="flip-content">
                                             <tr>
@@ -203,10 +264,12 @@
                                             
                                         </tbody>
                                     </table>
+                                    </h:form>
                                 </div>
                             </div>
                             
                             </div>
+                            
                             <div class="portlet light bordered">
                             	<div class="portlet-body form">
                             		<h:link outcome="/cliente/List" value="Mosta Todos os Cliente"/>

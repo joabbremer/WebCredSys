@@ -89,23 +89,23 @@
                                         <tbody>
                                         	<tr>
                                                 <td class="bold"> Valor Solicitado </td>
-                                                <td> R$ 5000,00 </td>
+                                                <td> <h:outputLabel value="#{simulacaoBean.PrepareToSimule().valor}" > <f:convertNumber minFractionDigits="2" /> </h:outputLabel> </td>
                                             </tr>
                                             <tr>
                                                 <td> Valor Imposto </td>
-                                                <td> R$ 165,81 </td>
+                                                <td> <h:outputLabel value="#{simulacaoBean.PrepareToSimule().juros}" ><f:convertNumber minFractionDigits="2" /> </h:outputLabel> </td>
                                             </tr>
                                             <tr>
                                                 <td> Valor Financiado </td>
-                                                <td> R$ 5165,81 </td>
+                                                <td> <h:outputLabel value="#{simulacaoBean.PrepareToSimule().valorCjuros}" > <f:convertNumber minFractionDigits="2" /> </h:outputLabel> </td>
                                             </tr>
                                             <tr>
                                                 <td> Quantidade de parcelas </td>
-                                                <td> 24 </td>
+                                                <td> <h:outputLabel value="#{simulacaoBean.PrepareToSimule().qtParcelas}" /> </td>
                                             </tr>
                                             <tr>
                                                 <td> Valor da Parcela </td>
-                                                <td> 563,25 </td>
+                                                <td> <h:outputLabel value="#{parcelaBean.PrepareToSimule().valor}" > <f:convertNumber minFractionDigits="2" /> </h:outputLabel> </td>
                                             </tr>
                                             <tr>
                                                 <td> Taxa de Juros </td>
