@@ -11,6 +11,5 @@ public interface CrudInterfaceDao<T> {
 	public void update(T obj) throws ConnectException;
 	public T save(T obj) throws ConnectException;
 	public void delete(T obj) throws ConnectException;
-	public List<T> selectBynome(String nome) throws ConnectException;
 
 }

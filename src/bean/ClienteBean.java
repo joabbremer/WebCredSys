@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import controller.ClienteController;
+import controller.ParcelaController;
 import dao.Exception.ConnectException;
 import entities.Cliente;
 import entities.Financiamento;
@@ -33,6 +34,7 @@ public class ClienteBean {
 
 	private ClienteController clienteController = null;
 	
+	
 	public ClienteController getControllerInstance(){
 		if(clienteController == null){
 			clienteController = new ClienteController();
@@ -48,9 +50,10 @@ public class ClienteBean {
 	}
 	
 	public void SelectClienteByName() throws ConnectException{
+		
 		ClienteController clienteController = getControllerInstance();
-		clienteController.SelectByName(nome);
-	
+		clienteController.SelectByName(getNome());
+		
 	}
 	
 	

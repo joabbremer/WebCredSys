@@ -15,6 +15,14 @@ import model.ParcelaModel;
 public class ClienteController {
 	
 	private ClienteModel clienteModelSelected = null;
+	private static ClienteController clienteController = null;
+	
+	public static ClienteController getControllerInstance(){
+		if(clienteController == null){
+			clienteController = new ClienteController();
+		}
+		return clienteController;
+	}
 
 	public ClienteController() {
 		
@@ -28,7 +36,11 @@ public class ClienteController {
 	
 	public List<Cliente> SelectByName(String nome) throws ConnectException{
 		ClienteDao clienteDao = new ClienteDao();
-		return clienteDao.selectBynome(nome);
+		ParcelaController parcelaController = ParcelaController.getControllerInstance();
+		
+		
+		parcelaController.SelectParcelaForCliente(ConvertEntitieToModelList(clienteDao.selectBynome(nome)));
+		return	clienteDao.selectBynome(nome);
 		
 	}
 	
@@ -73,6 +85,8 @@ public class ClienteController {
 	
 	public List<ClienteModel> ConvertEntitieToModelList(List<Cliente> clientedao){
 		ContatoController contatoController = new ContatoController();
+		EnderecoController enderecoController = new EnderecoController();
+		FinanciamentoController financiamentoController = new FinanciamentoController();
 		
 		List<ClienteModel> clienteModel = new ArrayList<ClienteModel>();		
 		for (Cliente cliente : clientedao) {
@@ -87,7 +101,10 @@ public class ClienteController {
 					cliente.getRendaLiquida(),
 					cliente.getValorAutomoveis(),
 					cliente.getValorImoveis(),
-					contatoController.ConvertEntitieToModelList(cliente.getContatos()))); 
+					contatoController.ConvertEntitieToModelList(cliente.getContatos()),
+					enderecoController.ConvertEntitieToModelList(cliente.getEnderecos()),
+					financiamentoController.ConvertEntitieToModelList(cliente.getFinanciamentos())
+					)); 
 			}
 		return clienteModel;
 		
@@ -95,6 +112,7 @@ public class ClienteController {
 	
 	public ClienteModel ConvertEntitieToModel(Cliente clientedao){
 		ContatoController contatoController = new ContatoController();
+		
 		
 		
 		return new ClienteModel(clientedao.getIdCliente(),

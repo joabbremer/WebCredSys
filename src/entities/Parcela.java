@@ -25,22 +25,22 @@ public class Parcela implements Serializable {
 	private int idParcela;
 
 	@Column(name="data_pagamento", precision=19)
-	private BigDecimal dataPagamento;
+	private Double dataPagamento;
 
 	@Column(name="data_vencimento", precision=19)
-	private BigDecimal dataVencimento;
+	private Double dataVencimento;
 
 	@Column(name="VALOR", precision=19)
-	private BigDecimal valor;
+	private Double valor;
 
 	@Column(name="valor_desconto", precision=19)
-	private BigDecimal valorDesconto;
+	private Double valorDesconto;
 
 	@Column(name="valor_juro", precision=19)
-	private BigDecimal valorJuro;
+	private Double valorJuro;
 
 	@Column(name="valor_total", precision=19)
-	private BigDecimal valorTotal;
+	private Double valorTotal;
 
 
 	public Parcela() {
@@ -61,51 +61,51 @@ public class Parcela implements Serializable {
 		this.idParcela = idParcela;
 	}
 
-	public BigDecimal getDataPagamento() {
+	public Double getDataPagamento() {
 		return this.dataPagamento;
 	}
 
-	public void setDataPagamento(BigDecimal dataPagamento) {
+	public void setDataPagamento(Double dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public BigDecimal getDataVencimento() {
+	public Double getDataVencimento() {
 		return this.dataVencimento;
 	}
 
-	public void setDataVencimento(BigDecimal dataVencimento) {
+	public void setDataVencimento(Double dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public BigDecimal getValor() {
+	public Double getValor() {
 		return this.valor;
 	}
 
-	public void setValor(BigDecimal valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
-	public BigDecimal getValorDesconto() {
+	public Double getValorDesconto() {
 		return this.valorDesconto;
 	}
 
-	public void setValorDesconto(BigDecimal valorDesconto) {
+	public void setValorDesconto(Double valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
 
-	public BigDecimal getValorJuro() {
+	public Double getValorJuro() {
 		return this.valorJuro;
 	}
 
-	public void setValorJuro(BigDecimal valorJuro) {
+	public void setValorJuro(Double valorJuro) {
 		this.valorJuro = valorJuro;
 	}
 
-	public BigDecimal getValorTotal() {
+	public Double getValorTotal() {
 		return this.valorTotal;
 	}
 
-	public void setValorTotal(BigDecimal valorTotal) {
+	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 

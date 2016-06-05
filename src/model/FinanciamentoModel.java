@@ -14,10 +14,15 @@ public class FinanciamentoModel {
 		
 	}
 
-	public FinanciamentoModel( List<ParcelaModel> parcelas) {
+
+
+	public FinanciamentoModel(int idFinanciamento, List<ParcelaModel> parcelas) {
 		super();
+		this.idFinanciamento = idFinanciamento;
 		this.parcelas = parcelas;
 	}
+
+
 
 	public int getIdFinanciamento() {
 		return idFinanciamento;
