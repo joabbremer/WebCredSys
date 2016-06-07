@@ -27,10 +27,10 @@ public class ClienteDao implements CrudInterfaceDao<Cliente> {
 		 
 	}
 	
-	public List<Cliente> selectBynome(String nome) throws ConnectException {
+	public List<Cliente> selectByCpf(String cpf) throws ConnectException {
 		EntityManager em = Cliente.getEntityManager();	
-		Query query = em.createNamedQuery("selectNomeCliente");		
-		query.setParameter("nome","%"+nome+"%");
+		Query query = em.createNamedQuery("selectByCpf");		
+		query.setParameter("cpf",cpf);
 		return query.getResultList();
 		 
 	}

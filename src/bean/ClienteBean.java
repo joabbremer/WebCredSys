@@ -19,17 +19,14 @@ import model.ParcelaModel;
 @SessionScoped
 public class ClienteBean {
 	
-	private String nome;
+	private String cpf;
 	
-	
-	
-	public String getNome() {
-		return nome;
+	public String getCpf() {
+		return cpf;
 	}
 
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	private ClienteController clienteController = null;
@@ -49,10 +46,10 @@ public class ClienteBean {
 			
 	}
 	
-	public void SelectClienteByName() throws ConnectException{
+	public ClienteModel SelectClienteByCpf() throws ConnectException{
 		
 		ClienteController clienteController = getControllerInstance();
-		clienteController.SelectByName(getNome());
+		return clienteController.SelectByCpf(getCpf());
 		
 	}
 	

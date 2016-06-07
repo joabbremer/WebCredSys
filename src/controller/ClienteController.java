@@ -34,13 +34,13 @@ public class ClienteController {
 		return ConvertEntitieToModelList(clientedao);		
 	}
 	
-	public List<Cliente> SelectByName(String nome) throws ConnectException{
+	public ClienteModel SelectByCpf(String cpf) throws ConnectException{
 		ClienteDao clienteDao = new ClienteDao();
 		ParcelaController parcelaController = ParcelaController.getControllerInstance();
 		
 		
-		parcelaController.SelectParcelaForCliente(ConvertEntitieToModelList(clienteDao.selectBynome(nome)));
-		return	clienteDao.selectBynome(nome);
+		parcelaController.SelectParcelaForCliente(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
+		return	ConvertListToOneModel(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
 		
 	}
 	
@@ -108,6 +108,30 @@ public class ClienteController {
 			}
 		return clienteModel;
 		
+	}
+	public ClienteModel ConvertListToOneModel(List<ClienteModel> clienteModel){
+		
+		
+		ClienteModel clienteM = new ClienteModel();
+		for (ClienteModel clienteModels : clienteModel) {
+			clienteM =	new ClienteModel(clienteModels.getIdCliente(),
+					clienteModels.getCpf(),
+					clienteModels.getEmail(),
+					clienteModels.getIdentidade(),
+					clienteModels.getNome(),
+					clienteModels.getGenero(),
+					clienteModels.getRendaConjuge(),
+					clienteModels.getRendaLiquida(),
+					clienteModels.getValorAutomoveis(),
+					clienteModels.getValorImoveis(),
+					clienteModels.getContatos(),
+					clienteModels.getEnderecos(),
+					clienteModels.getFinanciamentos()
+					);
+		}
+		
+		
+		return clienteM;
 	}
 	
 	public ClienteModel ConvertEntitieToModel(Cliente clientedao){
