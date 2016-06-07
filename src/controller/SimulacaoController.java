@@ -9,6 +9,11 @@ public class SimulacaoController {
 		return SimulacaoModel.getInstance();
 	}
 	
+	public SimulacaoModel ResultSimule(){
+		return SimulacaoModel.getInstance();
+		
+	}
+	
 	public void Simular(){
 		
 		
