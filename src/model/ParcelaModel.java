@@ -5,21 +5,22 @@ import java.math.BigDecimal;
 
 public class ParcelaModel {
 	
+	private static ParcelaModel instance = null;
 	private int idParcela;
-	private BigDecimal dataPagamento;
-	private BigDecimal dataVencimento;
-	private BigDecimal valor;
-	private BigDecimal valorDesconto;
-	private BigDecimal valorJuro;
-	private BigDecimal valorTotal;
-	private FinanciamentoModel financiamento;
+	private Double dataPagamento;
+	private Double dataVencimento;
+	private Double valor;
+	private Double valorDesconto;
+	private Double valorJuro;
+	private Double valorTotal;
+	
 	
 	public ParcelaModel() {
 	
 	}
 
-	public ParcelaModel(BigDecimal dataPagamento, BigDecimal dataVencimento, BigDecimal valor, BigDecimal valorDesconto,
-			BigDecimal valorJuro, BigDecimal valorTotal, FinanciamentoModel financiamento) {
+	public ParcelaModel(Double dataPagamento, Double dataVencimento, Double valor, Double valorDesconto,
+			Double valorJuro, Double valorTotal) {
 		super();
 		this.dataPagamento = dataPagamento;
 		this.dataVencimento = dataVencimento;
@@ -27,9 +28,17 @@ public class ParcelaModel {
 		this.valorDesconto = valorDesconto;
 		this.valorJuro = valorJuro;
 		this.valorTotal = valorTotal;
-		this.financiamento = financiamento;
 	}
 
+
+
+	public static ParcelaModel getInstance(){
+		if(instance == null){
+			instance = new ParcelaModel();
+		}
+		return instance;
+	}
+	
 	public int getIdParcela() {
 		return idParcela;
 	}
@@ -38,61 +47,55 @@ public class ParcelaModel {
 		this.idParcela = idParcela;
 	}
 
-	public BigDecimal getDataPagamento() {
+	public Double getDataPagamento() {
 		return dataPagamento;
 	}
 
-	public void setDataPagamento(BigDecimal dataPagamento) {
+	public void setDataPagamento(Double dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public BigDecimal getDataVencimento() {
+	public Double getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(BigDecimal dataVencimento) {
+	public void setDataVencimento(Double dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public BigDecimal getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setValor(Double d) {
+		this.valor = d;
 	}
 
-	public BigDecimal getValorDesconto() {
+	public Double getValorDesconto() {
 		return valorDesconto;
 	}
 
-	public void setValorDesconto(BigDecimal valorDesconto) {
+	public void setValorDesconto(Double valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
 
-	public BigDecimal getValorJuro() {
+	public Double getValorJuro() {
 		return valorJuro;
 	}
 
-	public void setValorJuro(BigDecimal valorJuro) {
+	public void setValorJuro(Double valorJuro) {
 		this.valorJuro = valorJuro;
 	}
 
-	public BigDecimal getValorTotal() {
+	public Double getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(BigDecimal valorTotal) {
+	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
-	public FinanciamentoModel getFinanciamento() {
-		return financiamento;
-	}
 
-	public void setFinanciamento(FinanciamentoModel financiamento) {
-		this.financiamento = financiamento;
-	}
 
 	@Override
 	public int hashCode() {
@@ -100,7 +103,6 @@ public class ParcelaModel {
 		int result = 1;
 		result = prime * result + ((dataPagamento == null) ? 0 : dataPagamento.hashCode());
 		result = prime * result + ((dataVencimento == null) ? 0 : dataVencimento.hashCode());
-		result = prime * result + ((financiamento == null) ? 0 : financiamento.hashCode());
 		result = prime * result + idParcela;
 		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		result = prime * result + ((valorDesconto == null) ? 0 : valorDesconto.hashCode());
@@ -127,11 +129,6 @@ public class ParcelaModel {
 			if (other.dataVencimento != null)
 				return false;
 		} else if (!dataVencimento.equals(other.dataVencimento))
-			return false;
-		if (financiamento == null) {
-			if (other.financiamento != null)
-				return false;
-		} else if (!financiamento.equals(other.financiamento))
 			return false;
 		if (idParcela != other.idParcela)
 			return false;
@@ -162,7 +159,7 @@ public class ParcelaModel {
 	public String toString() {
 		return "ParcelaModel [idParcela=" + idParcela + ", dataPagamento=" + dataPagamento + ", dataVencimento="
 				+ dataVencimento + ", valor=" + valor + ", valorDesconto=" + valorDesconto + ", valorJuro=" + valorJuro
-				+ ", valorTotal=" + valorTotal + ", financiamento=" + financiamento + "]";
+				+ ", valorTotal=" + valorTotal + " ]";
 	}
 	
 	

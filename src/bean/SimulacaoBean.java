@@ -17,8 +17,9 @@ public class SimulacaoBean {
 		
 	}
 	
-	public void Simular(){
+	public String Simular(){
 		simulacaoController.Simular();		
+		return "/simulacao_calculada.xhtml";
 	}
 
 }

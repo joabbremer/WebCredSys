@@ -22,47 +22,10 @@ public class ClienteModel {
 	private List<EnderecoModel> enderecos;
 	private List<FinanciamentoModel> financiamentos;
 
-	
-	public static ClienteModel getInstance(){
-		if(instance == null){
-			instance = new ClienteModel();
-		}
-		return instance;
-	}
-	
-
-
-	
-	
 	public ClienteModel() {
 		super();
 	}
-
-
-
-
-
-	public ClienteModel(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
-			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
-		super();
-		this.cpf = cpf;
-		this.email = email;
-		this.identidade = identidade;
-		this.nome = nome;
-		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
-		this.contatos = contatos;
-		this.enderecos = enderecos;
-		this.financiamentos = financiamentos;
-	}
-
 	
-
-
 	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
 			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
@@ -82,8 +45,6 @@ public class ClienteModel {
 		this.financiamentos = financiamentos;
 	}
 	
-	
-
 	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
 			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos) {
 		super();
@@ -98,11 +59,16 @@ public class ClienteModel {
 		this.valorAutomoveis = valorAutomoveis;
 		this.valorImoveis = valorImoveis;
 		this.contatos = contatos;
+		
 	}
-
-
-
-
+	
+	
+	public static ClienteModel getInstance(){
+		if(instance == null){
+			instance = new ClienteModel();
+		}
+		return instance;
+	}	
 
 	public int getIdCliente() {
 		return idCliente;

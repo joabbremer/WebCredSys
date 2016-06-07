@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import dao.Exception.ConnectException;
+import entities.Cliente;
 
 public interface CrudInterfaceDao<T> {
 	public List<T> listAll() throws ConnectException;

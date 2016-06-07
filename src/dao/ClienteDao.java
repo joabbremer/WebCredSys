@@ -26,6 +26,14 @@ public class ClienteDao implements CrudInterfaceDao<Cliente> {
 		return query.getResultList();
 		 
 	}
+	
+	public List<Cliente> selectBynome(String nome) throws ConnectException {
+		EntityManager em = Cliente.getEntityManager();	
+		Query query = em.createNamedQuery("selectNomeCliente");		
+		query.setParameter("nome","%"+nome+"%");
+		return query.getResultList();
+		 
+	}
 
 	@Override
 	public void update(Cliente cliente) throws ConnectException {
