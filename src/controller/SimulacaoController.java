@@ -6,6 +6,16 @@ import model.SimulacaoModel;
 
 public class SimulacaoController {
 	
+	private static SimulacaoController simulacaoController = null;
+	
+	public static SimulacaoController getControllerInstance(){
+		if(simulacaoController == null){
+			simulacaoController = new SimulacaoController();
+		}
+		return simulacaoController;
+	}
+	
+	
 	public SimulacaoModel PrepareToSimule(){
 		return SimulacaoModel.getInstance();
 	}
@@ -24,10 +34,7 @@ public class SimulacaoController {
 		simulacaoModel.setJuros(juros);
 		parcela.setValor(valorCJuros/simulacaoModel.getQtParcelas());
 				
-		
-		
-				
-		
+			
 	}
 	public Double CalcularJuros(Double valor){
 		return valor-(valor*0.918);

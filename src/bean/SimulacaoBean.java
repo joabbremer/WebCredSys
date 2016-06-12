@@ -10,7 +10,7 @@ import model.SimulacaoModel;
 @SessionScoped
 public class SimulacaoBean {
 	
-	SimulacaoController simulacaoController = new SimulacaoController();
+	SimulacaoController simulacaoController = SimulacaoController.getControllerInstance();
 	
 	public SimulacaoModel PrepareToSimule(){
 		return simulacaoController.PrepareToSimule();
