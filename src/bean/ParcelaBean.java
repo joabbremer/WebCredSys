@@ -15,8 +15,6 @@ import model.ParcelaModel;
 @SessionScoped
 public class ParcelaBean {
 	
-	private DataModel<ParcelaModel> parcDataModel = new  ListDataModel<ParcelaModel>();	
-	
 	public ParcelaModel PrepareToSimule(){
 		ParcelaController parcelaController = new ParcelaController();
 		return parcelaController.PrepareToSimule();
@@ -29,20 +27,10 @@ public class ParcelaBean {
 	
 	public DataModel<ParcelaModel> ListParcela(){
 		ParcelaController parcelaController = ParcelaController.getControllerInstance();
-		List<ParcelaModel> parcela =	 parcelaController.SelectParcela();	
-		parcDataModel = new  ListDataModel<ParcelaModel>(parcela);	
+		List<ParcelaModel> parcela =	 parcelaController.SelectParcela();		
+		DataModel<ParcelaModel> parcDataModel = new  ListDataModel<ParcelaModel>(parcela);		
 		return parcDataModel;
 		 
 	}
-
-	public DataModel<ParcelaModel> getParcDataModel() {
-		return parcDataModel;
-	}
-
-	public void setParcDataModel(DataModel<ParcelaModel> parcDataModel) {
-		this.parcDataModel = parcDataModel;
-	}
-	
-	
 
 }

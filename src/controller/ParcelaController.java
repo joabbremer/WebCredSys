@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import entities.Cliente;
@@ -37,7 +36,7 @@ public class ParcelaController {
 		}
 		 selectParcelaForCliente = new ArrayList<ParcelaModel>();
 		
-			 
+				 
 		for (FinanciamentoModel finan : financiamento) {
 			selectParcelaForCliente = finan.getParcelas();					
 			

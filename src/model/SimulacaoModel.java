@@ -9,13 +9,13 @@ public class SimulacaoModel {
 	private double juros;
 	private double valorCjuros;
 	private int qtParcelas;
-	private Double primeiraParcela;
+	private Date primeiraParcela;
 	
 	public SimulacaoModel() {
 		super();
 	}
 
-	public SimulacaoModel(double valor, int qtParcelas, Double primeiraParcela) {
+	public SimulacaoModel(double valor, int qtParcelas, Date primeiraParcela) {
 		super();
 		this.valor = valor;
 		this.qtParcelas = qtParcelas;
@@ -59,10 +59,10 @@ public class SimulacaoModel {
 	public void setQtParcelas(int qtParcelas) {
 		this.qtParcelas = qtParcelas;
 	}
-	public Double getPrimeiraParcela() {
+	public Date getPrimeiraParcela() {
 		return primeiraParcela;
 	}
-	public void setPrimeiraParcela(Double primeiraParcela) {
+	public void setPrimeiraParcela(Date primeiraParcela) {
 		this.primeiraParcela = primeiraParcela;
 	}
 
