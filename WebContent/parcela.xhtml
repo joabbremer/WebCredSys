@@ -87,11 +87,11 @@
                                             </div>
 											 <div class="form-actions">
                                                 <div class="input-group col-md-6">
-                                                	<h:inputText value="#{clienteBean.nome}" class="form-control" />
+                                                	<h:inputText value="#{clienteBean.cpf}" class="form-control" />
                                                     <span class="input-group-btn">
-                                                    <!-- <h:commandLink update="@all" action="#{clienteBean.SelectClienteByName()}" value="Share" class="btn blue"  /> -->
+                                                    
                                                     	
-                                                        <h:commandLink value="Buscar" action="#{clienteBean.SelectClienteByName()}" ajax="true" icon="ui-icon-refresh" process="@all" update=":formtotable:tableparcelas" class="btn blue"/>
+                                                        <h:commandLink value="Buscar" action="#{clienteBean.SelectClienteByCpf()}" ajax="true" icon="ui-icon-refresh" process="@all" update=":formtotable:tableparcelas" class="btn blue"/>
                                                         
                                                     </span>
                                                 </div>
@@ -109,6 +109,7 @@
                                      </div>
                                 </div>
                                 <div class="portlet-body flip-scroll">
+
                                  <h:form name="formtotable">
                                   <h:panelGroup>
                                   <h:dataTable name="tableparcelas" value="#{parcelaBean.ListParcela()}" var="parcela" renderedIfEmpty="false" class="table table-bordered table-striped table-condensed flip-content">
@@ -117,7 +118,7 @@
                        					 <f:facet name="header">
                        					   <h:outputText value="Parcela"/>
                       					  </f:facet>
-                      				 	 <h:outputText value="#{parcelaBean.ListParcela().rowIndex + 1}"/>
+                      				 	 <h:outputText value="#{parcelaBean.parcDataModel.rowIndex +1}"/>
               						   </h:column>
                                 		<h:column headerText="SKU" style="text-align: center; width: 100px">
                        					 <f:facet name="header">
@@ -166,104 +167,6 @@
                                   </h:panelGroup>
                                 	
                                 
-                                    <table class="table table-bordered table-striped table-condensed flip-content">
-                                        <thead class="flip-content">
-                                            <tr>
-                                                <th width="5%"> Parcela </th>
-                                                <th> Vencimento </th>
-                                                <th class="numeric"> Valor </th>
-                                                <th class="numeric"> Desconto </th>
-                                                <th class="numeric"> Juro </th>
-                                                <th class="numeric"> Status </th>
-                                                <th class="numeric"> Total </th>
-                                                <th class="numeric"> Data Pagamento </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                                <td> 1 </td>
-                                                <td> 30/04/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 80,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn red-flamingo button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 280,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 2 </td>
-                                                <td> 30/05/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn grey-salsa button-submit disabled">Pagar</a> </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 30/05/2016 </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 3 </td>
-                                                <td> 30/06/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 10,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn green-meadow button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 180,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 4 </td>
-                                                <td> 30/07/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn green-meadow button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 5 </td>
-                                                <td> 30/08/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn green-meadow button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 6 </td>
-                                                <td> 30/09/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn green-meadow button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 7 </td>
-                                                <td> 30/10/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn green-meadow button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 8 </td>
-                                                <td> 30/11/2016 </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> 0,00 </td>
-                                                <td class="numeric"> <a href="#" class="btn green-meadow button-submit">Pagar</a> </td>
-                                                <td class="numeric"> 200,00 </td>
-                                                <td class="numeric"> null </td>
-                                            </tr>
-                                            
-                                            
-                                        </tbody>
-                                    </table>
                                     </h:form>
                                 </div>
                             </div>
