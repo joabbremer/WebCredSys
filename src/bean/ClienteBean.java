@@ -19,8 +19,6 @@ import model.ParcelaModel;
 @SessionScoped
 public class ClienteBean {
 	
-	private ClienteController clienteController = null;
-	private ClienteModel clienteModel = null;
 	private String cpf;
 	
 	public String getCpf() {
@@ -31,6 +29,7 @@ public class ClienteBean {
 		this.cpf = cpf;
 	}
 
+	private ClienteController clienteController = null;
 	
 	
 	public ClienteController getControllerInstance(){
