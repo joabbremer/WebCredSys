@@ -1,5 +1,6 @@
 package bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -9,28 +10,33 @@ import javax.faces.model.ListDataModel;
 import javax.faces.view.ViewScoped;
 
 import controller.ParcelaController;
-import entities.Parcela;
+import controller.SimulacaoController;
 import model.ParcelaModel;
+import model.SimulacaoModel;
 
 @ManagedBean
 @SessionScoped
-public class ParcelaBean {
+public class FinanciamentoBean {
 	
 	private DataModel<ParcelaModel> parcDataModel = new  ListDataModel<ParcelaModel>();
 	
-	public ParcelaModel PrepareToSimule(){
-		ParcelaController parcelaController = new ParcelaController();
-		return parcelaController.PrepareToSimule();
-	}
-	
-	public String PrepareToPay(ParcelaModel parcelaModel){		
-		
-		return "Pagina_pagamento";		
+	public void CalcularFianciamento(){
+		SimulacaoController simulacaoController = SimulacaoController.getControllerInstance();
+		simulacaoController.Simular();
 	}
 	
 	public DataModel<ParcelaModel> ListParcela(){
-		ParcelaController parcelaController = ParcelaController.getControllerInstance();
-		List<ParcelaModel> parcela =	 parcelaController.SelectParcela();		
+		SimulacaoController simulacaoController = SimulacaoController.getControllerInstance();
+		SimulacaoModel simulacaoModel = simulacaoController.ResultSimule();
+		ParcelaModel parcelaModel = ParcelaModel.getInstance();	
+		List<ParcelaModel> parcela = new ArrayList<ParcelaModel>();
+		for (int i = 0; i < simulacaoModel.getQtParcelas(); i++) {
+			parcela.add(parcelaModel);
+			
+		}
+		
+		
+		
 		parcDataModel = new  ListDataModel<ParcelaModel>(parcela);		
 		return parcDataModel;
 		 
@@ -43,7 +49,6 @@ public class ParcelaBean {
 	public void setParcDataModel(DataModel<ParcelaModel> parcDataModel) {
 		this.parcDataModel = parcDataModel;
 	}
-	
 	
 
 }
