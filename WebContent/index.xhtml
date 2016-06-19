@@ -87,7 +87,7 @@
                                     <div class="caption">
                                         <i class=" icon-layers font-red"></i>
                                         <span class="caption-subject font-red bold uppercase"> Cadastro de Clientes -
-                                            <span class="step-title"> Passo 1 de 4 </span>
+                                            <span class="step-title"> Passo 1 de 3 </span>
                                         </span>
                                     </div>
                                 </div>
@@ -115,13 +115,6 @@
                                                             <span class="number"> 3 </span>
                                                             <span class="desc">
                                                                 <i class="fa fa-check"></i> Contato </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab4" data-toggle="tab" class="step">
-                                                            <span class="number"> 4 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Confirmação </span>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -181,6 +174,24 @@
                                                             <div class="col-md-4">
                                                                 <h:inputText name="email" id="email" value="#{clienteBean.PrepareTosave().email}" class="form-control" title="E-mail:" />
                                                                 <span class="help-block"> Forneça um e-mail válido </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">Rendimentos
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <h:inputText name="rendimentos" id="rendimentos" value="#{clienteBean.PrepareTosave().rendimentos}" class="form-control" title="Rendimentos:" />
+                                                                <span class="help-block"> Valor bruto dos rendimentos </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">Garantias
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <h:inputText name="garantias" id="garantias" value="#{clienteBean.PrepareTosave().garantias}" class="form-control" title="Garantias" />
+                                                                <span class="help-block"> Soma dos valores das propriedades do cliente. </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -243,89 +254,19 @@
                                                         </div>                                                    
                                                         
                                                     </div>
-                                                    <div class="tab-pane" id="tab4">
-                                                        <h3 class="block">Confirmação</h3>
-                                                        <h4 class="form-section">Dados Pessoais</h4>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Nome Completo:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="nome"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Gender:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="gender"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">CPF:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="cpf"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">RG:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="rg"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">E-mail:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="email"> </p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <h4 class="form-section">Endereço</h4>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Endereço:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="endereco"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Bairro:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="bairro"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Cep:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="cep"> </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Cidade:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="cidade"> </p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <h4 class="form-section">Contato</h4>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Numero:</label>
-                                                            <div class="col-md-4">
-                                                                <p class="form-control-static" data-display="numero"> </p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <a href="javascript:;" class="btn default button-previous">
+                                                        <a href="javascript:;" class="btn yellow-lemon button-previous">
                                                             <i class="fa fa-angle-left"></i> Voltar </a>
-                                                        <a href="javascript:;" class="btn btn-outline green button-next"> Próximo
+                                                        <a href="javascript:;" class="btn blue button-next"> Próximo
                                                             <i class="fa fa-angle-right"></i>
                                                         </a>
-                                                        <h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" class="btn green button-submit"/>
-                                                        <a href="javascript:;" class="btn green button-submit"> Enviar
-                                                            <i class="fa fa-check"></i>
-                                                        </a>
+                                                        <h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" class="btn green-seagreen button-submit">
+                                                        	<i class="fa fa-save"></i>
+                                                        </h:commandLink>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,209 +1,304 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>CredSys</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="CredSys" />
-        <meta content="" name="Devit e Joab Bremer" />
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>CredSys</title>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="" name="CredSys" />
+	<meta content="" name="Devit e Joab Bremer" />
 
-        <h:outputStylesheet name="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/font-awesome/css/font-awesome.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/bootstrap/css/bootstrap.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/uniform/css/uniform.default.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+		rel="stylesheet" type="text/css" />
 
-        <h:outputStylesheet name="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
- 
-        <h:outputStylesheet name="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <h:outputStylesheet name="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/select2/css/select2.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/global/plugins/select2/css/select2-bootstrap.min.css"
+		rel="stylesheet" type="text/css" />
 
-        <h:outputStylesheet name="assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <h:outputStylesheet name="assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+	<h:outputStylesheet name="assets/global/css/components-md.min.css"
+		rel="stylesheet" id="style_components" type="text/css" />
+	<h:outputStylesheet name="assets/global/css/plugins-md.min.css"
+		rel="stylesheet" type="text/css" />
 
-    </h:head>
-    <h:body styleClass="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
-    
-    	<div class="page-header navbar navbar-fixed-top">
-            <div class="page-header-inner ">
-                <div class="page-logo">
-                        <img src="resources/img/logo.png" alt="logo" class="logo" />
-                    <div class="menu-toggler sidebar-toggler"></div>
-                </div>
-                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
-        <div class="page-container">
-        
-            <!-- MENU LATERAL -->
-            <div class="page-sidebar-wrapper">
-                <div class="page-sidebar navbar-collapse collapse">
-                    <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    	<li class="heading">
-                            <h3 class="uppercase">Simulação</h3>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="simulacao" value="Simulação" styleClass="nav-link nav-toggle"></h:link>
-                        </li>                     
-                        
+	<h:outputStylesheet name="assets/layouts/layout4/css/layout.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="assets/layouts/layout4/css/themes/light.min.css"
+		rel="stylesheet" type="text/css" id="style_color" />
+	<h:outputStylesheet name="assets/layouts/layout4/css/custom.min.css"
+		rel="stylesheet" type="text/css" />
 
-                        <li class="heading">
-                            <h3 class="uppercase">Cadastros</h3>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="index" value="Clientes" styleClass="nav-link nav-toggle"></h:link>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="financiamento" value="Financiamento" styleClass="nav-link nav-toggle"></h:link>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="parcela" value="Parcelas" styleClass="nav-link nav-toggle"></h:link>
-                        </li>
-            		</ul>
-                </div>
-            </div>
-            <div class="page-content-wrapper">
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="portlet light bordered" id="parcelas">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class=" icon-layers font-red"></i>
-                                        <span class="caption-subject font-red bold uppercase"> Consulta Parcelas</span>
-                                    </div>
-                                </div>
-                                <div class="portlet-body form">
-                                    <h:form class="form-horizontal" action="#" id="submit_form" method="POST">
-                                            <div class="form-body">
-                                            </div>
-											 <div class="form-actions">
-                                                <div class="input-group col-md-6">
-                                                	<h:inputText value="#{clienteBean.cpf}" class="form-control" />
-                                                    <span class="input-group-btn">
+</h:head>
+<h:body
+	styleClass="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
+
+	<div class="page-header navbar navbar-fixed-top">
+		<div class="page-header-inner ">
+			<div class="page-logo">
+				<img src="resources/img/logo.png" alt="logo" class="logo" />
+				<div class="menu-toggler sidebar-toggler"></div>
+			</div>
+			<a href="javascript:;" class="menu-toggler responsive-toggler"
+				data-toggle="collapse" data-target=".navbar-collapse"> </a>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="page-container">
+
+		<!-- MENU LATERAL -->
+		<div class="page-sidebar-wrapper">
+			<div class="page-sidebar navbar-collapse collapse">
+				<ul class="page-sidebar-menu   " data-keep-expanded="false"
+					data-auto-scroll="true" data-slide-speed="200">
+					<li class="heading">
+						<h3 class="uppercase">Simulação</h3>
+					</li>
+					<li class="nav-item"><h:link outcome="simulacao"
+							value="Simulação" styleClass="nav-link nav-toggle"></h:link></li>
+
+
+					<li class="heading">
+						<h3 class="uppercase">Cadastros</h3>
+					</li>
+					<li class="nav-item"><h:link outcome="index" value="Clientes"
+							styleClass="nav-link nav-toggle"></h:link></li>
+					<li class="nav-item"><h:link outcome="financiamento"
+							value="Financiamento" styleClass="nav-link nav-toggle"></h:link>
+					</li>
+					<li class="nav-item"><h:link outcome="parcela"
+							value="Parcelas" styleClass="nav-link nav-toggle"></h:link></li>
+				</ul>
+			</div>
+		</div>
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet light bordered" id="parcelas">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class=" icon-layers font-green-seagreen"></i> <span
+										class="caption-subject bold uppercase">
+										Consulta Parcelas</span>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<h:form class="form-horizontal" action="#" id="submit_form"
+									method="POST">
+									<div class="form-body"></div>
+									<div class="form-actions">
+									<label class="control-label col-md-3">CPF: </label>
+										<div class="input-group col-md-6">
+											<h:inputText value="#{clienteBean.cpf}" class="form-control" />
+											<span class="input-group-btn"> <h:commandLink
+													value="Buscar" action="#{clienteBean.SelectClienteByCpf()}"
+													ajax="true" icon="ui-icon-refresh" process="@all"
+													update=":formtotable:tableparcelas" class="btn blue" />
+
+											</span>
+										</div>
+										<!-- Teste de modal - REMOVER! -->
+										<a class="btn red-flamingo button-submit" data-toggle="modal" href="#confirmaPagamento"> Pagar </a>	
+									</div>
+								</h:form>
+							</div>
+						</div>
+
+
+						<div class="portlet">
+							<div class="portlet box green-seagreen">
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-clone"></i>Parcelas
+									</div>
+								</div>
+								<div class="portlet-body flip-scroll">
+
+									<h:form name="formtotable">
+										<h:panelGroup>
+											<h:dataTable name="tableparcelas"
+												value="#{parcelaBean.ListParcela()}" var="parcela"
+												renderedIfEmpty="false"
+												class="table table-bordered table-striped table-condensed flip-content">
+
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Parcela" />
+													</f:facet>
+													<h:outputText
+														value="#{parcelaBean.parcDataModel.rowIndex + 1}" />
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Vencimento" />
+													</f:facet>
+													<h:outputText value="#{parcela.dataVencimento}" />
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Valor" />
+													</f:facet>
+													<h:outputText value="#{parcela.valor}" />
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Desconto" />
+													</f:facet>
+													<h:outputText value="#{parcela.valorDesconto}" />
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Juro" />
+													</f:facet>
+													<h:outputText value="#{parcela.valorJuro}" />
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Status" />
+													</f:facet>
+													<!-- Esse botão deve ser html puro para chamar o modal -->
+													<a class="btn red-flamingo button-submit" data-toggle="modal" href="#confirmaPagamento"> Pagar </a>													
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Valor Total" />
+													</f:facet>
+													<h:outputText value="#{parcela.valorTotal}" />
+												</h:column>
+												<h:column headerText="SKU"
+													style="text-align: center; width: 100px">
+													<f:facet name="header">
+														<h:outputText value="Valor Total" />
+													</f:facet>
+													<h:outputText value="#{parcela.dataPagamento}" />
+												</h:column>
+
+											</h:dataTable>
+										</h:panelGroup>
+
+
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+						
+						<div class="modal fade bs-modal-lg" id="confirmaPagamento" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                    <h:form action="#">
                                                     
-                                                    	
-                                                        <h:commandLink value="Buscar" action="#{clienteBean.SelectClienteByCpf()}" ajax="true" icon="ui-icon-refresh" process="@all" update=":formtotable:tableparcelas" class="btn blue"/>
-                                                        
-                                                    </span>
+                                                    	<div class="form-group">
+															<label class="control-label col-md-3">Valor
+															 <span class="required"> * </span>
+															</label>
+															<div class="col-md-4">
+																<h:inputText id="valor"
+																	value="#{simulacaoBean.PrepareToSimule().valor}"
+																	class="form-control" title="Valor" required="true" />
+															</div>
+														</div>
+                                                    	<h:commandLink
+														action="#{parcelaBean.PrepareToPay(parcela)}"
+														value="Pagar" class="btn red-flamingo button-submit" />
+                                                    </h:form>
+	                                                    
+                                                	
                                                 </div>
+                                                
                                             </div>
-                                    </h:form>
-                                </div>
-                            </div>
-                            
-                           
-                            <div class = "portlet">
-                            	<div class="portlet box grey-mint">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-cogs"></i>Parcelas 
-                                     </div>
-                                </div>
-                                <div class="portlet-body flip-scroll">
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
 
-                                 <h:form name="formtotable">
-                                  <h:panelGroup>
-                                  <h:dataTable name="tableparcelas" value="#{parcelaBean.ListParcela()}" var="parcela" renderedIfEmpty="false" class="table table-bordered table-striped table-condensed flip-content">
-                                		
-                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Parcela"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcelaBean.parcDataModel.rowIndex + 1}"/>
-              						   </h:column>
-                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Vencimento"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcela.dataVencimento}"/>
-              						   </h:column>
-              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Valor"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcela.valor}"/>
-              						   </h:column>
-              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Desconto"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcela.valorDesconto}"/>
-              						   </h:column>
-                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Juro"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcela.valorJuro}"/>
-              						   </h:column>
-              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Status"/>
-                      					  </f:facet>                      				 	 
-                      				 	 <h:commandLink action="#{parcelaBean.PrepareToPay(parcela)}" value="Pagar" class="btn red-flamingo button-submit"/>
-              						   </h:column>
-                                		<h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Valor Total"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcela.valorTotal}"/>
-              						   </h:column>
-              						   <h:column headerText="SKU" style="text-align: center; width: 100px">
-                       					 <f:facet name="header">
-                       					   <h:outputText value="Valor Total"/>
-                      					  </f:facet>
-                      				 	 <h:outputText value="#{parcela.dataPagamento}"/>
-              						   </h:column>
-              						   
-                                	</h:dataTable>
-                                  </h:panelGroup>
-                                	
-                                
-                                    </h:form>
-                                </div>
-                            </div>
-                            
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--[if lt IE 9]>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--[if lt IE 9]>
 <h:outputScript name="assets/global/plugins/respond.min.js"/>
 <h:outputScript name="assets/global/plugins/excanvas.min.js"/> 
 <![endif]-->
 
-        <h:outputScript name="assets/global/plugins/jquery.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/js.cookie.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"/>
+	<h:outputScript name="assets/global/plugins/jquery.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript" />
+	<h:outputScript name="assets/global/plugins/js.cookie.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+		type="text/javascript" />
+	<h:outputScript name="assets/global/plugins/jquery.blockui.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/uniform/jquery.uniform.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"
+		type="text/javascript" />
 
-        <h:outputScript name="assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"/>
+	<h:outputScript
+		name="assets/global/plugins/select2/js/select2.full.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/jquery-validation/js/additional-methods.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"
+		type="text/javascript" />
 
-        <h:outputScript name="assets/global/scripts/app.min.js" type="text/javascript"/>
+	<h:outputScript name="assets/global/scripts/app.min.js"
+		type="text/javascript" />
 
-        <h:outputScript name="assets/pages/scripts/form-wizard.min.js" type="text/javascript"/>
+	<h:outputScript name="assets/pages/scripts/form-wizard.min.js"
+		type="text/javascript" />
 
-        <h:outputScript name="assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"/>
-  		
-    </h:body>
+	<h:outputScript name="assets/layouts/layout4/scripts/layout.min.js"
+		type="text/javascript" />
+	<h:outputScript name="assets/layouts/layout4/scripts/demo.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="assets/layouts/global/scripts/quick-sidebar.min.js"
+		type="text/javascript" />
+
+</h:body>
 </html>
