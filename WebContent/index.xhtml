@@ -1,315 +1,381 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>CredSys</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="CredSys" />
-        <meta content="" name="Devit e Joab Bremer" />
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>CredSys</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="" name="CredSys" />
+	<meta content="" name="Devit e Joab Bremer" />
 
-        <h:outputStylesheet name="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+		type="text/css" />
+	<h:outputStylesheet
+		name="plugins/simple-line-icons/simple-line-icons.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet name="plugins/bootstrap/css/bootstrap.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet name="plugins/uniform/css/uniform.default.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+		rel="stylesheet" type="text/css" />
 
-        <h:outputStylesheet name="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
- 
-        <h:outputStylesheet name="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <h:outputStylesheet name="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+	<h:outputStylesheet name="plugins/select2/css/select2.min.css"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet
+		name="plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet"
+		type="text/css" />
 
-        <h:outputStylesheet name="assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <h:outputStylesheet name="assets/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <h:outputStylesheet name="assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+	<h:outputStylesheet name="css/components-md.min.css" rel="stylesheet"
+		id="style_components" type="text/css" />
 
-    </h:head>
-    <h:body styleClass="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
-    
-    	<div class="page-header navbar navbar-fixed-top">
-            <div class="page-header-inner ">
-                <div class="page-logo">
-                        <img src="resources/img/logo.png" alt="logo" class="logo" />
-                    <div class="menu-toggler sidebar-toggler"></div>
-                </div>
-                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
-        <div class="page-container">
-        
-            <!-- MENU LATERAL -->
-            <div class="page-sidebar-wrapper">
-                <div class="page-sidebar navbar-collapse collapse">
-                    <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    	<li class="heading">
-                            <h3 class="uppercase">Simulação</h3>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="simulacao" value="Simulação" styleClass="nav-link nav-toggle"></h:link>
-                        </li>                     
-                        
+	<h:outputStylesheet name="css/plugins-md.min.css" rel="stylesheet"
+		type="text/css" />
 
-                        <li class="heading">
-                            <h3 class="uppercase">Cadastros</h3>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="index" value="Clientes" styleClass="nav-link nav-toggle"></h:link>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="financiamento" value="Financiamento" styleClass="nav-link nav-toggle"></h:link>
-                        </li>
-                        <li class="nav-item">
-                            <h:link outcome="parcela" value="Parcelas" styleClass="nav-link nav-toggle"></h:link>
-                        </li>
-                        
-            		</ul>
-                    <!-- END SIDEBAR MENU -->
-                </div>
-                <!-- END SIDEBAR -->
-            </div>
-            <!-- END SIDEBAR -->
-            <!-- BEGIN CONTENT -->
-            <div class="page-content-wrapper">
-                <!-- BEGIN CONTENT BODY -->
-                <div class="page-content">
+	<h:outputStylesheet name="css/layout.min.css" rel="stylesheet"
+		type="text/css" />
 
-                    <!-- BEGIN PAGE BASE CONTENT -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="portlet light bordered" id="form_wizard_1">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class=" icon-layers font-red"></i>
-                                        <span class="caption-subject font-red bold uppercase"> Cadastro de Clientes -
-                                            <span class="step-title"> Passo 1 de 3 </span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="portlet-body form">
-                                    <h:form class="form-horizontal" action="#" id="submit_form" method="POST">
-                                        <div class="form-wizard">
-                                            <div class="form-body">
-                                                <ul class="nav nav-pills nav-justified steps">
-                                                    <li>
-                                                        <a href="#tab1" data-toggle="tab" class="step">
-                                                            <span class="number"> 1 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Dados Pessoais </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab2" data-toggle="tab" class="step">
-                                                            <span class="number"> 2 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Endereço </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab3" data-toggle="tab" class="step active">
-                                                            <span class="number"> 3 </span>
-                                                            <span class="desc">
-                                                                <i class="fa fa-check"></i> Contato </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <div id="bar" class="progress progress-striped" role="progressbar">
-                                                    <div class="progress-bar progress-bar-success"> </div>
-                                                </div>
-                                                <div class="tab-content">
-                                                    <div class="alert alert-danger display-none">
-                                                        <button class="close" data-dismiss="alert"></button> Existem alguns erros. Verifique os dados! </div>
-                                                    <div class="alert alert-success display-none">
-                                                        <button class="close" data-dismiss="alert"></button> Tudo certo! Vamos continuar! </div>
-                                                    <div class="tab-pane active" id="tab1">
-                                                        <h3 class="block">Forneça os dados</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Nome
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="name" id="nome"  value="#{clienteBean.PrepareTosave().nome}" class="form-control" title="Nome" />
-                                                                <span class="help-block"> Nome Completo </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Gênero
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:selectOneRadio name="gender" value="#{clienteBean.PrepareTosave().genero}" class="radio-list">
-                                                            		<f:selectItem itemLabel="Masculino" itemValue="M" />
-                                                            		<f:selectItem  itemLabel="Feminino" itemValue="F"/>
-                                                            	</h:selectOneRadio>
-                                                                <div id="form_gender_error"> </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">CPF
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="cpf" id="cpf" value="#{clienteBean.PrepareTosave().cpf}" class="form-control" title="CPF" />
-                                                                <span class="help-block"> Apenas números </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">RG
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="rg" id="identidade" value="#{clienteBean.PrepareTosave().identidade}" class="form-control" title="RG" />
-                                                                <span class="help-block"> Apenas números </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Email
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="email" id="email" value="#{clienteBean.PrepareTosave().email}" class="form-control" title="E-mail:" />
-                                                                <span class="help-block"> Forneça um e-mail válido </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Rendimentos
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="rendimentos" id="rendimentos" value="#{clienteBean.PrepareTosave().rendimentos}" class="form-control" title="Rendimentos:" />
-                                                                <span class="help-block"> Valor bruto dos rendimentos </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Garantias
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="garantias" id="garantias" value="#{clienteBean.PrepareTosave().garantias}" class="form-control" title="Garantias" />
-                                                                <span class="help-block"> Soma dos valores das propriedades do cliente. </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane" id="tab2">
-                                                        <h3 class="block">Endereço</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Endereço
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:inputText name="endereco" id="endereco" value="#{enderecoBean.PrepareTosave().endereco}" class="form-control" title="Endereco" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Bairro
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:inputText name="bairro" id="bairro" value="#{enderecoBean.PrepareTosave().bairro}" class="form-control" title="Bairro" />
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">CEP
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                           	 <h:inputText name="cep" id="cep" value="#{enderecoBean.PrepareTosave().cep}" class="form-control" title="CEP" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Cidade
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                          		<h:inputText name="cidade" id="cidade" value="#{enderecoBean.PrepareTosave().cidade}" class="form-control" title="Cidade" />
-                                                            </div>
-                                                        </div>
-                                                       
-                                                    </div>
-                                                    <div class="tab-pane" id="tab3">
-                                                        <h3 class="block">Contato</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Tipo
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                            	<h:inputText name="tipo_contato" id="tipo_contato" value="#{contatoBean.PrepareTosave().tipo}" class="form-control" title="Tipo Contato" />
-                                                                <span class="help-block"> </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Numero
-                                                                <span class="required"> * </span>
-                                                            </label>
-                                                            <div class="col-md-4">
-                                                                <h:inputText name="numero" id="numero" value="#{contatoBean.PrepareTosave().contato}" class="form-control" title="Numero" />
-                                                                <span class="help-block"> </span>
-                                                            </div>
-                                                        </div>                                                    
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-actions">
-                                                <div class="row">
-                                                    <div class="col-md-offset-3 col-md-9">
-                                                        <a href="javascript:;" class="btn yellow-lemon button-previous">
-                                                            <i class="fa fa-angle-left"></i> Voltar </a>
-                                                        <a href="javascript:;" class="btn blue button-next"> Próximo
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                        <h:commandLink action="#{clienteBean.ClienteSave()}" value="Salvar" class="btn green-seagreen button-submit">
-                                                        	<i class="fa fa-save"></i>
-                                                        </h:commandLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </h:form>
+	<h:outputStylesheet name="css/light.min.css" rel="stylesheet"
+		type="text/css" id="style_color" />
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END PAGE BASE CONTENT -->
-                </div>
-                <!-- END CONTENT BODY -->
-            </div>
-            <!-- END CONTENT -->
-        </div>
-        <!-- END CONTAINER -->
-        <!--[if lt IE 9]>
+
+	<h:outputStylesheet name="css/custom.min.css" rel="stylesheet"
+		type="text/css" />
+
+</h:head>
+<h:body
+	styleClass="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
+
+	<div class="page-header navbar navbar-fixed-top">
+		<div class="page-header-inner ">
+			<div class="page-logo">
+				<img src="resources/img/logo.png" alt="logo" class="logo" />
+				<div class="menu-toggler sidebar-toggler"></div>
+			</div>
+			<a href="javascript:;" class="menu-toggler responsive-toggler"
+				data-toggle="collapse" data-target=".navbar-collapse"> </a>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="page-container">
+
+		<!-- MENU LATERAL -->
+		<div class="page-sidebar-wrapper">
+			<div class="page-sidebar navbar-collapse collapse">
+				<ul class="page-sidebar-menu   " data-keep-expanded="false"
+					data-auto-scroll="true" data-slide-speed="200">
+					<li class="heading">
+						<h3 class="uppercase">Simulação</h3>
+					</li>
+					<li class="nav-item"><h:link outcome="simulacao"
+							value="Simulação" styleClass="nav-link nav-toggle"></h:link></li>
+
+
+					<li class="heading">
+						<h3 class="uppercase">Cadastros</h3>
+					</li>
+					<li class="nav-item"><h:link outcome="index" value="Clientes"
+							styleClass="nav-link nav-toggle"></h:link></li>
+					<li class="nav-item"><h:link outcome="financiamento"
+							value="Financiamento" styleClass="nav-link nav-toggle"></h:link>
+					</li>
+					<li class="nav-item"><h:link outcome="parcela"
+							value="Parcelas" styleClass="nav-link nav-toggle"></h:link></li>
+
+				</ul>
+				<!-- END SIDEBAR MENU -->
+			</div>
+			<!-- END SIDEBAR -->
+		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<!-- BEGIN CONTENT BODY -->
+			<div class="page-content">
+
+				<!-- BEGIN PAGE BASE CONTENT -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet light bordered" id="form_wizard_1">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class=" icon-layers font-red"></i> <span
+										class="caption-subject font-red bold uppercase">
+										Cadastro de Clientes - <span class="step-title"> Passo
+											1 de 3 </span>
+									</span>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<h:form class="form-horizontal" action="#" id="submit_form"
+									method="POST">
+									<div class="form-wizard">
+										<div class="form-body">
+											<ul class="nav nav-pills nav-justified steps">
+												<li><a href="#tab1" data-toggle="tab" class="step">
+														<span class="number"> 1 </span> <span class="desc">
+															<i class="fa fa-check"></i> Dados Pessoais
+													</span>
+												</a></li>
+												<li><a href="#tab2" data-toggle="tab" class="step">
+														<span class="number"> 2 </span> <span class="desc">
+															<i class="fa fa-check"></i> Endereço
+													</span>
+												</a></li>
+												<li><a href="#tab3" data-toggle="tab"
+													class="step active"> <span class="number"> 3 </span> <span
+														class="desc"> <i class="fa fa-check"></i> Contato
+													</span>
+												</a></li>
+											</ul>
+											<div id="bar" class="progress progress-striped"
+												role="progressbar">
+												<div class="progress-bar progress-bar-success"></div>
+											</div>
+											<div class="tab-content">
+												<div class="alert alert-danger display-none">
+													<button class="close" data-dismiss="alert"></button>
+													Existem alguns erros. Verifique os dados!
+												</div>
+												<div class="alert alert-success display-none">
+													<button class="close" data-dismiss="alert"></button>
+													Tudo certo! Vamos continuar!
+												</div>
+												<div class="tab-pane active" id="tab1">
+													<h3 class="block">Forneça os dados</h3>
+													<div class="form-group">
+														<label class="control-label col-md-3">Nome <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="name" id="nome"
+																value="#{clienteBean.PrepareTosave().nome}"
+																class="form-control" title="Nome" />
+															<span class="help-block"> Nome Completo </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Gênero <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:selectOneRadio name="gender"
+																value="#{clienteBean.PrepareTosave().genero}"
+																class="radio-list">
+																<f:selectItem itemLabel="Masculino" itemValue="M" />
+																<f:selectItem itemLabel="Feminino" itemValue="F" />
+															</h:selectOneRadio>
+															<div id="form_gender_error"></div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">CPF <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="cpf" id="cpf"
+																value="#{clienteBean.PrepareTosave().cpf}"
+																class="form-control" title="CPF" />
+															<span class="help-block"> Apenas números </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">RG <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="rg" id="identidade"
+																value="#{clienteBean.PrepareTosave().identidade}"
+																class="form-control" title="RG" />
+															<span class="help-block"> Apenas números </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Email <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="email" id="email"
+																value="#{clienteBean.PrepareTosave().email}"
+																class="form-control" title="E-mail:" />
+															<span class="help-block"> Forneça um e-mail válido
+															</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Rendimentos
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="rendimentos" id="rendimentos"
+																value="#{clienteBean.PrepareTosave().rendimentos}"
+																class="form-control" title="Rendimentos:" />
+															<span class="help-block"> Valor bruto dos
+																rendimentos </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Garantias <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="garantias" id="garantias"
+																value="#{clienteBean.PrepareTosave().garantias}"
+																class="form-control" title="Garantias" />
+															<span class="help-block"> Soma dos valores das
+																propriedades do cliente. </span>
+														</div>
+													</div>
+												</div>
+												<div class="tab-pane" id="tab2">
+													<h3 class="block">Endereço</h3>
+													<div class="form-group">
+														<label class="control-label col-md-3">Endereço <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="endereco" id="endereco"
+																value="#{enderecoBean.PrepareTosave().endereco}"
+																class="form-control" title="Endereco" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Bairro <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="bairro" id="bairro"
+																value="#{enderecoBean.PrepareTosave().bairro}"
+																class="form-control" title="Bairro" />
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-md-3">CEP <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="cep" id="cep"
+																value="#{enderecoBean.PrepareTosave().cep}"
+																class="form-control" title="CEP" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Cidade <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="cidade" id="cidade"
+																value="#{enderecoBean.PrepareTosave().cidade}"
+																class="form-control" title="Cidade" />
+														</div>
+													</div>
+
+												</div>
+												<div class="tab-pane" id="tab3">
+													<h3 class="block">Contato</h3>
+													<div class="form-group">
+														<label class="control-label col-md-3">Tipo <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="tipo_contato" id="tipo_contato"
+																value="#{contatoBean.PrepareTosave().tipo}"
+																class="form-control" title="Tipo Contato" />
+															<span class="help-block"> </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Numero <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<h:inputText name="numero" id="numero"
+																value="#{contatoBean.PrepareTosave().contato}"
+																class="form-control" title="Numero" />
+															<span class="help-block"> </span>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="form-actions">
+											<div class="row">
+												<div class="col-md-offset-3 col-md-9">
+													<a href="javascript:;"
+														class="btn yellow-lemon button-previous"> <i
+														class="fa fa-angle-left"></i> Voltar
+													</a> <a href="javascript:;" class="btn blue button-next">
+														Próximo <i class="fa fa-angle-right"></i>
+													</a>
+													<h:commandLink action="#{clienteBean.ClienteSave()}"
+														value="Salvar" class="btn green-seagreen button-submit">
+														<i class="fa fa-save"></i>
+													</h:commandLink>
+												</div>
+											</div>
+										</div>
+									</div>
+								</h:form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE BASE CONTENT -->
+			</div>
+			<!-- END CONTENT BODY -->
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!--[if lt IE 9]>
 <h:outputScript name="assets/global/plugins/respond.min.js"/>
 <h:outputScript name="assets/global/plugins/excanvas.min.js"/> 
 <![endif]-->
 
-        <h:outputScript name="assets/global/plugins/jquery.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/js.cookie.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"/>
+	<h:outputScript name="plugins/jquery.min.js" type="text/javascript" />
+	<h:outputScript name="plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript" />
+	<h:outputScript name="plugins/js.cookie.min.js" type="text/javascript" />
+	<h:outputScript
+		name="plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+		type="text/javascript" />
+	<h:outputScript name="plugins/jquery.blockui.min.js"
+		type="text/javascript" />
+	<h:outputScript name="plugins/uniform/jquery.uniform.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="plugins/bootstrap-switch/js/bootstrap-switch.min.js"
+		type="text/javascript" />
 
-        <h:outputScript name="assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"/>
+	<h:outputScript name="plugins/select2/js/select2.full.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="plugins/jquery-validation/js/jquery.validate.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="plugins/jquery-validation/js/additional-methods.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		name="plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"
+		type="text/javascript" />
 
-        <h:outputScript name="assets/global/scripts/app.min.js" type="text/javascript"/>
+	<h:outputScript name="js/app.min.js" type="text/javascript" />
 
-        <h:outputScript name="assets/pages/scripts/form-wizard.min.js" type="text/javascript"/>
+	<h:outputScript name="js/form-wizard.min.js" type="text/javascript" />
 
-        <h:outputScript name="assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"/>
-        <h:outputScript name="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"/>
-  		
-    </h:body>
+	<h:outputScript name="js/layout.min.js" type="text/javascript" />
+	<h:outputScript name="js/demo.min.js" type="text/javascript" />
+	<h:outputScript name="js/quick-sidebar.min.js" type="text/javascript" />
+</h:body>
 </html>

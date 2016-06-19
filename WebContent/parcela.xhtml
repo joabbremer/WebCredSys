@@ -6,46 +6,51 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>CredSys</title>
-	<h:outputStylesheet name="css/jsfcrud.css" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<meta content="" name="CredSys" />
 	<meta content="" name="Devit e Joab Bremer" />
 
 	<h:outputStylesheet
-		name="assets/global/plugins/font-awesome/css/font-awesome.min.css"
+		name="plugins/font-awesome/css/font-awesome.min.css"
 		rel="stylesheet" type="text/css" />
 	<h:outputStylesheet
-		name="assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+		name="plugins/simple-line-icons/simple-line-icons.min.css"
 		rel="stylesheet" type="text/css" />
 	<h:outputStylesheet
-		name="assets/global/plugins/bootstrap/css/bootstrap.min.css"
+		name="plugins/bootstrap/css/bootstrap.min.css"
 		rel="stylesheet" type="text/css" />
 	<h:outputStylesheet
-		name="assets/global/plugins/uniform/css/uniform.default.css"
+		name="plugins/uniform/css/uniform.default.css"
 		rel="stylesheet" type="text/css" />
 	<h:outputStylesheet
-		name="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+		name="plugins/bootstrap-switch/css/bootstrap-switch.min.css"
 		rel="stylesheet" type="text/css" />
 
 	<h:outputStylesheet
-		name="assets/global/plugins/select2/css/select2.min.css"
+		name="plugins/select2/css/select2.min.css"
 		rel="stylesheet" type="text/css" />
 	<h:outputStylesheet
-		name="assets/global/plugins/select2/css/select2-bootstrap.min.css"
+		name="plugins/select2/css/select2-bootstrap.min.css"
 		rel="stylesheet" type="text/css" />
 
-	<h:outputStylesheet name="assets/global/css/components-md.min.css"
+	<h:outputStylesheet 
+		name="css/components-md.min.css"
 		rel="stylesheet" id="style_components" type="text/css" />
-	<h:outputStylesheet name="assets/global/css/plugins-md.min.css"
+		
+	<h:outputStylesheet 
+		name="css/plugins-md.min.css"
 		rel="stylesheet" type="text/css" />
 
-	<h:outputStylesheet name="assets/layouts/layout4/css/layout.min.css"
+	<h:outputStylesheet name="css/layout.min.css"
 		rel="stylesheet" type="text/css" />
+	
 	<h:outputStylesheet
-		name="assets/layouts/layout4/css/themes/light.min.css"
+		name="css/light.min.css"
 		rel="stylesheet" type="text/css" id="style_color" />
-	<h:outputStylesheet name="assets/layouts/layout4/css/custom.min.css"
+	
+	
+	<h:outputStylesheet name="css/custom.min.css"
 		rel="stylesheet" type="text/css" />
 
 </h:head>
@@ -251,54 +256,43 @@
 <h:outputScript name="assets/global/plugins/excanvas.min.js"/> 
 <![endif]-->
 
-	<h:outputScript name="assets/global/plugins/jquery.min.js"
+	<h:outputScript name="plugins/jquery.min.js" type="text/javascript" />
+	<h:outputScript name="plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript" />
+	<h:outputScript name="plugins/js.cookie.min.js" type="text/javascript" />
+	<h:outputScript
+		name="plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
 		type="text/javascript" />
 	<h:outputScript
-		name="assets/global/plugins/bootstrap/js/bootstrap.min.js"
+		name="plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 		type="text/javascript" />
-	<h:outputScript name="assets/global/plugins/js.cookie.min.js"
+	<h:outputScript name="plugins/jquery.blockui.min.js"
 		type="text/javascript" />
-	<h:outputScript
-		name="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
-		type="text/javascript" />
-	<h:outputScript
-		name="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
-		type="text/javascript" />
-	<h:outputScript name="assets/global/plugins/jquery.blockui.min.js"
+	<h:outputScript name="plugins/uniform/jquery.uniform.min.js"
 		type="text/javascript" />
 	<h:outputScript
-		name="assets/global/plugins/uniform/jquery.uniform.min.js"
-		type="text/javascript" />
-	<h:outputScript
-		name="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"
+		name="plugins/bootstrap-switch/js/bootstrap-switch.min.js"
 		type="text/javascript" />
 
-	<h:outputScript
-		name="assets/global/plugins/select2/js/select2.full.min.js"
+	<h:outputScript name="plugins/select2/js/select2.full.min.js"
 		type="text/javascript" />
 	<h:outputScript
-		name="assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+		name="plugins/jquery-validation/js/jquery.validate.min.js"
 		type="text/javascript" />
 	<h:outputScript
-		name="assets/global/plugins/jquery-validation/js/additional-methods.min.js"
+		name="plugins/jquery-validation/js/additional-methods.min.js"
 		type="text/javascript" />
 	<h:outputScript
-		name="assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"
+		name="plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"
 		type="text/javascript" />
 
-	<h:outputScript name="assets/global/scripts/app.min.js"
-		type="text/javascript" />
+	<h:outputScript name="js/app.min.js" type="text/javascript" />
 
-	<h:outputScript name="assets/pages/scripts/form-wizard.min.js"
-		type="text/javascript" />
+	<h:outputScript name="js/form-wizard.min.js" type="text/javascript" />
 
-	<h:outputScript name="assets/layouts/layout4/scripts/layout.min.js"
-		type="text/javascript" />
-	<h:outputScript name="assets/layouts/layout4/scripts/demo.min.js"
-		type="text/javascript" />
-	<h:outputScript
-		name="assets/layouts/global/scripts/quick-sidebar.min.js"
-		type="text/javascript" />
+	<h:outputScript name="js/layout.min.js" type="text/javascript" />
+	<h:outputScript name="js/demo.min.js" type="text/javascript" />
+	<h:outputScript name="js/quick-sidebar.min.js" type="text/javascript" />
 
 </h:body>
 </html>
