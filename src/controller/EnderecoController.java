@@ -48,6 +48,15 @@ public class EnderecoController {
 		this.enderecoModelSelected = enderecoModel; 
 	}
 	
+	public void LimparEndereco(){
+		EnderecoModel enderecoModel = EnderecoModel.getInstance();
+		enderecoModel.setEndereco(null);
+		enderecoModel.setBairro(null);
+		enderecoModel.setCep(0);
+		enderecoModel.setCidade(null);
+		
+	}
+	
 	public void EnderecoUpdate() throws ConnectException{
 		EnderecoDao enderecoDao = new EnderecoDao();
 		enderecoDao.update(ConvertModelToEntitie(Selected()));

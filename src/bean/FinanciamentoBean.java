@@ -1,18 +1,23 @@
 package bean;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.faces.view.ViewScoped;
 
-import controller.ParcelaController;
+import com.sun.faces.taglib.html_basic.DataTableTag;
+
+import controller.ClienteController;
+import controller.FinanciamentoController;
 import controller.SimulacaoController;
+import dao.Exception.ConnectException;
 import model.ParcelaModel;
-import model.SimulacaoModel;
+
 
 @ManagedBean
 @SessionScoped
@@ -26,18 +31,9 @@ public class FinanciamentoBean {
 	}
 	
 	public DataModel<ParcelaModel> ListParcela(){
-		SimulacaoController simulacaoController = SimulacaoController.getControllerInstance();
-		SimulacaoModel simulacaoModel = simulacaoController.ResultSimule();
-		ParcelaModel parcelaModel = ParcelaModel.getInstance();	
-		List<ParcelaModel> parcela = new ArrayList<ParcelaModel>();
-		for (int i = 0; i < simulacaoModel.getQtParcelas(); i++) {
-			parcela.add(parcelaModel);
-			
-		}
+		FinanciamentoController finanController = FinanciamentoController.getControllerInstance();
+		parcDataModel = new  ListDataModel<ParcelaModel>(finanController.ListParcelas());		
 		
-		
-		
-		parcDataModel = new  ListDataModel<ParcelaModel>(parcela);		
 		return parcDataModel;
 		 
 	}
@@ -48,6 +44,16 @@ public class FinanciamentoBean {
 
 	public void setParcDataModel(DataModel<ParcelaModel> parcDataModel) {
 		this.parcDataModel = parcDataModel;
+	}
+	
+	public void Financiar() throws ConnectException{
+			ClienteController clienteController = ClienteController.getControllerInstance();
+			clienteController.ClienteUpdate();
+			ListParcela();
+			 
+			
+			
+			
 	}
 	
 
