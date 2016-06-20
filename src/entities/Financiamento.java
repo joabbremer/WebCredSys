@@ -2,6 +2,9 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import model.ParcelaModel;
+
 import java.util.List;
 
 
@@ -29,6 +32,14 @@ public class Financiamento implements Serializable {
 
 	public Financiamento() {
 	}
+	
+
+	public Financiamento(int idFinanciamento, List<Parcela> parcelas) {
+		super();
+		this.idFinanciamento = idFinanciamento;
+		this.parcelas = parcelas;
+	}
+
 
 	public static EntityManager getEntityManager(){
 		

@@ -10,16 +10,16 @@ import dao.Exception.ConnectException;
 import entities.Financiamento;
 import model.FinanciamentoModel;
 
-public class FinanciamentoDao implements CrudInterfaceDao<FinanciamentoModel> {
+public class FinanciamentoDao implements CrudInterfaceDao<Financiamento> {
 
 	@Override
-	public List<FinanciamentoModel> listAll() throws ConnectException {
+	public List<Financiamento> listAll() throws ConnectException {
 		EntityManager em = Financiamento.getEntityManager();
 		return em.createNamedQuery("listAllFinan").getResultList();
 	}
 
 	@Override
-	public List<FinanciamentoModel> select(int id) throws ConnectException {
+	public List<Financiamento> select(int id) throws ConnectException {
 		EntityManager em = Financiamento.getEntityManager();
 		Query query = em.createNamedQuery("selectIdFinan");		
 		query.setParameter("id_financiamento",id);
@@ -27,7 +27,7 @@ public class FinanciamentoDao implements CrudInterfaceDao<FinanciamentoModel> {
 	}
 
 	@Override
-	public void update(FinanciamentoModel financiamento) throws ConnectException {
+	public void update(Financiamento financiamento) throws ConnectException {
 		EntityManager em = Financiamento.getEntityManager();
 		em.getTransaction().begin();
 		Query query = em.createNamedQuery("updateFinan");
@@ -39,16 +39,16 @@ public class FinanciamentoDao implements CrudInterfaceDao<FinanciamentoModel> {
 	}
 
 	@Override
-	public FinanciamentoModel save(FinanciamentoModel financiamento) throws ConnectException {
+	public Financiamento save(Financiamento financiamento) throws ConnectException {
 		EntityManager em = Financiamento.getEntityManager();
 		em.getTransaction().begin();
 		em.persist(financiamento);
 		em.getTransaction().commit();
-		return financiamento;
+		return null;
 	}
 
 	@Override
-	public void delete(FinanciamentoModel obj) throws ConnectException {
+	public void delete(Financiamento financiamento) throws ConnectException {
 		// TODO Auto-generated method stub
 		
 	}

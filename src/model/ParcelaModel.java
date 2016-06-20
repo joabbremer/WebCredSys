@@ -1,6 +1,5 @@
 package model;
 
-import java.math.BigDecimal;
 
 
 public class ParcelaModel {
@@ -13,22 +12,25 @@ public class ParcelaModel {
 	private Double valorDesconto;
 	private Double valorJuro;
 	private Double valorTotal;
-	
+	private Double valorPago;
 	
 	public ParcelaModel() {
 	
 	}
 
-	public ParcelaModel(Double dataPagamento, Double dataVencimento, Double valor, Double valorDesconto,
-			Double valorJuro, Double valorTotal) {
+	public ParcelaModel(int idParcela, Double dataPagamento, Double dataVencimento, Double valor, Double valorDesconto,
+			Double valorJuro, Double valorTotal, Double valorPago) {
 		super();
+		this.idParcela = idParcela;
 		this.dataPagamento = dataPagamento;
 		this.dataVencimento = dataVencimento;
 		this.valor = valor;
 		this.valorDesconto = valorDesconto;
 		this.valorJuro = valorJuro;
 		this.valorTotal = valorTotal;
+		this.valorPago = valorPago;
 	}
+
 
 
 
@@ -94,7 +96,14 @@ public class ParcelaModel {
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+	
+	public Double getValorPago() {
+		return valorPago;
+	}
 
+	public void setValorPago(Double valorPago) {
+		this.valorPago = valorPago;
+	}
 
 
 	@Override

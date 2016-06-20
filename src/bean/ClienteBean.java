@@ -1,20 +1,15 @@
 package bean;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.view.ViewScoped;
 
 import controller.ClienteController;
-import controller.ParcelaController;
 import dao.Exception.ConnectException;
-import entities.Cliente;
-import entities.Financiamento;
-import entities.Parcela;
 import model.ClienteModel;
-import model.ParcelaModel;
+
 
 @ManagedBean
 @SessionScoped
@@ -30,15 +25,6 @@ public class ClienteBean {
 		this.cpf = cpf;
 	}
 
-	private ClienteController clienteController = null;
-	
-	
-	public ClienteController getControllerInstance(){
-		if(clienteController == null){
-			clienteController = new ClienteController();
-		}
-		return clienteController;
-	}
 	
 	
 	public List<ClienteModel> ClienteListAll() throws ConnectException{
@@ -46,22 +32,26 @@ public class ClienteBean {
 		return clienteController.ClienteListAll();
 			
 	}
+	public void ShareByCpf() throws ConnectException{
+		SelectClienteByCpf();
+		
+	}
 	
 	public ClienteModel SelectClienteByCpf() throws ConnectException{
 		
-		ClienteController clienteController = getControllerInstance();
+		ClienteController clienteController = ClienteController.getControllerInstance();
 		return clienteController.SelectByCpf(getCpf());
 		
 	}
 	
 	
 	public void ClienteSave() throws ConnectException{
-		ClienteController clienteController = getControllerInstance();
+		ClienteController clienteController = ClienteController.getControllerInstance();
 		clienteController.ClienteSave();
 	}
 	
 	public void ClienteUpdate() throws ConnectException{
-		ClienteController clientControl = getControllerInstance();
+		ClienteController clientControl = ClienteController.getControllerInstance();
 		clientControl.ClienteUpdate();
 	}
 	
@@ -71,13 +61,13 @@ public class ClienteBean {
 	}
 	
 	public ClienteModel Selected(){
-		ClienteController clientControl = getControllerInstance();
+		ClienteController clientControl = ClienteController.getControllerInstance();
 		return clientControl.Selected();
 				
 	}
 	
 	public String PrepareToEdit(ClienteModel clienteModel){
-		ClienteController clientControl = getControllerInstance();
+		ClienteController clientControl = ClienteController.getControllerInstance();
 		clientControl.PrepareToEdit(clienteModel);		
 		return "Edit";
 		
