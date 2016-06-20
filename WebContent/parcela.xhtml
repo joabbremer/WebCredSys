@@ -108,7 +108,7 @@
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<h:form class="form-horizontal" action="#" id="submit_form"
+								<h:form class="form-horizontal" id="submit_form"
 									method="POST">
 									<div class="form-body"></div>
 									<div class="form-actions">
@@ -188,7 +188,7 @@
 														<h:outputText value="Status" />
 													</f:facet>
 													<!-- Esse botão deve ser html puro para chamar o modal -->
-													<a class="btn red-flamingo button-submit" data-toggle="modal" href="#confirmaPagamento"> Pagar </a>													
+													<h:commandLink onclick="PF('pagar').show();" action="#{parcelaBean.PrepareToPay(parcela)}" value="Pagar" class="btn red-flamingo button-submit"  />												
 												</h:column>
 												<h:column headerText="SKU"
 													style="text-align: center; width: 100px">
@@ -200,14 +200,16 @@
 												<h:column headerText="SKU"
 													style="text-align: center; width: 100px">
 													<f:facet name="header">
-														<h:outputText value="Valor Total" />
+														<h:outputText value="Valor Pago" />
 													</f:facet>
-													<h:outputText value="#{parcela.dataPagamento}" />
+													<h:outputText value="#{parcela.valorPago}" />
 												</h:column>
 
 											</h:dataTable>
 										</h:panelGroup>
-
+										   
+										
+									
 
 									</h:form>
 								</div>
@@ -220,7 +222,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                    <h:form action="#">
+                                                    <h:form >
                                                     
                                                     	<div class="form-group">
 															<label class="control-label col-md-3">Valor
@@ -228,12 +230,12 @@
 															</label>
 															<div class="col-md-4">
 																<h:inputText id="valor"
-																	value="#{simulacaoBean.PrepareToSimule().valor}"
+																	value="#{parcelaBean.valor}"
 																	class="form-control" title="Valor" required="true" />
 															</div>
 														</div>
                                                     	<h:commandLink
-														action="#{parcelaBean.PrepareToPay(parcela)}"
+														action="#{parcelaBean.PrepareToPay()}"
 														value="Pagar" class="btn red-flamingo button-submit" />
                                                     </h:form>
 	                                                    
@@ -252,8 +254,8 @@
 		</div>
 	</div>
 	<!--[if lt IE 9]>
-<h:outputScript name="assets/global/plugins/respond.min.js"/>
-<h:outputScript name="assets/global/plugins/excanvas.min.js"/> 
+<h:outputScript name="assets/global/Belgians/respond.min.js"/>
+<h:outputScript name="assets/global/Belgians/excanvas.min.js"/> 
 <![endif]-->
 
 	<h:outputScript name="plugins/jquery.min.js" type="text/javascript" />

@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import model.ContatoModel;
+import model.EnderecoModel;
 import model.FinanciamentoModel;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Entity(name="Cliente")
@@ -16,8 +17,7 @@ import java.util.List;
 	@NamedQuery(name="selectByCpf", query="SELECT c FROM Cliente c WHERE c.cpf = :cpf"),
 	@NamedQuery(name="selectIdCliente", query="SELECT c FROM Cliente c WHERE c.idCliente =:id_cliente"),
 	@NamedQuery(name="updateCliente", query="UPDATE Cliente c SET c.cpf = :cpf, c.email = :email, c.identidade = :identidade"
-			+ ", c.nome = :nome, c.rendaConjuge = :renda_conjuge, c.rendaLiquida = :renda_liquida "
-			+ ", c.valorAutomoveis = :valor_automoveis, c.valorImoveis = :valor_imoveis WHERE c.idCliente =:id_cliente"),
+			+ ", c.nome = :nome, c.rendimentos = :rendimentos, c.garantias = :garantias WHERE c.idCliente =:id_cliente"),
 	
 	
 })
@@ -50,17 +50,12 @@ public class Cliente implements Serializable {
 	@Column(name="GENERO")
 	private char genero;
 
-	@Column(name="renda_conjuge", precision=19)
-	private Double rendaConjuge;
+	@Column(name="RENDIMENTOS", precision=19)
+	private Double rendimentos;
 
-	@Column(name="renda_liquida", precision=19)
-	private Double rendaLiquida;
-
-	@Column(name="valor_automoveis", precision=19)
-	private Double valorAutomoveis;
-
-	@Column(name="valor_imoveis", precision=19)
-	private Double valorImoveis;
+	@Column(name="GARANTIAS", precision=19)
+	private Double garantias;
+	
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<Contato> contatos;
@@ -75,46 +70,26 @@ public class Cliente implements Serializable {
 	}
 	
 	
-	public Cliente(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge, Double rendaLiquida,
-			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos) {
-		super();
-		this.cpf = cpf;
-		this.email = email;
-		this.identidade = identidade;
-		this.nome = nome;
-		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
-		this.contatos = contatos;
-		
-	}
-	
-	public Cliente(String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge, Double rendaLiquida,
-			Double valorAutomoveis, Double valorImoveis, List<Contato> contatos, List<Endereco> enderecos,
+
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero,
+			Double rendimentos, Double garantias, List<Contato> contatos, List<Endereco> enderecos,
 			List<Financiamento> financiamentos) {
 		super();
+		this.idCliente = idCliente;
 		this.cpf = cpf;
 		this.email = email;
 		this.identidade = identidade;
 		this.nome = nome;
 		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
+		this.rendimentos = rendimentos;
+		this.garantias = garantias;
 		this.contatos = contatos;
 		this.enderecos = enderecos;
 		this.financiamentos = financiamentos;
 	}
-
-
 	
-
-	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<Contato> contatos,
-			List<Endereco> enderecos, List<Financiamento> financiamentos) {
+	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero,
+			Double rendimentos, Double garantias) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
@@ -122,31 +97,14 @@ public class Cliente implements Serializable {
 		this.identidade = identidade;
 		this.nome = nome;
 		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
-		this.contatos = contatos;
-		this.enderecos = enderecos;
-		this.financiamentos = financiamentos;
+		this.rendimentos = rendimentos;
+		this.garantias = garantias;
 	}
 
 
 
-	public Cliente(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis) {
-		super();
-		this.idCliente = idCliente;
-		this.cpf = cpf;
-		this.email = email;
-		this.identidade = identidade;
-		this.nome = nome;
-		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
-	}
+
+
 
 
 
@@ -214,37 +172,21 @@ public static Cliente getInstance(){
 		this.genero = genero;
 	}
 
-
-	public Double getRendaConjuge() {
-		return this.rendaConjuge;
+	
+	public Double getRendimentos() {
+		return rendimentos;
 	}
 
-	public void setRendaConjuge(Double rendaConjuge) {
-		this.rendaConjuge = rendaConjuge;
+	public void setRendimentos(Double rendimentos) {
+		this.rendimentos = rendimentos;
 	}
 
-	public Double getRendaLiquida() {
-		return this.rendaLiquida;
+	public Double getGarantias() {
+		return garantias;
 	}
 
-	public void setRendaLiquida(Double rendaLiquida) {
-		this.rendaLiquida = rendaLiquida;
-	}
-
-	public Double getValorAutomoveis() {
-		return this.valorAutomoveis;
-	}
-
-	public void setValorAutomoveis(Double valorAutomoveis) {
-		this.valorAutomoveis = valorAutomoveis;
-	}
-
-	public Double getValorImoveis() {
-		return this.valorImoveis;
-	}
-
-	public void setValorImoveis(Double valorImoveis) {
-		this.valorImoveis = valorImoveis;
+	public void setGarantias(Double garantias) {
+		this.garantias = garantias;
 	}
 
 	public List<Contato> getContatos() {
@@ -255,7 +197,6 @@ public static Cliente getInstance(){
 		this.contatos = contatos;
 	}
 
-
 	public List<Endereco> getEnderecos() {
 		return this.enderecos;
 	}
@@ -264,13 +205,9 @@ public static Cliente getInstance(){
 		this.enderecos = enderecos;
 	}
 
-
-
 	public List<Financiamento> getFinanciamentos() {
 		return financiamentos;
 	}
-
-
 
 	public void setFinanciamentos(List<Financiamento> financiamentos) {
 		this.financiamentos = financiamentos;

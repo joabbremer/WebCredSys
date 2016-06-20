@@ -6,6 +6,7 @@ import java.util.List;
 
 public class FinanciamentoModel {
 	
+	private static FinanciamentoModel instance;
 	private int idFinanciamento;
 	private List<ParcelaModel> parcelas;
 	
@@ -22,6 +23,12 @@ public class FinanciamentoModel {
 		this.parcelas = parcelas;
 	}
 
+	public static FinanciamentoModel getInstance(){
+		if(instance == null){
+			instance = new FinanciamentoModel();
+		}
+		return instance;
+	}
 
 
 	public int getIdFinanciamento() {

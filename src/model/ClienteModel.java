@@ -14,10 +14,8 @@ public class ClienteModel {
 	private String identidade;
 	private String nome;
 	private char genero;
-	private Double rendaConjuge;
-	private Double rendaLiquida ;
-	private Double valorAutomoveis;
-	private Double valorImoveis;
+	private Double rendimentos;
+	private Double garantias;
 	private List<ContatoModel> contatos;
 	private List<EnderecoModel> enderecos;
 	private List<FinanciamentoModel> financiamentos;
@@ -26,9 +24,10 @@ public class ClienteModel {
 		super();
 	}
 	
-	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos,
-			List<EnderecoModel> enderecos, List<FinanciamentoModel> financiamentos) {
+	
+	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero,
+			Double rendimentos, Double garantias, List<ContatoModel> contatos, List<EnderecoModel> enderecos,
+			List<FinanciamentoModel> financiamentos) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
@@ -36,17 +35,15 @@ public class ClienteModel {
 		this.identidade = identidade;
 		this.nome = nome;
 		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
+		this.rendimentos = rendimentos;
+		this.garantias = garantias;
 		this.contatos = contatos;
 		this.enderecos = enderecos;
 		this.financiamentos = financiamentos;
 	}
-	
-	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero, Double rendaConjuge,
-			Double rendaLiquida, Double valorAutomoveis, Double valorImoveis, List<ContatoModel> contatos) {
+
+	public ClienteModel(int idCliente, String cpf, String email, String identidade, String nome, char genero,
+			Double rendimentos, Double garantias, List<ContatoModel> contatos) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
@@ -54,15 +51,14 @@ public class ClienteModel {
 		this.identidade = identidade;
 		this.nome = nome;
 		this.genero = genero;
-		this.rendaConjuge = rendaConjuge;
-		this.rendaLiquida = rendaLiquida;
-		this.valorAutomoveis = valorAutomoveis;
-		this.valorImoveis = valorImoveis;
+		this.rendimentos = rendimentos;
+		this.garantias = garantias;
 		this.contatos = contatos;
-		
 	}
-	
-	
+
+
+
+
 	public static ClienteModel getInstance(){
 		if(instance == null){
 			instance = new ClienteModel();
@@ -118,40 +114,22 @@ public class ClienteModel {
 	public void setGenero(char genero) {
 		this.genero = genero;
 	}
-
-	public Double getRendaConjuge() {
-		return rendaConjuge;
+	
+	public Double getRendimentos() {
+		return rendimentos;
 	}
 
-	public void setRendaConjuge(Double rendaConjuge) {
-		this.rendaConjuge = rendaConjuge;
+	public void setRendimentos(Double rendimentos) {
+		this.rendimentos = rendimentos;
 	}
 
-	public Double getRendaLiquida() {
-		return rendaLiquida;
+	public Double getGarantias() {
+		return garantias;
 	}
 
-	public void setRendaLiquida(Double rendaLiquida) {
-		this.rendaLiquida = rendaLiquida;
+	public void setGarantias(Double garantias) {
+		this.garantias = garantias;
 	}
-
-	public Double getValorAutomoveis() {
-		return valorAutomoveis;
-	}
-
-	public void setValorAutomoveis(Double valorAutomoveis) {
-		this.valorAutomoveis = valorAutomoveis;
-	}
-
-	public Double getValorImoveis() {
-		return valorImoveis;
-	}
-
-	public void setValorImoveis(Double valorImoveis) {
-		this.valorImoveis = valorImoveis;
-	}
-
-
 
 	public List<ContatoModel> getContatos() {
 		return contatos;
@@ -177,23 +155,6 @@ public class ClienteModel {
 		this.financiamentos = financiamentos;
 	}
 
-
-
-
-
-	@Override
-	public String toString() {
-		return "ClienteModel [idCliente=" + idCliente + ", cpf=" + cpf + ", email=" + email + ", identidade="
-				+ identidade + ", nome=" + nome + ", genero=" + genero + ", rendaConjuge=" + rendaConjuge
-				+ ", rendaLiquida=" + rendaLiquida + ", valorAutomoveis=" + valorAutomoveis + ", valorImoveis="
-				+ valorImoveis + ", contatos=" + contatos + ", enderecos=" + enderecos + ", financiamentos="
-				+ financiamentos + "]";
-	}
-
-
-
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -203,20 +164,14 @@ public class ClienteModel {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
 		result = prime * result + ((financiamentos == null) ? 0 : financiamentos.hashCode());
+		result = prime * result + ((garantias == null) ? 0 : garantias.hashCode());
 		result = prime * result + genero;
 		result = prime * result + idCliente;
 		result = prime * result + ((identidade == null) ? 0 : identidade.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((rendaConjuge == null) ? 0 : rendaConjuge.hashCode());
-		result = prime * result + ((rendaLiquida == null) ? 0 : rendaLiquida.hashCode());
-		result = prime * result + ((valorAutomoveis == null) ? 0 : valorAutomoveis.hashCode());
-		result = prime * result + ((valorImoveis == null) ? 0 : valorImoveis.hashCode());
+		result = prime * result + ((rendimentos == null) ? 0 : rendimentos.hashCode());
 		return result;
 	}
-
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -252,6 +207,11 @@ public class ClienteModel {
 				return false;
 		} else if (!financiamentos.equals(other.financiamentos))
 			return false;
+		if (garantias == null) {
+			if (other.garantias != null)
+				return false;
+		} else if (!garantias.equals(other.garantias))
+			return false;
 		if (genero != other.genero)
 			return false;
 		if (idCliente != other.idCliente)
@@ -266,28 +226,15 @@ public class ClienteModel {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (rendaConjuge == null) {
-			if (other.rendaConjuge != null)
+		if (rendimentos == null) {
+			if (other.rendimentos != null)
 				return false;
-		} else if (!rendaConjuge.equals(other.rendaConjuge))
-			return false;
-		if (rendaLiquida == null) {
-			if (other.rendaLiquida != null)
-				return false;
-		} else if (!rendaLiquida.equals(other.rendaLiquida))
-			return false;
-		if (valorAutomoveis == null) {
-			if (other.valorAutomoveis != null)
-				return false;
-		} else if (!valorAutomoveis.equals(other.valorAutomoveis))
-			return false;
-		if (valorImoveis == null) {
-			if (other.valorImoveis != null)
-				return false;
-		} else if (!valorImoveis.equals(other.valorImoveis))
+		} else if (!rendimentos.equals(other.rendimentos))
 			return false;
 		return true;
 	}
+
+
 
 	
 

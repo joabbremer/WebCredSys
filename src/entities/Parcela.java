@@ -2,7 +2,6 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity(name="Parcela")
 @Table(name="PARCELA")
@@ -10,7 +9,7 @@ import java.math.BigDecimal;
 	@NamedQuery(name="listAllParcela", query="SELECT p FROM Parcela p"),
 	@NamedQuery(name="selectIdParcela", query="SELECT p FROM Parcela p WHERE p.idParcela = :id_parcela"),
 	@NamedQuery(name="updateParcela", query="UPDATE Parcela p SET p.dataPagamento = :data_pagamento, p.dataVencimento = :data_vencimento,"
-			+ " p.valor = :valor, p.valorDesconto = :valor_desconto, p.valorJuro = :valor_juro, p.valorTotal = :valor_total WHERE p.idParcela = :id_parcela "),
+			+ " p.valor = :valor, p.valorDesconto = :valor_desconto, p.valorJuro = :valor_juro, p.valorTotal = :valor_total, p.valorPago = :valor_pago  WHERE p.idParcela = :id_parcela "),
 	
 	
 })
@@ -41,11 +40,31 @@ public class Parcela implements Serializable {
 
 	@Column(name="valor_total", precision=19)
 	private Double valorTotal;
+	
+	@Column(name="valor_pago", precision=19)
+	private Double valorPago;
 
 
 	public Parcela() {
 	}
 	
+		
+
+	public Parcela(int idParcela, Double dataPagamento, Double dataVencimento, Double valor, Double valorDesconto,
+			Double valorJuro, Double valorTotal, Double valorPago) {
+		super();
+		this.idParcela = idParcela;
+		this.dataPagamento = dataPagamento;
+		this.dataVencimento = dataVencimento;
+		this.valor = valor;
+		this.valorDesconto = valorDesconto;
+		this.valorJuro = valorJuro;
+		this.valorTotal = valorTotal;
+		this.valorPago = valorPago;
+	}
+
+
+
 	public static EntityManager getEntityManager(){
 		
 		if(em == null){
@@ -108,6 +127,17 @@ public class Parcela implements Serializable {
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+
+	public Double getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(Double valorPago) {
+		this.valorPago = valorPago;
+	}
+	
+	
+	
 
 
 }
