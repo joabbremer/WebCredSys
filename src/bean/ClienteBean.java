@@ -15,16 +15,6 @@ import model.ClienteModel;
 @SessionScoped
 public class ClienteBean {
 	
-	private String cpf;
-	
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	
 	
 	public List<ClienteModel> ClienteListAll() throws ConnectException{
@@ -37,10 +27,10 @@ public class ClienteBean {
 		
 	}
 	
-	public ClienteModel SelectClienteByCpf() throws ConnectException{
+	public void SelectClienteByCpf() throws ConnectException{
 		
 		ClienteController clienteController = ClienteController.getControllerInstance();
-		return clienteController.SelectByCpf(getCpf());
+		clienteController.SelectByCpf(clienteController.PrepareToShare().getCpf());
 		
 	}
 	
@@ -58,6 +48,11 @@ public class ClienteBean {
 	public ClienteModel PrepareTosave(){
 		ClienteController clienteController = new ClienteController();
 		return clienteController.PrepareTosave();	
+	}
+	
+	public ClienteModel PrepareToShare(){
+		ClienteController clienteController = new ClienteController();
+		return clienteController.PrepareToShare();	
 	}
 	
 	public ClienteModel Selected(){

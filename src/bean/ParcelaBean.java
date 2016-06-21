@@ -34,20 +34,29 @@ public class ParcelaBean {
 		return parcelaController.PrepareToSimule();
 	}
 	
-	public void PrepareToPay(ParcelaModel parcelaModel) throws ConnectException{		
+	public String PrepareToPay(ParcelaModel parcelaModel) throws ConnectException{		
 		ParcelaController parcelaController = ParcelaController.getControllerInstance();
-		parcelaModel.setValorPago(getValor());
-		parcelaController.update(parcelaModel);
-		ListParcela();
+		parcelaController.PrepareToPay(parcelaModel);
+		return"/pagamento.xhtml";
+		
 				
+	}
+	
+	public ParcelaModel selectToPay(){
+		ParcelaController parcelaController = ParcelaController.getControllerInstance();
+		return parcelaController.SelectTopay();
+	}
+	
+	public String Pay() throws ConnectException{
+		ParcelaController parcelaController = ParcelaController.getControllerInstance();
+		parcelaController.update();
+		return "/parcela.xhtml";
+		
 	}
 	
 	public DataModel<ParcelaModel> ListParcela(){
 		ParcelaController parcelaController = ParcelaController.getControllerInstance();
 		List<ParcelaModel> parcela =	 parcelaController.SelectParcela();	
-		for (ParcelaModel parcelaModel : parcela) {
-			System.out.println(parcelaModel.getIdParcela());
-		}
 		parcDataModel = new  ListDataModel<ParcelaModel>(parcela);		
 		return parcDataModel;
 		 

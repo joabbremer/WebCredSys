@@ -117,7 +117,7 @@
 											</div>
 											<label class="control-label col-md-3">CPF </label>
 											<div class="input-group col-md-6">
-												<h:inputText value="#{clienteBean.cpf}" class="form-control"
+												<h:inputText value="#{clienteBean.PrepareToShare().cpf}" class="form-control"
 													required="true" />
 												<span class="input-group-btn"> <h:commandLink
 														value="Buscar" action="#{clienteBean.ShareByCpf()}"
@@ -134,7 +134,7 @@
 											</label>
 											<div class="col-md-4">
 												<h:outputLabel
-														value="#{clienteBean.SelectClienteByCpf().nome}">
+														value="#{financiamentoBean.ClienteSelected().nome}">
 												</h:outputLabel>
 											</div>
 										</div>		
@@ -166,7 +166,9 @@
 												<h:inputText id="primeiraParcela"
 													converter="javax.faces.DateTime"
 													value="#{simulacaoBean.PrepareToSimule().primeiraParcela}"
-													class="form-control" title="Data" />
+													class="form-control" title="Data" >
+													<f:convertDateTime pattern="dd/MM/yyyy" />	
+												</h:inputText>
 											</div>
 										</div>
 										<div class="form-actions">
@@ -207,46 +209,28 @@
 														<h:outputText value="Parcela" />
 													</f:facet>
 													<h:outputText
-														value="#{financiamentoBean.parcDataModel.rowIndex + 1}" />
+														value="#{parcela.numeroParcela}" />
 												</h:column>
 												<h:column headerText="SKU"
 													style="text-align: center; width: 100px">
 													<f:facet name="header">
 														<h:outputText value="Vencimento" />
 													</f:facet>
-													<h:outputText value="#{parcela.dataVencimento}" />
+													<h:outputText value="#{parcela.dataVencimento}" >
+														<f:convertDateTime pattern="dd/MM/yyyy"/>
+													</h:outputText>
 												</h:column>
 												<h:column headerText="SKU"
 													style="text-align: center; width: 100px">
 													<f:facet name="header">
 														<h:outputText value="Valor" />
 													</f:facet>
-													<h:outputText value="#{parcela.valor}" />
-												</h:column>
-												<h:column headerText="SKU"
-													style="text-align: center; width: 100px">
-													<f:facet name="header">
-														<h:outputText value="Desconto" />
-													</f:facet>
-													<h:outputText value="#{parcela.valorDesconto}" />
-												</h:column>
-												<h:column headerText="SKU"
-													style="text-align: center; width: 100px">
-													<f:facet name="header">
-														<h:outputText value="Juro" />
-													</f:facet>
-													<h:outputText value="#{parcela.valorJuro}" />
-												</h:column>
-
-												<h:column headerText="SKU"
-													style="text-align: center; width: 100px">
-													<f:facet name="header">
-														<h:outputText value="Valor Total" />
-													</f:facet>
-													<h:outputText value="#{parcela.valorTotal}" />
+													<h:outputLabel value="#{parcela.valor}"> 
+														<f:convertNumber currencyCode="BRL" type="currency"/>
+													</h:outputLabel>
+													
 												</h:column>
 												
-
 											</h:dataTable>
 										</h:panelGroup>
 

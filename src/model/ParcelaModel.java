@@ -1,13 +1,14 @@
 package model;
 
-
+import java.util.Date;
 
 public class ParcelaModel {
 	
 	private static ParcelaModel instance = null;
 	private int idParcela;
+	private int numeroParcela;
 	private Double dataPagamento;
-	private Double dataVencimento;
+	private Date dataVencimento;
 	private Double valor;
 	private Double valorDesconto;
 	private Double valorJuro;
@@ -18,10 +19,12 @@ public class ParcelaModel {
 	
 	}
 
-	public ParcelaModel(int idParcela, Double dataPagamento, Double dataVencimento, Double valor, Double valorDesconto,
-			Double valorJuro, Double valorTotal, Double valorPago) {
+
+	public ParcelaModel(int idParcela, int numeroParcela, Double dataPagamento, Date dataVencimento, Double valor,
+			Double valorDesconto, Double valorJuro, Double valorTotal, Double valorPago) {
 		super();
 		this.idParcela = idParcela;
+		this.numeroParcela = numeroParcela;
 		this.dataPagamento = dataPagamento;
 		this.dataVencimento = dataVencimento;
 		this.valor = valor;
@@ -30,6 +33,8 @@ public class ParcelaModel {
 		this.valorTotal = valorTotal;
 		this.valorPago = valorPago;
 	}
+
+
 
 
 
@@ -57,11 +62,11 @@ public class ParcelaModel {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public Double getDataVencimento() {
+	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(Double dataVencimento) {
+	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
@@ -104,7 +109,14 @@ public class ParcelaModel {
 	public void setValorPago(Double valorPago) {
 		this.valorPago = valorPago;
 	}
+	
+	public int getNumeroParcela() {
+		return numeroParcela;
+	}
 
+	public void setNumeroParcela(int numeroParcela) {
+		this.numeroParcela = numeroParcela;
+	}
 
 	@Override
 	public int hashCode() {

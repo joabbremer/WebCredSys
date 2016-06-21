@@ -1,6 +1,8 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity(name="Parcela")
@@ -8,7 +10,7 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name="listAllParcela", query="SELECT p FROM Parcela p"),
 	@NamedQuery(name="selectIdParcela", query="SELECT p FROM Parcela p WHERE p.idParcela = :id_parcela"),
-	@NamedQuery(name="updateParcela", query="UPDATE Parcela p SET p.dataPagamento = :data_pagamento, p.dataVencimento = :data_vencimento,"
+	@NamedQuery(name="updateParcela", query="UPDATE Parcela p SET p.numeroParcela = :numero_parcela, p.dataPagamento = :data_pagamento, p.dataVencimento = :data_vencimento,"
 			+ " p.valor = :valor, p.valorDesconto = :valor_desconto, p.valorJuro = :valor_juro, p.valorTotal = :valor_total, p.valorPago = :valor_pago  WHERE p.idParcela = :id_parcela "),
 	
 	
@@ -22,12 +24,15 @@ public class Parcela implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_parcela", unique=true, nullable=false)
 	private int idParcela;
+	
+	@Column(name="numero_parcela", precision=19)
+	private int numeroParcela;
 
 	@Column(name="data_pagamento", precision=19)
 	private Double dataPagamento;
 
 	@Column(name="data_vencimento", precision=19)
-	private Double dataVencimento;
+	private Date dataVencimento;
 
 	@Column(name="VALOR", precision=19)
 	private Double valor;
@@ -48,12 +53,12 @@ public class Parcela implements Serializable {
 	public Parcela() {
 	}
 	
-		
-
-	public Parcela(int idParcela, Double dataPagamento, Double dataVencimento, Double valor, Double valorDesconto,
-			Double valorJuro, Double valorTotal, Double valorPago) {
+	
+	public Parcela(int idParcela, int numeroParcela, Double dataPagamento, Date dataVencimento, Double valor,
+			Double valorDesconto, Double valorJuro, Double valorTotal, Double valorPago) {
 		super();
 		this.idParcela = idParcela;
+		this.numeroParcela = numeroParcela;
 		this.dataPagamento = dataPagamento;
 		this.dataVencimento = dataVencimento;
 		this.valor = valor;
@@ -62,6 +67,10 @@ public class Parcela implements Serializable {
 		this.valorTotal = valorTotal;
 		this.valorPago = valorPago;
 	}
+
+
+
+
 
 
 
@@ -79,6 +88,15 @@ public class Parcela implements Serializable {
 	public void setIdParcela(int idParcela) {
 		this.idParcela = idParcela;
 	}
+	
+	public int getNumeroParcela() {
+		return numeroParcela;
+	}
+
+	public void setNumeroParcela(int numeroParcela) {
+		this.numeroParcela = numeroParcela;
+	}
+
 
 	public Double getDataPagamento() {
 		return this.dataPagamento;
@@ -88,11 +106,11 @@ public class Parcela implements Serializable {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public Double getDataVencimento() {
+	public Date getDataVencimento() {
 		return this.dataVencimento;
 	}
 
-	public void setDataVencimento(Double dataVencimento) {
+	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 

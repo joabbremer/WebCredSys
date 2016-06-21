@@ -91,10 +91,19 @@ public class FinanciamentoController {
 		SimulacaoModel simulacaoModel = simulacaoController.Simule();
 		ParcelaModel parcelaModel = ParcelaModel.getInstance();	
 		parcela = new ArrayList<ParcelaModel>();
-		for (int i = 0; i < simulacaoModel.getQtParcelas(); i++) {
-			parcela.add(parcelaModel);
+		for (int i = 1; i <= simulacaoModel.getQtParcelas(); i++) {
+			parcela.add(new ParcelaModel(parcelaModel.getIdParcela(),
+					i, 
+					parcelaModel.getDataPagamento(),
+					parcelaModel.getDataVencimento(),
+					parcelaModel.getValor(),
+					parcelaModel.getValorDesconto(),
+					parcelaModel.getValorJuro(),
+					parcelaModel.getValorTotal(),
+					parcelaModel.getValorPago()));
 			
 		}
+		
 		
 		return parcela;
 		

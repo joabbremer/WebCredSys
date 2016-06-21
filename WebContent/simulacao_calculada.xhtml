@@ -109,24 +109,23 @@
 										<tbody>
 											<tr>
 												<td class="bold">Valor Solicitado</td>
-												<td><h:outputLabel
-														value="#{simulacaoBean.Simule().valor}">
-														<f:convertNumber minFractionDigits="2" />
+												<td><h:outputLabel value="#{simulacaoBean.Simule().valor}"> 
+														<f:convertNumber currencyCode="BRL" type="currency"/>
 													</h:outputLabel></td>
 											</tr>
 											<tr>
 												<td>Valor Imposto</td>
-												<td><h:outputLabel
-														value="#{simulacaoBean.Simule().juros}">
-														<f:convertNumber minFractionDigits="2" />
-													</h:outputLabel></td>
+												<td><h:outputLabel value="#{simulacaoBean.Simule().imposto}"> 
+														<f:convertNumber currencyCode="BRL" type="currency"/>
+													</h:outputLabel>
+													</td>
 											</tr>
 											<tr>
 												<td>Valor Financiado</td>
-												<td><h:outputLabel
-														value="#{simulacaoBean.Simule().valorCjuros}">
-														<f:convertNumber minFractionDigits="2" />
-													</h:outputLabel></td>
+												<td><h:outputLabel value="#{simulacaoBean.Simule().valorFinanciado}"> 
+														<f:convertNumber currencyCode="BRL" type="currency"/>
+													</h:outputLabel>
+													</td>
 											</tr>
 											<tr>
 												<td>Quantidade de parcelas</td>
@@ -135,20 +134,24 @@
 											</tr>
 											<tr>
 												<td>Valor da Parcela</td>
-												<td><h:outputLabel
-														value="#{parcelaBean.PrepareToSimule().valor}">
-														<f:convertNumber minFractionDigits="2" />
-													</h:outputLabel></td>
+												<td><h:outputLabel value="#{simulacaoBean.Simule().valorParcela}"> 
+														<f:convertNumber currencyCode="BRL" type="currency"/>
+													</h:outputLabel>
+													</td>
 											</tr>
 											<tr>
 												<td>Taxa de Juros</td>
-												<td>9,18 % a.m. (30 dias)<br></br>191,12 % a.a. (365
-													dias)
+												<td>9,18 % a.m. (30 dias)
 												</td>
 											</tr>
 											<tr>
 												<td>Custo Efetivo Total(CET)</td>
-												<td>243,79 % a.a. (365 dias)</td>
+												<td>
+												<h:outputLabel value="#{simulacaoBean.Simule().valorTotal}"> 
+														<f:convertNumber currencyCode="BRL" type="currency"/>
+													</h:outputLabel>
+												</td>
+												
 											</tr>
 										</tbody>
 									</table>
