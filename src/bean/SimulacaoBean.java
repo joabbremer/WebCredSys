@@ -1,5 +1,7 @@
 package bean;
 
+import java.text.ParseException;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
@@ -23,7 +25,7 @@ public class SimulacaoBean {
 		
 	}
 	
-	public String Simular(){
+	public String Simular() throws ParseException{
 		simulacaoController.Simular();		
 		return "/simulacao_calculada.xhtml";
 	}

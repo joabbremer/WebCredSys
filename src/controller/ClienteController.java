@@ -35,14 +35,14 @@ public class ClienteController {
 		return ConvertEntitieToModelList(clientedao);		
 	}
 	
-	public ClienteModel SelectByCpf(String cpf) throws ConnectException{
+	public void SelectByCpf(String cpf) throws ConnectException{
 		ClienteDao clienteDao = new ClienteDao();
 		ParcelaController parcelaController = ParcelaController.getControllerInstance();
 		
 		
 		parcelaController.SelectParcelaForCliente(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
 		clienteModelSelected = ConvertListToOneModel(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
-		return clienteModelSelected;
+		
 		
 	}
 	
@@ -68,7 +68,7 @@ public class ClienteController {
 		
 	}
 	
-	private void LimparCliente() {
+	public void LimparCliente() {
 		ClienteModel clienteModel = ClienteModel.getInstance();
 		EnderecoController endControll = EnderecoController.getInstance();
 		ContatoController contatoController = ContatoController.getInstance();
@@ -201,6 +201,10 @@ public class ClienteController {
 					);
 		}
 		return cliente;
+	}
+
+	public ClienteModel PrepareToShare() {
+		return ClienteModel.getInstance();
 	}
 	
 }

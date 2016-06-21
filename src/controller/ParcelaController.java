@@ -17,6 +17,7 @@ public class ParcelaController {
 	
 	private static ParcelaController parcelaController = null;
 	private List<ParcelaModel> selectParcelaForCliente = null;
+	private ParcelaModel pModel = null;
 	
 	public ParcelaModel PrepareToSimule(){
 		return ParcelaModel.getInstance();
@@ -62,6 +63,7 @@ public class ParcelaController {
 		List<ParcelaModel> parcelaModel = new ArrayList<ParcelaModel>();
 		for (Parcela parcela : parcelaList) {
 			parcelaModel.add(new ParcelaModel(parcela.getIdParcela(),
+					parcela.getNumeroParcela(),
 					parcela.getDataPagamento(),
 					parcela.getDataVencimento(),
 					parcela.getValor(),
@@ -81,6 +83,7 @@ public class ParcelaController {
 		List<Parcela> parcelaEntitie = new ArrayList<Parcela>();
 		for (ParcelaModel parcelaModel : parcelas) {
 			parcelaEntitie.add(new Parcela(parcelaModel.getIdParcela(),
+					parcelaModel.getNumeroParcela(),
 					parcelaModel.getDataPagamento(),
 					parcelaModel.getDataVencimento(),
 					parcelaModel.getValor(),
@@ -107,6 +110,10 @@ public class ParcelaController {
 		parcelaModel.setValorTotal(null);
 		SimulacaoModel simulacaoModel = SimulacaoModel.getInstance();
 		simulacaoModel.setQtParcelas(0);
+		if(selectParcelaForCliente != null){
+			selectParcelaForCliente.clear();
+		}
+		
 		
 		
 		
@@ -114,9 +121,9 @@ public class ParcelaController {
 
 
 
-	public void update(ParcelaModel parcelaModel) throws ConnectException {
+	public void update() throws ConnectException {
 		ParcelaDao parcelaDao = new ParcelaDao();
-		parcelaDao.update(convertModelToEntitie(parcelaModel));
+		parcelaDao.update(convertModelToEntitie(SelectTopay()));
 		
 	}
 
@@ -125,6 +132,7 @@ public class ParcelaController {
 	private Parcela convertModelToEntitie(ParcelaModel parcelaModel) {
 				
 		return new Parcela(parcelaModel.getIdParcela(),
+				parcelaModel.getNumeroParcela(),
 				parcelaModel.getDataPagamento(),
 				parcelaModel.getDataVencimento(),
 				parcelaModel.getValor(),
@@ -133,6 +141,17 @@ public class ParcelaController {
 				parcelaModel.getValorTotal(),
 				parcelaModel.getValorPago());
 		
+	}
+
+
+
+	public void PrepareToPay(ParcelaModel parcelaModel) {
+		this.pModel = parcelaModel;
+		
+	}
+	
+	public ParcelaModel SelectTopay(){
+		return pModel;
 	}
 
 }
