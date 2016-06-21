@@ -1,6 +1,7 @@
 package bean;
 
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import controller.ClienteController;
 import controller.FinanciamentoController;
 import controller.SimulacaoController;
 import dao.Exception.ConnectException;
+import model.ClienteModel;
 import model.ParcelaModel;
 
 
@@ -25,7 +27,7 @@ public class FinanciamentoBean {
 	
 	private DataModel<ParcelaModel> parcDataModel = new  ListDataModel<ParcelaModel>();
 	
-	public void CalcularFianciamento(){
+	public void CalcularFianciamento() throws ParseException{
 		SimulacaoController simulacaoController = SimulacaoController.getControllerInstance();
 		simulacaoController.Simular();
 	}
@@ -49,11 +51,14 @@ public class FinanciamentoBean {
 	public void Financiar() throws ConnectException{
 			ClienteController clienteController = ClienteController.getControllerInstance();
 			clienteController.ClienteUpdate();
+			clienteController.LimparCliente();
 			ListParcela();
-			 
-			
-			
-			
+						
+	}
+	
+	public ClienteModel ClienteSelected(){
+		ClienteController clientControl = ClienteController.getControllerInstance();
+		return clientControl.Selected();
 	}
 	
 

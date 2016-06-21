@@ -31,6 +31,7 @@ public class ParcelaDao implements CrudInterfaceDao<Parcela> {
 		EntityManager em = Parcela.getEntityManager();
 		em.getTransaction().begin();
 		Query query = em.createNamedQuery("updateParcela");
+		query.setParameter("numero_parcela", parcela.getNumeroParcela());
 		query.setParameter("data_pagamento", parcela.getDataPagamento());
 		query.setParameter("data_vencimento", parcela.getDataVencimento());
 		query.setParameter("valor", parcela.getValor());
