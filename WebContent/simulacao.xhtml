@@ -226,6 +226,12 @@
 	<h:outputScript name="js/layout.min.js" type="text/javascript" />
 	<h:outputScript name="js/demo.min.js" type="text/javascript" />
 	<h:outputScript name="js/quick-sidebar.min.js" type="text/javascript" />
+	<h:outputScript name="js/jquery.maskedinput.min.js" type="text/javascript"/>
 
 </h:body>
+	<script>
+jQuery(function($){
+       $("#submit_form\\:primeiraParcela").mask("99/99/9999");
+});
+</script>
 </html>
