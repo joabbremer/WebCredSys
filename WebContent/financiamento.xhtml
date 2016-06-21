@@ -118,7 +118,7 @@
 											<label class="control-label col-md-3">CPF </label>
 											<div class="input-group col-md-6">
 												<h:inputText value="#{clienteBean.PrepareToShare().cpf}" class="form-control"
-													required="true" />
+													required="true" requiredMessage="Preencha o campo CPF para busca" />
 												<span class="input-group-btn"> <h:commandLink
 														value="Buscar" action="#{clienteBean.ShareByCpf()}"
 														ajax="true" icon="ui-icon-refresh" process="@all"
@@ -132,11 +132,13 @@
 											
 											<br /> <label class="control-label col-md-3">Cliente:
 											</label>
+											
 											<div class="col-md-4">
-												<h:outputLabel
-														value="#{financiamentoBean.ClienteSelected().nome}">
-												</h:outputLabel>
-											</div>
+														<h:inputText id="nomeBusca"
+															value="#{financiamentoBean.ClienteSelected().nome}"
+															class="form-control" title="Parcela" disabled="true" required="true" requiredMessage="Busque um cliente para calcular"/>
+													</div>												
+											
 										</div>		
 										<div class="form-group">
 											<br /> <label class="control-label col-md-3">Valor
@@ -166,7 +168,7 @@
 												<h:inputText id="primeiraParcela"
 													converter="javax.faces.DateTime"
 													value="#{simulacaoBean.PrepareToSimule().primeiraParcela}"
-													class="form-control" title="Data" >
+													class="form-control" title="Data" required="true" requiredMessage="Preencha o campo Data Primeira Parcela">
 													<f:convertDateTime pattern="dd/MM/yyyy" />	
 												</h:inputText>
 											</div>

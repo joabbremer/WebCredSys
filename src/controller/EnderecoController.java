@@ -52,7 +52,7 @@ public class EnderecoController {
 		EnderecoModel enderecoModel = EnderecoModel.getInstance();
 		enderecoModel.setEndereco(null);
 		enderecoModel.setBairro(null);
-		enderecoModel.setCep(0);
+		enderecoModel.setCep(null);
 		enderecoModel.setCidade(null);
 		
 	}

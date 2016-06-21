@@ -30,7 +30,7 @@ public class Endereco implements Serializable {
 	private String bairro;
 
 	@Column(name="CEP")
-	private int cep;
+	private String cep;
 
 	@Column(name="CIDADE", length=15)
 	private String cidade;
@@ -45,7 +45,7 @@ public class Endereco implements Serializable {
 	public Endereco() {
 	}
 
-	public Endereco(int numero, String bairro, int cep, String cidade, String endereco, String estado) {
+	public Endereco(int numero, String bairro, String cep, String cidade, String endereco, String estado) {
 		this.numero = numero;
 		this.bairro = bairro;
 		this.cep = cep;
@@ -87,11 +87,11 @@ public class Endereco implements Serializable {
 		this.bairro = bairro;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return this.cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
