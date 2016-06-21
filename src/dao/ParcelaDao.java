@@ -30,13 +30,14 @@ public class ParcelaDao implements CrudInterfaceDao<Parcela> {
 	public void update(Parcela parcela) throws ConnectException {
 		EntityManager em = Parcela.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createNamedQuery("updateContato");
+		Query query = em.createNamedQuery("updateParcela");
 		query.setParameter("data_pagamento", parcela.getDataPagamento());
 		query.setParameter("data_vencimento", parcela.getDataVencimento());
 		query.setParameter("valor", parcela.getValor());
 		query.setParameter("valor_desconto", parcela.getValorDesconto());
 		query.setParameter("valor_juro", parcela.getValorJuro());
 		query.setParameter("valor_total", parcela.getValorTotal());
+		query.setParameter("valor_pago", parcela.getValorPago());
 		query.setParameter("id_parcela", parcela.getIdParcela());		
 		query.executeUpdate();
 		em.getTransaction().commit();

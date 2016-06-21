@@ -27,6 +27,12 @@ public class ContatoController {
 		return instance;
 	}
 	
+	public void LimparContato(){
+		ContatoModel contatoModel = ContatoModel.getInstance();
+		contatoModel.setContato(null);
+		contatoModel.setTipo(null);
+	}
+	
 	public List<ContatoModel> ContatoListAll() throws ConnectException{
 		ContatoDao contatoDao = new ContatoDao();
 		List<Contato>	contatodao =  contatoDao.listAll();

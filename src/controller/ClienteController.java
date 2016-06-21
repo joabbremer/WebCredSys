@@ -10,6 +10,7 @@ import entities.Contato;
 import model.ClienteModel;
 import model.ContatoModel;
 import model.EnderecoModel;
+import model.FinanciamentoModel;
 import model.ParcelaModel;
 
 public class ClienteController {
@@ -40,7 +41,8 @@ public class ClienteController {
 		
 		
 		parcelaController.SelectParcelaForCliente(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
-		return	ConvertListToOneModel(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
+		clienteModelSelected = ConvertListToOneModel(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
+		return clienteModelSelected;
 		
 	}
 	
@@ -50,22 +52,43 @@ public class ClienteController {
 		ClienteModel clienteModel = ClienteModel.getInstance();		
 		ContatoModel contatoModel = ContatoModel.getInstance();
 		EnderecoModel enderecoModel = EnderecoModel.getInstance();
-		Cliente cliente = ConvertModelToEntitie(clienteModel);
-		
-		ContatoController contControl = ContatoController.getInstance();	
+			
 		List<ContatoModel> contListModel = new ArrayList<ContatoModel>();
 		contListModel.add(contatoModel);
 		
-		EnderecoController endContrl = EnderecoController.getInstance();
 		List<EnderecoModel> endListModel = new ArrayList<EnderecoModel>();
 		endListModel.add(enderecoModel);
 		
-		cliente.setContatos(contControl.ConvertModelToEntitieList(contListModel));
-		cliente.setEnderecos(endContrl.ConvertModelToEntitieList(endListModel));
+		clienteModel.setEnderecos(endListModel);		
+		clienteModel.setContatos(contListModel);
+		
+		Cliente cliente = ConvertModelToEntitie(clienteModel);
 		clienteDao.save(cliente);
+		LimparCliente();
 		
 	}
 	
+	private void LimparCliente() {
+		ClienteModel clienteModel = ClienteModel.getInstance();
+		EnderecoController endControll = EnderecoController.getInstance();
+		ContatoController contatoController = ContatoController.getInstance();
+		FinanciamentoController FinanControll = FinanciamentoController.getControllerInstance();
+		clienteModel.setNome(null);
+		clienteModel.setGenero('n');
+		clienteModel.setCpf(null);
+		clienteModel.setIdentidade(null);
+		clienteModel.setEmail(null);
+		clienteModel.setRendimentos(null);
+		clienteModel.setGarantias(null);
+		endControll.LimparEndereco();
+		contatoController.LimparContato();
+		FinanControll.LimparFinanciamento();
+		PrepareToEdit(clienteModel);
+		
+		
+		
+	}
+
 	public ClienteModel PrepareTosave(){
 		return ClienteModel.getInstance();
 	}
@@ -80,7 +103,17 @@ public class ClienteController {
 	
 	public void ClienteUpdate() throws ConnectException{
 		ClienteDao clienteDao = new ClienteDao();
-		clienteDao.update(ConvertModelToEntitie(Selected()));
+		
+		ClienteModel clienteModel = Selected();
+		FinanciamentoController finanControll = FinanciamentoController.getControllerInstance();
+		
+		List<FinanciamentoModel>  financiamentoModel = new ArrayList<FinanciamentoModel>();
+		
+		financiamentoModel.add(new FinanciamentoModel(0, finanControll.getParcelas()));
+		clienteModel.setFinanciamentos(financiamentoModel);		
+		clienteDao.update(ConvertModelToEntitie(clienteModel));
+		LimparCliente();
+		
 	}
 	
 	public List<ClienteModel> ConvertEntitieToModelList(List<Cliente> clientedao){
@@ -97,10 +130,8 @@ public class ClienteController {
 					cliente.getIdentidade(),
 					cliente.getNome(),
 					cliente.getGenero(),
-					cliente.getRendaConjuge(),
-					cliente.getRendaLiquida(),
-					cliente.getValorAutomoveis(),
-					cliente.getValorImoveis(),
+					cliente.getRendimentos(),
+					cliente.getGarantias(),
 					contatoController.ConvertEntitieToModelList(cliente.getContatos()),
 					enderecoController.ConvertEntitieToModelList(cliente.getEnderecos()),
 					financiamentoController.ConvertEntitieToModelList(cliente.getFinanciamentos())
@@ -120,10 +151,8 @@ public class ClienteController {
 					clienteModels.getIdentidade(),
 					clienteModels.getNome(),
 					clienteModels.getGenero(),
-					clienteModels.getRendaConjuge(),
-					clienteModels.getRendaLiquida(),
-					clienteModels.getValorAutomoveis(),
-					clienteModels.getValorImoveis(),
+					clienteModels.getRendimentos(),
+					clienteModels.getGarantias(),
 					clienteModels.getContatos(),
 					clienteModels.getEnderecos(),
 					clienteModels.getFinanciamentos()
@@ -145,15 +174,16 @@ public class ClienteController {
 					clientedao.getIdentidade(),
 					clientedao.getNome(),
 					clientedao.getGenero(),
-					clientedao.getRendaConjuge(),
-					clientedao.getRendaLiquida(),
-					clientedao.getValorAutomoveis(),
-					clientedao.getValorImoveis(),
+					clientedao.getRendimentos(),
+					clientedao.getGarantias(),
 					contatoController.ConvertEntitieToModelList(clientedao.getContatos())); 
 		
 	}
 	
 	public Cliente ConvertModelToEntitie(ClienteModel clienteModel){
+		ContatoController contatoController = new ContatoController();
+		EnderecoController enderecoController = new EnderecoController();
+		FinanciamentoController finanControll = new FinanciamentoController();
 		
 		Cliente cliente = new Cliente();
 		if(clienteModel != null){
@@ -163,10 +193,12 @@ public class ClienteController {
 					clienteModel.getIdentidade(),
 					clienteModel.getNome(),
 					clienteModel.getGenero(),
-					clienteModel.getRendaConjuge(),
-					clienteModel.getRendaLiquida(),
-					clienteModel.getValorAutomoveis(),
-					clienteModel.getValorImoveis());
+					clienteModel.getRendimentos(),
+					clienteModel.getGarantias(),
+					contatoController.ConvertModelToEntitieList(clienteModel.getContatos()),
+					enderecoController.ConvertModelToEntitieList(clienteModel.getEnderecos()),					
+					finanControll.ConvertModelToEntitieList(clienteModel.getFinanciamentos())
+					);
 		}
 		return cliente;
 	}

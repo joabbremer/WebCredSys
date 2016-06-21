@@ -120,18 +120,25 @@
 												<h:inputText value="#{clienteBean.cpf}" class="form-control"
 													required="true" />
 												<span class="input-group-btn"> <h:commandLink
-														value="Buscar" action="#{clienteBean.SelectClienteByCpf}"
+														value="Buscar" action="#{clienteBean.ShareByCpf()}"
 														ajax="true" icon="ui-icon-refresh" process="@all"
 														update=":formtotable:tableparcelas" class="btn blue" />
 												</span>
 											</div>
 										</div>
 										<br />
+										
 										<div class="form-group">
-											<h:outputLabel
-												value="#{clienteBean.SelectClienteByCpf().nome}">
-												<f:convertNumber minFractionDigits="2" />
-											</h:outputLabel>
+											
+											<br /> <label class="control-label col-md-3">Cliente:
+											</label>
+											<div class="col-md-4">
+												<h:outputLabel
+														value="#{clienteBean.SelectClienteByCpf().nome}">
+												</h:outputLabel>
+											</div>
+										</div>		
+										<div class="form-group">
 											<br /> <label class="control-label col-md-3">Valor
 												do Financiamento <span class="required"> * </span>
 											</label>
@@ -159,7 +166,7 @@
 												<h:inputText id="primeiraParcela"
 													converter="javax.faces.DateTime"
 													value="#{simulacaoBean.PrepareToSimule().primeiraParcela}"
-													class="form-control" title="Data" required="true" />
+													class="form-control" title="Data" />
 											</div>
 										</div>
 										<div class="form-actions">
@@ -191,8 +198,7 @@
 									<h:form name="formtotable">
 										<h:panelGroup>
 											<h:dataTable name="tableparcelas"
-												value="#{financiamentoBean.ListParcela()}" var="parcela"
-												renderedIfEmpty="false"
+												value="#{financiamentoBean.ListParcela()}" var="parcela" 
 												class="table table-bordered table-striped table-condensed flip-content">
 
 												<h:column headerText="SKU"
@@ -239,18 +245,18 @@
 													</f:facet>
 													<h:outputText value="#{parcela.valorTotal}" />
 												</h:column>
-												<h:column headerText="SKU"
-													style="text-align: center; width: 100px">
-													<f:facet name="header">
-														<h:outputText value="Valor Total" />
-													</f:facet>
-													<h:outputText value="#{parcela.dataPagamento}" />
-												</h:column>
+												
 
 											</h:dataTable>
 										</h:panelGroup>
 
-
+									</h:form>
+									<h:form>
+									<div class="form-actions">
+											<h:commandLink value="Financiar" action="#{financiamentoBean.Financiar() }" 
+											ajax="true" icon="ui-icon-refresh" process="@all"
+											update=":formtotable:tableparcelas" class="btn red" />
+										</div>
 									</h:form>
 								</div>
 							</div>

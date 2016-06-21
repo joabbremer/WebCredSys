@@ -20,8 +20,7 @@ public class SimulacaoController {
 		return SimulacaoModel.getInstance();
 	}
 	
-	public SimulacaoModel Simule(){
-		
+	public SimulacaoModel Simule(){		
 		return simulacao;
 	}
 	
@@ -37,7 +36,12 @@ public class SimulacaoController {
 		Double valorCJuros = juros + simulacaoModel.getValor();		
 		simulacaoModel.setValorCjuros(valorCJuros);		
 		simulacaoModel.setJuros(juros);
-		parcela.setValor(valorCJuros/simulacaoModel.getQtParcelas());
+		parcela.setDataVencimento(0.0);
+		parcela.setValor(simulacaoModel.getValor()/simulacaoModel.getQtParcelas());
+		parcela.setValorDesconto(0.0);		
+		parcela.setValorJuro(juros/simulacaoModel.getQtParcelas());
+		parcela.setValorTotal(valorCJuros/simulacaoModel.getQtParcelas());
+		
 		limparCampos(simulacaoModel);
 		
 	}
@@ -54,6 +58,11 @@ public class SimulacaoController {
 		simulacaoModel.setValor(0);
 		simulacaoModel.setQtParcelas(0);
 		simulacaoModel.setPrimeiraParcela(null);
+	}
+
+	public void LimparSimulacao() {
+		simulacao.setQtParcelas(0);
+		
 	}
 
 	
