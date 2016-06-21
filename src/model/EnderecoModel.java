@@ -8,7 +8,7 @@ public class EnderecoModel {
 	private int idEndereco;
 	private int numero;
 	private String bairro;
-	private int cep;
+	private String cep;
 	private String cidade;
 	private String endereco;
 	private String estado;
@@ -17,7 +17,7 @@ public class EnderecoModel {
 	public EnderecoModel() {
 	}
 
-	public EnderecoModel(int numero, String bairro, int cep, String cidade, String endereco, String estado, ClienteModel cliente) {
+	public EnderecoModel(int numero, String bairro, String cep, String cidade, String endereco, String estado, ClienteModel cliente) {
 		super();
 		this.numero = numero;
 		this.bairro = bairro;
@@ -28,7 +28,7 @@ public class EnderecoModel {
 		this.cliente = cliente;
 	}
 	
-	public EnderecoModel(int numero, String bairro, int cep, String cidade, String endereco, String estado) {
+	public EnderecoModel(int numero, String bairro, String cep, String cidade, String endereco, String estado) {
 		super();
 		this.numero = numero;
 		this.bairro = bairro;
@@ -70,11 +70,11 @@ public class EnderecoModel {
 		this.bairro = bairro;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
@@ -115,7 +115,7 @@ public class EnderecoModel {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
-		result = prime * result + cep;
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());

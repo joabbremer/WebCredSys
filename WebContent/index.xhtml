@@ -155,7 +155,7 @@
 														<div class="col-md-4">
 															<h:inputText name="name" id="nome"
 																value="#{clienteBean.PrepareTosave().nome}"
-																class="form-control" title="Nome" />
+																class="form-control" title="Nome" required="true" requiredMessage="Preencha o campo Nome" />
 															<span class="help-block"> Nome Completo </span>
 														</div>
 													</div>
@@ -180,7 +180,7 @@
 														<div class="col-md-4">
 															<h:inputText name="cpf" id="cpf"
 																value="#{clienteBean.PrepareTosave().cpf}"
-																class="form-control" title="CPF" />
+																class="form-control" title="CPF" required="true" requiredMessage="Preencha o campo CPF" />
 															<span class="help-block"> Apenas números </span>
 														</div>
 													</div>
@@ -383,7 +383,7 @@
 	<script>
 			jQuery(function($){
 			       $("#submit_form\\:primeiraParcela").mask("99/99/9999");
-			       $("#submit_form\\:cpf").mask("999.999.999-29");
+			       $("#submit_form\\:cpf").mask("999.999.999-99");
 			       $("#submit_form\\:cep").mask("99999-999");
 			       $("#submit_form\\:numero").mask("(99)9999-9999?9");
 			});
