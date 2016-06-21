@@ -114,16 +114,15 @@
 									<div class="form-actions">
 									<label class="control-label col-md-3">CPF: </label>
 										<div class="input-group col-md-6">
-											<h:inputText value="#{clienteBean.PrepareToShare().cpf}" class="form-control" />
-											<span class="input-group-btn"> <h:commandLink
-													value="Buscar" action="#{clienteBean.SelectClienteByCpf()}"
+											<h:inputText value="#{clienteBean.PrepareToShare().cpf}" class="form-control" required="true" requiredMessage="Preencha o campo Cpf para busca" />
+											<span class="input-group-btn"> 
+											<h:commandLink
+													value="Buscar" action="#{clienteBean.ShareByCpf()}"
 													ajax="true" icon="ui-icon-refresh" process="@all"
 													update=":formtotable:tableparcelas" class="btn blue" />
 
 											</span>
 										</div>
-										<!-- Teste de modal - REMOVER! -->
-										<a class="btn red-flamingo button-submit" data-toggle="modal" href="#confirmaPagamento"> Pagar </a>	
 									</div>
 								</h:form>
 							</div>

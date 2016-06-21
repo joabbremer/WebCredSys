@@ -37,11 +37,10 @@ public class ClienteController {
 	
 	public void SelectByCpf(String cpf) throws ConnectException{
 		ClienteDao clienteDao = new ClienteDao();
-		ParcelaController parcelaController = ParcelaController.getControllerInstance();
-		
-		
+		ParcelaController parcelaController = ParcelaController.getControllerInstance();		
 		parcelaController.SelectParcelaForCliente(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
 		clienteModelSelected = ConvertListToOneModel(ConvertEntitieToModelList(clienteDao.selectByCpf(cpf)));
+		
 		
 		
 	}

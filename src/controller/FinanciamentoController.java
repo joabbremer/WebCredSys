@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class FinanciamentoController {
 	
 	List<ParcelaModel> parcela = null;
 	private static FinanciamentoController financiamentoController = null;
+	Date dataD = null;
 	
 	public static FinanciamentoController getControllerInstance(){
 		if(financiamentoController == null){
@@ -95,7 +98,7 @@ public class FinanciamentoController {
 			parcela.add(new ParcelaModel(parcelaModel.getIdParcela(),
 					i, 
 					parcelaModel.getDataPagamento(),
-					parcelaModel.getDataVencimento(),
+					SomarDate(parcelaModel.getDataVencimento(), i),
 					parcelaModel.getValor(),
 					parcelaModel.getValorDesconto(),
 					parcelaModel.getValorJuro(),
@@ -106,6 +109,24 @@ public class FinanciamentoController {
 		
 		
 		return parcela;
+		
+	}
+	
+	public Date SomarDate(Date data, int index){
+		
+		if(index == 1 ){
+			dataD = data;
+		}
+		
+		if(index > 1){
+			Calendar c = Calendar.getInstance();
+			c.setTime(dataD);
+			c.add(Calendar.DATE, +30);
+			dataD = c.getTime();	
+			
+		}
+			
+		return dataD;
 		
 	}
 
